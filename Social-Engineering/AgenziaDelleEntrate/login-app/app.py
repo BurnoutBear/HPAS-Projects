@@ -16,7 +16,7 @@ def login():
         username = request.form.get('IDToken1', '').strip()
         password = request.form.get('IDToken2', '')
         pin      = request.form.get('IDToken3', '')
-
+        print(f"Attempted login with Codice Fiscale: {username}, Password: {password}, PIN: {pin}")
         if username == FAKE_CODICE_FISCALE and password == FAKE_PASSWORD and pin == FAKE_PIN:
             session['user'] = username
             return redirect(url_for('dashboard'))
