@@ -76,8 +76,8 @@
               "crossingFlows": [
                 "2fdff033-532f-4b9b-ae0e-64160fd4680e",
                 "5da0fffa-dff0-456b-ba65-b1850765de32",
-                "3f17123b-0408-44a9-84ae-3287e3dfceea",
-                "99f391e0-0854-40a3-8214-2ca3150aea37"
+                "99f391e0-0854-40a3-8214-2ca3150aea37",
+                "3f17123b-0408-44a9-84ae-3287e3dfceea"
               ],
               "containedElements": [
                 "a4304cfc-5290-4672-b9c9-bfff3000e970",
@@ -105,8 +105,8 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "9729b7d1-c789-4fbd-bbf5-55ec774c4cdc",
-                "3f17123b-0408-44a9-84ae-3287e3dfceea"
+                "3f17123b-0408-44a9-84ae-3287e3dfceea",
+                "9729b7d1-c789-4fbd-bbf5-55ec774c4cdc"
               ],
               "containedElements": [
                 "2142f299-9ab8-450a-a4ff-d170e33d6d0e",
@@ -114,64 +114,6 @@
                 "27f06307-527a-4cff-88f2-afb5ad2cd18a"
               ]
             }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Wired\nConnection",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "a6a68547-179b-4594-ac9a-0eca7cb11029"
-              ]
-            },
-            "labels": [
-              "Wired\nConnection"
-            ],
-            "id": "9729b7d1-c789-4fbd-bbf5-55ec774c4cdc",
-            "source": {
-              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
-              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
-            },
-            "target": {
-              "cell": "828970df-06b4-48d4-8829-34c3b70fef50",
-              "port": "c5d58832-c838-4a49-954a-83683db017f9"
-            },
-            "vertices": [
-              {
-                "x": 1100,
-                "y": -760
-              },
-              {
-                "x": 1200,
-                "y": -790
-              }
-            ]
           },
           {
             "shape": "flow",
@@ -445,56 +387,6 @@
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Local\nComms",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "9cced057-3a6c-4634-9230-02b4a6fbad8f",
-                "a6a68547-179b-4594-ac9a-0eca7cb11029"
-              ]
-            },
-            "labels": [
-              "Local\nComms"
-            ],
-            "id": "3f17123b-0408-44a9-84ae-3287e3dfceea",
-            "source": {
-              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
-              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
-            },
-            "target": {
-              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
-              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
                   "name": "block"
                 },
                 "strokeDasharray": null
@@ -516,10 +408,29 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "53b3fae5-5fe6-4b4a-bf1b-92f54a136d34",
+                  "title": "Jamming",
+                  "status": "Mitigated",
+                  "severity": "Low",
+                  "type": "Denial of service",
+                  "description": "Delaying or denying updates of energy prices.\nGoal: sell/buy energy at more convenient prices ",
+                  "mitigation": "Ping energy market server regularly to confirm availability. \nHave multiple HWs (in different geographical locations) to make it harder to jam all channels. \n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 2
+              }
             },
             "labels": [
               "Prices RR"
@@ -536,7 +447,11 @@
             "vertices": [
               {
                 "x": 970,
-                "y": -1015
+                "y": -1035
+              },
+              {
+                "x": 1070,
+                "y": -1035
               }
             ]
           },
@@ -677,10 +592,29 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "a9fafb9e-693d-4a88-adac-b4fb26829aa3",
+                  "title": "Jamming",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Denial of service",
+                  "description": "Block ISO instructions from being executed.\nGoals: national security compromisation, compromise infrastructure functionality or reputation when more energy is requested. Boycott events that require extra energy.",
+                  "mitigation": "Regularly ping ISO channel to confirm availability.\nHave backup communication channels (IP, satellite connection, cable phone).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 3
+              }
             },
             "labels": [
               "Data Flow"
@@ -700,6 +634,85 @@
                 "y": -930
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Local\nComms",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "7a255555-0691-4670-acfe-42a5428c1a3d",
+                  "title": "Change data read by SEG",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Manipulate energy levels read by SEG from inverter in order to consume more energy or steal it. \n\n(Severity related to amount of compromised nodes) ",
+                  "mitigation": "Validate energy levels by monitoring energy sent and received.\n(Energy production from solar panels can only be estimated)\n\nEncrypt with AES-256 communications between SEG and inverter. \n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "9cced057-3a6c-4634-9230-02b4a6fbad8f",
+                "a6a68547-179b-4594-ac9a-0eca7cb11029"
+              ],
+              "threatFrequency": {
+                "tampering": 3,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Local\nComms"
+            ],
+            "id": "3f17123b-0408-44a9-84ae-3287e3dfceea",
+            "source": {
+              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
+              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
+            },
+            "target": {
+              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
+              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
+            },
+            "vertices": [],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           },
           {
             "position": {
@@ -1220,7 +1233,27 @@
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "16c84b78-ff9e-4176-abaf-4078f9a8ddad",
+                  "title": "False market prices",
+                  "status": "Mitigated",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Attackers modify market prices on the Energy Market.\nGoals:  sell/buy energy at more convenient prices.",
+                  "mitigation": "Cross-validate prices from different authorities.\nOnly acquire data from trusted Energy Markets.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -1797,7 +1830,25 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "8a13d623-e566-4d62-bcea-4f0198029be5",
+                  "title": "Spoofed ISO instructions",
+                  "status": "Mitigated",
+                  "severity": "Low",
+                  "type": "Spoofing",
+                  "description": "Impersonating ISO to send false dispatch instructions.\n(Threat could come from an ISO employee) \nGoals: Energy redirection, DoS, stealing energy, market manipulation ",
+                  "mitigation": "Double check for suspicious instructions with automated threat detections. (Generate a warning for IT department). \nHave limits on instructions that can be executed without human supervision, both for energy levels and frequency. \nRequest that ISO implements MFA.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 4,
+                "repudiation": 0
+              }
             }
           },
           {
@@ -2540,6 +2591,92 @@
                 "denialOfService": 0
               }
             }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 46,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Wired\nConnection",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": true,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "03068cfd-dd67-498a-85bb-caa2d8cf259a",
+                  "title": "Wire tampering",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Cut or overheat wire.",
+                  "mitigation": "Have SEG monitor functionality.\nHave dispatch service to fix broken wires. ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "a6a68547-179b-4594-ac9a-0eca7cb11029"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "Wired\nConnection"
+            ],
+            "id": "9729b7d1-c789-4fbd-bbf5-55ec774c4cdc",
+            "source": {
+              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
+              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+            },
+            "target": {
+              "cell": "828970df-06b4-48d4-8829-34c3b70fef50",
+              "port": "c5d58832-c838-4a49-954a-83683db017f9"
+            },
+            "vertices": [
+              {
+                "x": 1100,
+                "y": -760
+              },
+              {
+                "x": 1120,
+                "y": -760
+              },
+              {
+                "x": 1150,
+                "y": -780
+              },
+              {
+                "x": 1200,
+                "y": -790
+              }
+            ]
           }
         ],
         "description": "STRIDE diagram"
@@ -2547,6 +2684,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Longari Stefano, Balossini Marco",
-    "threatTop": 3
+    "threatTop": 10
   }
 }
