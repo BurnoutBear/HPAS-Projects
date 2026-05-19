@@ -25,6 +25,9 @@ def login():
 
     return render_template('login.html', error=error)
 
+@app.route('/cie')
+def cie():
+    return render_template('CIE.html')
 
 @app.route('/dashboard')
 def dashboard():
