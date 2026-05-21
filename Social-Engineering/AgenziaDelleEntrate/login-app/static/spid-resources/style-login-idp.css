@@ -1,0 +1,897 @@
+@import url("fonts.css");
+
+/* LOGIN IDP CSS */
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /*font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;*/
+    background-color: #0066cc; /*20170405*/
+    padding-top:40px;
+}
+
+p {
+    margin: 0;
+    line-height: 22px;
+}
+
+strong {
+    font-weight: 600;
+}
+
+a img {
+    border: none;
+}
+
+
+/* Heading */
+
+h1,
+h2,
+h3 {
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    padding: 15px 0 30px;
+    font-size: 26px;
+    font-weight: 100;
+    line-height: 32px;
+}
+
+h2 span {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+h3 {
+/*    font-size: 16px;
+    font-weight: 100;
+    line-height: 24px;
+    text-transform: uppercase;*/
+}
+
+.seo-element,
+.accessibility-hidden {
+    text-indent: -9999px;
+    display: block;
+    height: 1px;
+    width: 1px;
+    text-align: left;
+}
+
+
+/* Generici */
+
+.hide {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+ol,
+ul {
+    margin: 0;
+    padding: 0 0 20px 20px;
+}
+
+ul.list {
+    font-weight: 100;
+}
+
+.clear {
+    clear: both;
+}
+
+.table-like {
+    display: table;
+    width: 100%;
+}
+
+.tablecell-like {
+    display: table-cell;
+    /*height: 50px;*/
+    /* default */
+    vertical-align: middle;
+}
+
+.row-header h1 {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Button */
+
+.btn-container {
+    margin-top: 30px;
+}
+
+.btn-container-center .btn { /*20170405*/
+    margin-left: 0 !important;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: normal;
+    padding: 14px 0;
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Texta', sans-serif;
+    border: 1px solid transparent;
+    font-size: 15px !important;
+    /* modifica per allineamento bottoni form */
+    /* width: 160px; */
+    width: 140px;
+    -webkit-border-radius: 2px !important;
+    -moz-border-radius: 2px !important;
+    /*border-radius: 2px !important;*/ /* 20170406 */
+    border-radius: 30px !important; /* 20170406 */
+    text-align: center;
+    text-decoration: none !important;
+    /*padding-top:14px !important;
+    padding-bottom:14px !important;*/ /*20170406*/
+    padding: 2px 25px;
+}
+
+.btn-primary {
+    border: 1px solid #fff;
+}
+
+.btn-secondary {
+    background-color: #fff !important;
+    color: #000;
+    border: 1px solid #0066cc !important;
+}
+
+.btn-primary:hover {
+    background-color: #0099ff !important;
+}
+
+.btn-secondary:hover {
+    border: 1px #0066cc !important;
+    background-color: #0066cc !important;
+    color: #fff !important;
+}
+
+.btn-primary:active {
+    background-color: #0099ff !important;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary.active, .btn-secondary:active, .btn-secondary.focus {
+    border: 1px #0066cc !important;
+    background-color: #0066cc !important;
+    color: #fff !important;
+}
+
+.btn-login {
+    background: rgba(0, 0, 0, 0) url("../immagini/marchiobtn.png") no-repeat scroll left center;
+    padding-left: 50px !important;
+    width: 200px;
+    text-align: center;
+}
+
+
+/* Macro contenitori*/
+
+.row {
+	margin-right: 0 !important;
+}
+
+.row .wrap-container {
+    /*width: 980px;*/ /*20170405*/
+    margin: 0 auto;
+    padding: 0 10px;
+    background-color: #ffffff;
+}
+
+.row-evidence {
+    background-color: #0066cc;
+    height: auto !important;
+    height: 20px;
+    min-height: 20px;
+    color: #fff;
+}
+
+.row-evidence a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.wrap-container-0pad {
+    padding: 0 !important;
+}
+
+
+/* Header */
+
+/*.row-header {
+    padding: 40px 0 !important;
+}*/
+
+.row-header {
+    padding: 0 !important; /*20170405*/
+}
+
+#logo-container {
+    float: left;
+}
+
+#partner-container {
+    float: right;
+    margin-top: 18px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dddddd;/*20170405 */
+}
+
+
+/* Content */
+
+.row-content {
+    padding: 35px 0 45px;
+}
+
+.row-content .wrap {
+    margin: 0 50px;
+    height: auto !important;
+    height: 20px;
+    min-height: 20px;
+    background-color: transparent;
+}
+
+.row-content .wrap p {
+    padding-bottom: 20px;
+    font-weight: 100;
+}
+
+.row-content label {
+    display: block;
+    /*text-transform: uppercase;*/
+    padding-bottom: 5px;
+    font-weight: normal;
+    font-size:18px;
+    color: #222427 !important7;
+}
+
+.row-content input.input {
+    height: 50px;
+    width: 346px;
+    font-size: 16px;
+    line-height: 50px;
+    padding: 0 14px;
+    color: #777;
+}
+
+.wrap-col {
+    width: 50%;
+}
+
+.wrap-col1 {
+    float: left;
+    background-image: url(../immagini/border.png);
+    background-position: right top;
+    background-repeat: repeat-y;
+}
+
+.wrap-col2 {
+    float: right;
+}
+
+.row-header .innerspacer {
+    padding: 0px;
+}
+
+.row-content .innerspacer {
+    padding: 0px 30px;
+}
+
+.row-footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #0066cc;
+}
+
+.msg-container {
+    border-left: 15px solid #fff;
+    padding-left: 10px;
+    margin: 30px 0;
+    position: relative;
+}
+
+.msg-container .msg-ico {
+    position: absolute;
+    left: -50px;
+    top: 0;
+    background-color: transparent;
+    height: 25px;
+    width: 25px;
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.msg-ico-error {
+    background-image: url(../immagini/ico-error.png);
+}
+
+.msg-ico-check {
+    background-image: url(../immagini/ico-check.png);
+}
+
+.msg-container .msg-title p {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: normal;
+    padding-bottom: 10px;
+}
+
+.msg-container .msg-body p {
+    padding: 0;
+}
+
+
+/* style message info */
+
+.main-messages .main-messages-wrap .messages-heading p {
+    margin: 0;
+}
+.main-messages-info .main-messages-wrap {
+    background-image: url(../../../../risorse_dt/condivise/immagini/icone/ico-messages-info.png);
+   /*  background-position: 0 32px !important; */
+}
+.main-messages-info {
+    border-left-color: #0047bb;
+}
+
+/* style message ID */
+
+.main-messages-id .main-messages-wrap {
+    background-image: url(../../../../risorse/applicazioni/login-idp/immagini/ico-messages-id.png);
+   /*  background-position: 0 32px !important; */
+}
+.main-messages-id {
+    border-left-color: #0047bb;
+}
+
+
+.bg-white { /*20170406*/
+    background-color: #ffffff;
+}
+
+.content-applicative, .content-main { /*20170406*/
+    padding: 0 !important;
+}
+
+.main-pills { /*20170406*/
+    margin-bottom: 0 !important;
+}
+
+/* Riepilogo e bivio*/
+
+.row-content .lgn-list {
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.row-content .lgn-list-extra {
+    margin-top: 0px;
+    margin-left: -10px;
+}
+
+.row-content ul.lgn-list,
+.row-content ul.summary-list {
+    list-style: none;
+    padding: 0;
+}
+
+.row-content ul.lgn-list li,
+.row-content ul.summary-list li {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.row-content ul.lgn-list li {
+    padding: 0;
+}
+
+.row-content ul.lgn-list li a {
+    /*padding: 20px 10px;*/
+    display: block;
+    text-decoration: none;
+    height: 100%;
+    cursor: pointer;
+}
+
+.row-content ul.summary-list li p {
+    padding-bottom: 0px;
+}
+
+.row-content ul.lgn-list li:hover {
+    /*background-color: #003366;*/
+    text-decoration:none;
+}
+
+.row-content ul.lgn-list li:hover a .cell-step {
+    text-decoration: none;
+}
+
+.row-content ul.lgn-list li .step-ico {
+    background-color: transparent;
+    height: 23px;
+    width: 100%;
+    display: block;
+    background-repeat: no-repeat;
+    background-image: url(../immagini/ico-white.png);
+    background-position: center bottom;
+    color: #fff;
+    text-align: center;
+    line-height: 21px;
+    font-weight: 500;
+    display: block;
+}
+
+.row-content ul.lgn-list .tablecell-like {
+    /*height: 60px;*/
+}
+
+.row-content ul.summary-list .tablecell-like {
+    height: 40px;
+}
+
+.row-content ul.lgn-list .cell-level,
+.row-content ul.summary-list .cell-label {
+    border-right: 1px solid #fff;
+    text-align: center;
+    padding-right: 13px;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.row-content ul.lgn-list .cell-level {
+    vertical-align: middle;
+}
+
+.row-content ul.summary-list .cell-label {
+    width: 146px;
+    text-align: right;
+}
+
+.row-content ul.lgn-list .cell-step,
+.row-content ul.summary-list .cell-value {
+    /*padding-left: 13px;*/
+    font-size: 18px;
+    padding-top: 4px;
+}
+
+.row-content ul.summary-list .cell-value {
+    font-weight: 600;
+}
+
+.row-content ul.lgn-list .cell-step .detail-note {
+    font-weight: 100;
+    font-size: 16px;
+    font-style: normal;
+    display: block;
+}
+
+.level-extra-container {
+    margin-top: 20px;
+}
+
+
+/***************************/
+
+.btn {
+    padding:0;	
+}
+
+.btn-primary {
+    background-color: #0066cc !important;
+    border-color: #ffffff !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background-color: #0099ff !important;
+    border-color: #ffffff !important;
+    color: #ffffff;
+}
+
+.modal-header {
+    background-color: #fff !important;
+    /*border-bottom: 1px solid #0066cc !important;*/
+}
+
+.modal-content .close {
+    margin-top:-10px !important;
+}
+
+.logo-modale {
+    float:left;
+    max-width:50%;
+    height:auto;
+}
+
+.logo-posteid-abspid {
+    max-width:50%;
+    height:auto;
+    float:right;
+    /*margin-right:40px;*/
+}
+
+.label {
+	text-transform: uppercase;
+}
+
+.control-label {
+    text-transform: uppercase;
+}
+
+.ico-access {
+	float:left;
+	width:4%;
+}
+
+.lf {
+    float:left;
+}
+
+.rf {
+    float:right;
+}
+/***************************/
+
+    
+  .btn-container-login-xs {
+    width:auto !important;
+  }
+
+
+/***************************/
+
+/******* Override 320<479 *******/
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    .w80 {
+        width: 80%;
+    }
+    .w13 {
+        width: 13%;
+    }
+
+    .no-border-bottom-xs {
+      border-bottom: 0px !important;
+    }
+    
+    .btn-login-xs {
+	   width:100% !important;
+    }
+    
+    .btn-container-login-xs {
+        width:100% !important;
+    }
+    
+}
+
+
+
+/******* Override 480<768 *******/
+
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .innerspacer-xs-top-20-modal {
+        padding-top: 20px !important;
+    }
+    .w10 {
+        width: 10%;
+    }
+    .w13 {
+        width: 13%;
+    }
+    .spacer-right-04 {
+        margin-right: 4px;
+    }
+   
+}
+
+
+/******* Override <768 *******/
+
+
+/***************************/
+
+@media screen and (min-width: 240px) and (max-width: 767px) {
+    h2 {
+        padding: 24px 0 30px;
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: normal
+    }
+    h2 span {
+        font-size: 24px;
+        font-weight: normal;
+    }
+    h3 {
+        /*font-size: 16px;*/
+        line-height: 22px;
+        /*text-transform: uppercase;*/
+        font-weight: normal;
+    }
+    .row-header {
+        padding: 20px 0 10px;
+    }
+    .row-header #logo-container img {
+        height: 70px;
+    }
+    .row-header #partner-container {
+        margin-top: 11px;
+    }
+    .row-header #partner-container img {
+        max-width: 80px;
+    }
+    .summary-list {
+        border: 1px solid #fff;
+        background-color: #0b41ac;
+        padding: 15px;
+    }
+    .row-header .innerspacer {
+        padding: 0px;
+    }
+    .row-content .innerspacer {
+        padding: 0px;
+    }
+    .row .wrap-container {
+        width: auto;
+        padding:0;
+    }
+    .row-content {
+        padding: 20px 0 25px;
+    }
+    .row-content .wrap {
+        margin: 0;
+    }
+    .row-content .wrap p {
+        font-weight: normal;
+    }
+    .row-content input.input {
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .content-wrap-col {
+        border-bottom: 1px solid #fff;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+    }
+    .wrap-col {
+        float: none;
+        width: auto;
+    }
+    .wrap-col1 {
+        background-image: none;
+    }
+    .row-content ul.lgn-list li:hover {
+        background-color: transparent;
+    }
+    .row-content ul.lgn-list li a {
+        padding: 10px 25px 10px 10px;
+        background-image: url(../immagini/arrow-right.png);
+        background-position: 99% center;
+        background-repeat: no-repeat;
+    }
+    .row-content ul.summary-list .cell-label {
+        display: block;
+        width: auto;
+        border: none;
+        text-align: left;
+        height: auto;
+    }
+    .row-content ul.summary-list .cell-value {
+        padding: 0;
+    }
+    .row-content ul.lgn-list .cell-level,
+    .row-content ul.summary-list .cell-label {
+        font-weight: normal;
+    }
+    .row-content ul.summary-list .tablecell-like {
+        height: auto;
+    }
+    .btn {
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .msg-container {
+        padding-left: 15px;
+        padding-top: 30px;
+        border-left: 8px solid #fff;
+    }
+    .msg-container .msg-title p {
+        font-size: 20px;
+        line-height: 26px;
+    }
+    .msg-container .msg-ico {
+        left: 15px;
+    }
+    .padding-0 {
+        padding-left:0 !important;
+        padding-right:0 !important;
+    }
+    .btn-secondary:hover, .btn-secondary:focus, .btn-secondary.active, .btn-secondary:active, .btn-secondary.focus {
+        border: 1px solid #0066cc !important;
+        background-color: #0066cc !important;
+        color: #fff !important;
+    }
+    .ico-access {
+		float:left;
+		width:6%;
+		padding-top: 0px;
+        padding-right: 4px;
+    }
+    .logo-spid {
+        float:right;
+    }
+    .logo-modale {
+        max-width:75%;
+        float:left;
+        height:auto;
+        /*margin-right:40px;*/
+    }
+    .logo-posteid-abspid {
+        max-width:75%;
+        float:right;
+        height:auto;
+        /*margin-right:40px;*/
+    }
+    .spacer-left {
+        margin-left: 4px;
+    }
+    
+     .no-border-bottom-xs {
+      border-bottom: 0px !important;
+    }
+
+}
+
+
+/***************************/
+
+
+/******* Override 768> <991 *******/
+
+
+/***************************/
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    h2 {
+        padding: 24px 0 30px;
+        font-size: 22px;
+        line-height: 28px;
+    }
+    h2 span {
+        font-size: 26px;
+        font-weight: normal;
+    }
+    h3 {
+        /*font-size: 16px;*/
+        line-height: 24px;
+        /*text-transform: uppercase;*/
+    }
+    .row-header {
+        padding: 25px 0;
+    }
+    .row-header .innerspacer {
+        padding: 0px 30px;
+    }
+    .row .wrap-container {
+        width: auto;
+    }
+    .row-content {
+        padding: 20px 0 25px;
+    }
+    .row-content .wrap {
+        margin: 0;
+    }
+    .row-content input.input {
+        width: 270px;
+    }
+    .wrap-col1 {
+        width: 60%;
+    }
+    .wrap-col2 {
+        width: 40%;
+    }
+    .row-content .lgn-list {
+        margin-top: 20px;
+    }
+    .btn {
+        width: 145px;
+    }
+    .btn-login{
+        width: 190px;
+    }
+    .msg-container .msg-ico {
+        left: -45px;
+    }
+    .msg-container .msg-title p {
+        font-size: 20px;
+        line-height: 26px;
+    }
+    .logo-spid {
+        width: 50%;
+        float:right;
+    }
+    .padding-0 {
+        padding-left:0 !important;
+        padding-right:0 !important;
+    }
+    .ico-access {
+        float:left;
+        width:6%;
+        padding-top: 0px;
+        padding-right: 4px;
+    }
+    .table-like .tablecell-like {
+    display: table-cell;
+    padding-top: 6px;
+    vertical-align: middle;
+    }
+    .logo-modale {
+        width:50%;
+        float:left;
+        /*margin-right:40px;*/
+        height:auto;
+    }
+    .logo-posteid-abspid {
+        width:50%;
+        float:right;
+        /*margin-right:40px;*/
+        height:auto;
+    }
+    .spacer-left {
+        margin-left: 4px;
+    }
+    .w13 {
+        max-width:13%;
+    }
+
+}
+
+
+/***************************/
+
+
+/******* Override 992> *******/
+
+
+/***************************/
+
+@media (min-width: 992px) {
+    /*md*/
+    .logo-spid {
+        width: 50%;
+        float:right;
+    }
+    .table-like .tablecell-like {
+    display: table-cell;
+    padding-top: 8px;
+    padding-right: 4px;
+    vertical-align: middle;
+    }
+    .spacer-left {
+        margin-left: 4px;
+    }
+    .w13 {
+        max-width:13%;
+    }
+}

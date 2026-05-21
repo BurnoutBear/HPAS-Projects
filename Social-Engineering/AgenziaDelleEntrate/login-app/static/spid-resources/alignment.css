@@ -1,0 +1,142 @@
+/*****************************************************
+
+    Foglio stile Allineamenti - (c) Poste Italiane 2016 - GD//FS//DU
+
+*****************************************************/
+
+
+/****************** xs ******************/
+
+.pull-xs-left {
+    float: left !important;
+}
+
+.pull-xs-right {
+    float: right !important;
+}
+
+.pull-xs-not {
+    float: none !important;
+}
+
+.text-left-xs-not,
+.text-center-xs-not,
+.text-right-xs-not,
+.text-justify-xs-not {
+    text-align: inherit !important;
+}
+
+.text-xs-left {
+    text-align: left !important;
+}
+
+.text-xs-center {
+    text-align: center !important;
+}
+
+.text-xs-right {
+    text-align: right !important;
+}
+
+.text-xs-justify {
+    text-align: justify !important;
+}
+
+
+/****************** sm ******************/
+
+@media (min-width: 768px) {
+    .pull-sm-left {
+        float: left !important;
+    }
+    .pull-sm-right {
+        float: right !important;
+    }
+    .pull-sm-not {
+        float: none !important;
+    }
+    .text-left-sm-not,
+    .text-center-sm-not,
+    .text-right-sm-not,
+    .text-justify-sm-not {
+        text-align: inherit !important;
+    }
+    .text-sm-left {
+        text-align: left !important;
+    }
+    .text-sm-center {
+        text-align: center !important;
+    }
+    .text-sm-right {
+        text-align: right !important;
+    }
+    .text-sm-justify {
+        text-align: justify !important;
+    }
+}
+
+
+/****************** md ******************/
+
+@media (min-width: 992px) {
+    .pull-md-left {
+        float: left !important;
+    }
+    .pull-md-right {
+        float: right !important;
+    }
+    .pull-md-not {
+        float: none !important;
+    }
+    .text-left-md-not,
+    .text-center-md-not,
+    .text-right-md-not,
+    .text-justify-md-not {
+        text-align: inherit !important;
+    }
+    .text-md-left {
+        text-align: left !important;
+    }
+    .text-md-center {
+        text-align: center !important;
+    }
+    .text-md-right {
+        text-align: right !important;
+    }
+    .text-md-justify {
+        text-align: justify !important;
+    }
+}
+
+
+/****************** lg ******************/
+
+@media (min-width: 1200px) {
+    .pull-lg-left {
+        float: left !important;
+    }
+    .pull-lg-right {
+        float: right !important;
+    }
+    .pull-lg-not {
+        float: none !important;
+    }
+    .text-left-lg-not,
+    .text-center-lg-not,
+    .text-right-lg-not,
+    .text-justify-lg-not {
+        text-align: inherit !important;
+    }
+    .text-lg-left {
+        text-align: left !important;
+    }
+    .text-lg-center {
+        text-align: center !important;
+    }
+    .text-lg-right {
+        text-align: right !important;
+    }
+    .text-lg-justify {
+        text-align: justify !important;
+    }
+}

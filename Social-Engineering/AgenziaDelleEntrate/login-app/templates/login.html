@@ -9,14 +9,14 @@
         <meta hhtp-equiv="Expires" content="0">
         <meta charset="UTF-8">
         <title>Agenzia delle Entrate - Area Riservata</title>
-        <link rel="stylesheet" type="text/css" href="../static/login1.css">
-        <link href="../static/login2.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="static/login1.css">
+        <link href="static/login2.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     </head>
     <body class="h-100 bg-light">
-        <script src="../static/login1.js"></script>
-        <script src="../static/login2.js"></script>
+        <script src="static/login1.js"></script>
+        <script src="static/login2.js"></script>
         <div id="root" class="d-flex flex-column justify-content-between h-100">
             <header aria-label="Informazioni e strumenti utente" class="border-bottom">
                 <div class="header-top-dark">
@@ -456,7 +456,7 @@
                                             </a>
                                         </li>
                                         <li class="spid-idp-button-link" data-idp="posteid">
-                                            <a class="dropdown-item" href="https://sp.agenziaentrate.gov.it/rp/poste/sel">
+                                            <a class="dropdown-item" href="{{ url_for('spid') }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="spid-idp-posteid_svg__Layer_1" x="0" y="0" viewBox="0 0 485.8 133.5" height="28" alt="Poste ID">
                                                     <style>.spid-idp-posteid_svg__st0{fill:#0047bb}</style>
                                                     <g id="spid-idp-posteid_svg__Logo_PosteID_abilitato_SPID">

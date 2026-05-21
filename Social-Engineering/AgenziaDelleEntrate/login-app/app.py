@@ -27,7 +27,11 @@ def login():
 
 @app.route('/cie')
 def cie():
-    return render_template('CIE.html')
+    return render_template('cie.html')
+
+@app.route('/spid')
+def spid():
+    return render_template('spid.html')
 
 @app.route('/dashboard')
 def dashboard():

@@ -1,0 +1,129 @@
+/*****************************************************
+
+    Foglio stile Fonts - (c) Poste Italiane 2016 - GD//FS//DU
+
+*****************************************************/
+
+/* BEGIN Thin */
+/*
+@font-face {
+    font-family: 'Texta';
+    src: url("/risorseweb/poste_it/risorseweb/poste_it/risorse_dt/condivise/fonts/texta/Texta-Thin.otf");
+    font-style: normal;
+    font-weight: 100;
+}*/
+@font-face {
+    font-family: 'Texta';
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.eot'); /* IE9 Compat Modes */
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.woff') format('woff'), /* Modern Browsers */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.svg#Texta-Light') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 200; 
+    text-rendering: optimizeLegibility;
+}
+/* END Thin */
+ 
+
+
+/* BEGIN Light */
+/*
+@font-face {
+    font-family: 'Texta';
+    src: url("/risorseweb/poste_it/risorseweb/poste_it/risorse_dt/condivise/fonts/texta/Texta-Light.otf");
+    font-style: normal;
+    font-weight: 200;
+}
+*/
+
+@font-face {
+    font-family: 'Texta';
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.eot'); /* IE9 Compat Modes */
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.woff') format('woff'), /* Modern Browsers */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Light/Texta-Light.svg#Texta-Light') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* END Light */
+
+
+/* BEGIN Book */
+/*
+@font-face {
+    font-family: 'Texta';
+    src: url("/risorseweb/poste_it/risorseweb/poste_it/risorse_dt/condivise/fonts/texta/Texta-Book.otf");
+    font-style: normal;
+    font-weight: 400;
+}
+*/
+@font-face {
+    font-family: 'Texta';
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Book/Texta-Book.eot'); /* IE9 Compat Modes */
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Book/Texta-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Book/Texta-Book.woff') format('woff'), /* Modern Browsers */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Book/Texta-Book.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Book/Texta-Book.svg#Texta-Book') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+}
+
+/* END Book */
+
+
+/* BEGIN Regular */
+/*
+@font-face {
+    font-family: 'Texta';
+    src: url("/risorseweb/poste_it/risorseweb/poste_it/risorse_dt/condivise/fonts/texta/Texta-Regular.otf");
+    font-style: normal;
+    font-weight: 500;
+}
+*/
+@font-face {
+    font-family: 'Texta';
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Regular/Texta-Regular.eot'); /* IE9 Compat Modes */
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Regular/Texta-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Regular/Texta-Regular.woff') format('woff'), /* Modern Browsers */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Regular/Texta-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Regular/Texta-Regular.svg#Texta-Regular') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 500;
+    text-rendering: optimizeLegibility;
+}
+
+
+
+/* END Regular */
+
+
+/* BEGIN Medium */
+/*
+@font-face {
+    font-family: 'Texta';
+    src: url("/risorseweb/poste_it/risorseweb/poste_it/risorse_dt/condivise/fonts/texta/Texta-Medium.otf");
+    font-style: normal;
+    font-weight: 600;
+}
+*/
+@font-face {
+    font-family: 'Texta';
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Medium/Texta-Medium.eot'); /* IE9 Compat Modes */
+    src: url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Medium/Texta-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Medium/Texta-Medium.woff') format('woff'), /* Modern Browsers */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Medium/Texta-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/jod-login-schema/risorse/applicazioni/login-idp/fonts/texta/Texta-Medium/Texta-Medium.svg#Texta-Bold') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 600;
+    text-rendering: optimizeLegibility;
+}
+
+
+
+/* END Medium */

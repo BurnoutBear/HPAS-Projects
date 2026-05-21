@@ -1,0 +1,281 @@
+/*****************************************************
+
+    Foglio stile Extra - (c) Poste Italiane 2016 - GD//FS//DU
+
+*****************************************************/
+
+
+/*xs*/
+
+.hide {
+    display: none !important;
+}
+
+.inline {
+    display: inline !important;
+}
+
+.inline-block {
+    display: inline-block!important;
+}
+
+.block {
+    display: block !important;
+}
+
+.nojs-block {
+    display: block !important;
+}
+
+.nojs-inline {
+    display: inline !important;
+}
+
+.nojs-inline-block {
+    display: inline-block !important;
+}
+
+.relative {
+    position: relative !important;
+}
+
+.seo-element {
+    text-indent: -9999px !important;
+}
+
+.footer-patch {
+	width:100%;
+	margin: 0 auto;
+}
+
+
+/*xs*/
+
+@media (max-width: 767px) {
+    .hide-xs {
+        display: none !important;
+    }
+    .inline-xs {
+        display: inline !important;
+    }
+    .inline-block-xs {
+        display: inline-block!important;
+    }
+    .block-xs {
+        display: block !important;
+    }
+    .border-xs-bottom {
+        border-bottom: 1px solid #ececec !important;
+    }
+    .border-xs-bottom-not {
+        border-bottom: none !important;
+    }
+    .border-xs-left {
+        border-left: 1px solid #ececec !important;
+    }
+    .border-xs-left-not {
+        border-left: none !important;
+    }
+    .border-xs-right {
+        border-right: 1px solid #ececec !important;
+    }
+    .border-xs-right-not {
+        border-right: none !important;
+    }
+    .border-xs-top {
+        border-top: 1px solid #ececec !important;
+    }
+    .border-xs-top-not {
+        border: top none !important;
+    }
+    .nojs-xs-block {
+        display: block !important;
+    }
+    .nojs-xs-inline {
+        display: inline !important;
+    }
+    .nojs-xs-inline-block {
+        display: inline-block !important;
+    }
+    .accessibility-hidden {
+        display:none;
+    }
+	.footer-patch {
+		width:100%;
+		margin: 0 auto;
+	}
+}
+
+
+/*sm*/
+
+@media (min-width: 768px) {
+    .hide-sm {
+        display: none !important;
+    }
+    .inline-sm {
+        display: inline !important;
+    }
+    .inline-block-sm {
+        display: inline-block!important;
+    }
+    .block-sm {
+        display: block !important;
+    }
+    .border-sm-bottom {
+        border-bottom: 1px solid #ececec !important;
+    }
+    .border-sm-bottom-not {
+        border-bottom: none !important;
+    }
+    .border-sm-left {
+        border-left: 1px solid #ececec !important;
+    }
+    .border-sm-left-not {
+        border-left: none !important;
+    }
+    .border-sm-right {
+        border-right: 1px solid #ececec !important;
+    }
+    .border-sm-right-not {
+        border-right: none !important;
+    }
+    .border-sm-top {
+        border-top: 1px solid #ececec !important;
+    }
+    .border-sm-top-not {
+        border: top none !important;
+    }
+    .nojs-sm-block {
+        display: block !important;
+    }
+    .nojs-sm-inline {
+        display: inline !important;
+    }
+    .nojs-sm-inline-block {
+        display: inline-block !important;
+    }
+    .accessibility-hidden {
+        display:none;
+    }
+	.footer-patch {
+		width:100%;
+		margin: 0 auto;
+	}
+}
+
+
+/*md*/
+
+@media (min-width: 991px) {
+    .hide-md {
+        display: none !important;
+    }
+    .inline-md {
+        display: inline !important;
+    }
+    .inline-block-md {
+        display: inline-block!important;
+    }
+    .block-md {
+        display: block !important;
+    }
+    .border-md-bottom {
+        border-bottom: 1px solid #ececec !important;
+    }
+    .border-md-bottom-not {
+        border-bottom: none !important;
+    }
+    .border-md-left {
+        border-left: 1px solid #ececec !important;
+    }
+    .border-md-left-not {
+        border-left: none !important;
+    }
+    .border-md-right {
+        border-right: 1px solid #ececec !important;
+    }
+    .border-md-right-not {
+        border-right: none !important;
+    }
+    .border-md-top {
+        border-top: 1px solid #ececec !important;
+    }
+    .border-md-top-not {
+        border-top: none !important;
+    }
+    .nojs-md-block {
+        display: block !important;
+    }
+    .nojs-md-inline {
+        display: inline !important;
+    }
+    .nojs-md-inline-block {
+        display: inline-block !important;
+    }
+    .accessibility-hidden {
+        display:none;
+    }
+	.footer-patch {
+		width:100%;
+		margin: 0 auto;
+	}
+}
+
+
+/*lg*/
+
+@media (min-width: 1200px) {
+    .hide-lg {
+        display: none !important;
+    }
+    .inline-lg {
+        display: inline !important;
+    }
+    .inline-block-lg {
+        display: inline-block!important;
+    }
+    .block-lg {
+        display: block !important;
+    }
+    .border-lg-bottom {
+        border-bottom: 1px solid #ececec !important;
+    }
+    .border-lg-bottom-not {
+        border-bottom: none !important;
+    }
+    .border-lg-left {
+        border-left: 1px solid #ececec !important;
+    }
+    .border-lg-left-not {
+        border-left: none !important;
+    }
+    .border-lg-right {
+        border-right: 1px solid #ececec !important;
+    }
+    .border-lg-right-not {
+        border-right: none !important;
+    }
+    .border-lg-top {
+        border-top: 1px solid #ececec !important;
+    }
+    .border-lg-top-not {
+        border-top: none !important;
+    }
+    .nojs-lg-block {
+        display: block !important;
+    }
+    .nojs-lg-inline {
+        display: inline !important;
+    }
+    .nojs-lg-inline-block {
+        display: inline-block !important;
+    }
+    .accessibility-hidden {
+        display:none;
+    }
+	.footer-patch {
+		width:100%;
+		margin: 0 auto;
+	}
+}
