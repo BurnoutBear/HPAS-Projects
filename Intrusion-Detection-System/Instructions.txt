@@ -1,0 +1,14 @@
+CAN IDS Lab
+Goal of the lab: learn how to implement an intrusion detection system for CAN
+Points: points will be computed as Score = (5 * F1student / F1baseline) * Understanding
+Notes:
+● You are provided a .zip with a template jupyter notebook to modify. The notebook has 3 blocks. The first and last cannot be modified,
+the first loads the various CAN dump files, the latter evaluates them.
+● Your output will be the code in the “middle blocks” of the jupyter notebook in a .py file.
+I’ll copy-paste your central blocks in a new jupyter notebook to ensure that no modification has been done to the loading or evaluation
+steps.
+● The training.csv file is the one provided to the analyst, while the evalN.csv ones are some examples of attacks that may appear in the
+wild. Although trivial, you cannot use the label to classify the attacks. Moreover, you cannot select specific payloads or other elements
+to filter as attacks. You should not use info collected in the evaluation datasets to filter out attacks, ideally you should use only the
+training set to compute the IDS rules.
+● You are allowed to use other (trusted) libraries, e.g., tensorflow, but provide the list of necessary ones.
