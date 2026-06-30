@@ -1,14 +1,18 @@
 # CAN IDS — Design Report
 
-## 1. Goal
+## Introduction
 
-To build an IDS for CAN-bus traffic using only the training dataset (attack-free) to derive detection rules.
-No label information and no eval-set-specific tuning may be used to decide what counts as an attack.
+The goal was to build an IDS for CAN-bus traffic using rules based on what we studied and a training dataset (attack-free).
+No tuning was made on eval datasets to decide what counts as an attack, but the results on the evaluation
+of our IDS have proved really useful to guide our strategy.
 
-The system has to generalize across very different attack styles, so the approach taken here is a small set of
-independent, training-derived statistical rules: a frame is flagged as an attack if any of the 4 rule fires.
+## Method
 
-## 2. What `build_profile()` learns from `training.csv`
+Our strategy aimed to define rules based on an analysis of the training data:
+First we learnt the set of expected IDs
+For each ID we gathered IAT, payload usual length
+
+#### What `build_profile()` learns from `training.csv`
 
 The detection thresholds come from a single pass over the training data, grouped by `arbitration_id` :
 
@@ -22,25 +26,24 @@ The detection thresholds come from a single pass over the training data, grouped
 
 None of these statistics are calibrated on any `eval.csv` file, every number is purely a property of the training distribution.
 
-## 3. Rules 1–3 (unchanged baseline logic)
+### Rule 1 - ID Violation
 
-- **Rule 1 — unknown ID.** A frame whose `arbitration_id` was never seen in
-  training is flagged. This catches ID-fabrication and fuzzing attacks, since
-  real ECUs only ever use a fixed set of IDs.
-- **Rule 2 — IAT too short.** Each ID has a near-fixed period. If a frame
-  arrives faster than `mean − 6σ` (floored at 1 ms) for its ID, it's flagged.
-  This catches flooding/DoS-style injection, where the attacker sends extra
-  frames on top of (or instead of) the legitimate traffic.
-- **Rule 3 — wrong payload length.** Each ID consistently uses one payload
-  length. A different length is flagged. This catches malformed or
-  randomly-fuzzed payloads.
+A frame whose `arbitration_id` was never seen in training is flagged.
+This catches ID-fabrication and fuzzing attacks, since real ECUs only ever use a fixed set of IDs.
 
-These three rules are entirely **structural**: they depend on *which* ID is
-used and *how often*/*how long* its frames are, never on the payload's actual
-content.
+### Rule 2 - Timing Violation
 
-## 4. The gap these rules leave open
+Each ID has a near-fixed period. If a frame arrives faster than `mean − 6σ` (floored at 1 ms)for its ID, it's flagged.
+This catches flooding/DoS-style injection, where the attacker sends extra frames on top of (or instead of) the legitimate traffic.
 
+### Rule 3 - Payload Length Violation
+
+Each ID consistently uses one payload length. A different length is flagged.
+This catches malformed or randomly-fuzzed payloads.
+
+### 4. The gap these rules leave open
+
+The first three rules never depend on the payload's actual content.
 There is a class of attack that defeats all three: an attacker who has
 compromised a real ECU (or can otherwise transmit) and sends frames using
 **a known ID, at its normal timing, with a normal-length payload** — only the
@@ -56,7 +59,8 @@ plausible byte *range*. What's much harder to fake is the **continuity** of
 that physical signal: the injected payload almost never picks up exactly
 where the genuine signal left off when the attack starts.
 
-## 5. Rule 4 — implausible payload jump (the masquerade detector)
+## Rule 4 — Payload Content Violation
+### Implausible Payload Jump (the masquerade detector)
 
 ### Idea
 
@@ -181,5 +185,4 @@ the original three rules had.
 
 ## 8. Libraries
 
-Only `pandas` and `numpy` — both already imported in the locked first cell.
-No additional dependencies are required.
+We only used the standard libraries `pandas` and `numpy`.
