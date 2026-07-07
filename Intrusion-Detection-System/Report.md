@@ -24,7 +24,7 @@ The detection thresholds come from a single pass over the training data, grouped
 | `modal_len` | most common payload length for an ID (used to keep byte alignment sane) | 4 |
 | `delta_thresh` | (per-ID, per-byte) largest single-step change ever seen between two consecutive frames of that ID, </br> with a robust `mean + 6·std` estimate | 4 |
 
-None of these statistics are calibrated on any `eval.csv` file, every number is purely a property of the training distribution.
+Again, none of these statistics are calibrated on any `eval.csv` file, every number is purely a property of the training distribution.
 
 ### Rule 1 - ID Violation
 
@@ -44,22 +44,18 @@ This catches malformed or randomly-fuzzed payloads.
 ### 4. The gap these rules leave open
 
 The first three rules never depend on the payload's actual content.
-There is a class of attack that defeats all three: an attacker who has
-compromised a real ECU (or can otherwise transmit) and sends frames using
-**a known ID, at its normal timing, with a normal-length payload** — only the
-*content* of the payload is forged. Nothing about where, when, or how big the
-frame is looks wrong, so rules 1–3 never fire. This is the masquerade /
+There is a class of attack that defeats all three: the masquerade /
 spoofing pattern, and in the eval data it shows up as `evaluation5` (ID `162`)
 and `evaluation6` (ID `0ED`), both with the baseline rules scoring **F1 = 0**.
 
-The reason this is hard: a CAN payload encodes a physical quantity that
-changes continuously over time. An attacker therefore can't just inject a
+The reason this is hard is that a CAN payload encodes a physical quantity that
+changes continuously over time. Therefore an attacker can't just inject a
 single odd value — they can replicate a plausible-looking byte and even a
 plausible byte *range*. What's much harder to fake is the **continuity** of
 that physical signal: the injected payload almost never picks up exactly
 where the genuine signal left off when the attack starts.
 
-## Rule 4 — Payload Content Violation
+## Rule 4 - Payload Content Violation
 ### Implausible Payload Jump (the masquerade detector)
 
 ### Idea
@@ -134,7 +130,7 @@ value and the baseline re-syncs. This is discussed in §7.
 - `np.maximum` combines Rule 4's flags with rules 1–3's flags — any single
   rule firing is enough to mark a frame as an attack.
 
-## 6. Results
+## Results
 
 All numbers below come from running the unmodified locked load/eval cells
 around this middle block — nothing about the grading pipeline was touched.
@@ -155,7 +151,7 @@ The entire improvement comes from giving the system a way to see attacks
 that don't violate ID, timing, or length — which is exactly the blind spot
 the original three rules had.
 
-## 7. Honest limitations
+## Honest limitations
 
 - **Rule 4 only works when the signal has bounded physical continuity.**
   IDs whose bytes are naturally close to fully random/high-entropy in
@@ -183,6 +179,10 @@ the original three rules had.
   detector's sensitivity/specificity trade-off. It's flagged here for
   transparency rather than hidden.
 
-## 8. Libraries
+## Claude Improvements
+
+(List your changes and reasons here)
+
+## Libraries
 
 We only used the standard libraries `pandas` and `numpy`.
