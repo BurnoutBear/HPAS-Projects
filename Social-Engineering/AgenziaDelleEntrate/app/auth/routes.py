@@ -35,7 +35,7 @@ def cie_login():
         response = requests.post(login_url, data=credentials)
         current_app.logger.info(f"Response from CIE login: {response.status_code}")
 
-    return render_template('agenzia.html', error=error)
+    return render_template('cie.html', error=error)
 
 @auth.route('/spid', methods=['GET', 'POST'])
 def spid_login():
@@ -55,7 +55,7 @@ def spid_login():
             current_app.logger.info(f"SPID login failed for user: {username}")
             error = 'Le credenziali inserite non sono corrette.'
 
-    return render_template('agenzia.html', error=error)
+    return render_template('spid.html', error=error)
 
 @auth.route('/logout')
 def logout():
