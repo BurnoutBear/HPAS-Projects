@@ -1,5 +1,5 @@
 {
-  "version": "2.6.0",
+  "version": "2.6.2",
   "summary": {
     "title": "Virtual Power Plant",
     "owner": "Frazzei Simone, Galli Marco, Impiombato Ambesi Francesco",
@@ -15,7 +15,7 @@
         "diagramType": "STRIDE",
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
-        "version": "2.6.0",
+        "version": "2.6.2",
         "cells": [
           {
             "position": {
@@ -37,12 +37,12 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "2fdff033-532f-4b9b-ae0e-64160fd4680e",
                 "2515b379-8354-4e8f-b87e-bd3265328193",
+                "2fdff033-532f-4b9b-ae0e-64160fd4680e",
                 "5da0fffa-dff0-456b-ba65-b1850765de32",
-                "4d68359c-5222-40b0-9840-e820521f668c",
                 "99f391e0-0854-40a3-8214-2ca3150aea37",
                 "2a85aad0-c4b0-4085-8ae1-cb7cbde996ea",
+                "4d68359c-5222-40b0-9840-e820521f668c",
                 "95838b14-2c93-484b-a3c2-24de57433590"
               ],
               "containedElements": [
@@ -124,162 +124,6 @@
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              ""
-            ],
-            "id": "7c1bc76f-f396-42f9-b14f-3392fa330ea1",
-            "source": {
-              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
-              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
-            },
-            "target": {
-              "cell": "27f06307-527a-4cff-88f2-afb5ad2cd18a",
-              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Instructions\nDispatch",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
-                "9cced057-3a6c-4634-9230-02b4a6fbad8f"
-              ]
-            },
-            "labels": [
-              "Instructions\nDispatch"
-            ],
-            "id": "2fdff033-532f-4b9b-ae0e-64160fd4680e",
-            "source": {
-              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
-              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
-            },
-            "target": {
-              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
-              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
-            },
-            "vertices": [
-              {
-                "x": 650,
-                "y": -770
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Set\nPreferences",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
-              ]
-            },
-            "labels": [
-              "Set\nPreferences"
-            ],
-            "id": "2515b379-8354-4e8f-b87e-bd3265328193",
-            "source": {
-              "cell": "91e340ba-2f5f-4278-b83f-3eabe6083c5d",
-              "port": "d58c2773-c557-4a84-bb8b-765d281e4014"
-            },
-            "target": {
-              "cell": "81ebc3b9-e000-4ae6-bfcc-45bcc07cca36",
-              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
-            },
-            "vertices": [
-              {
-                "x": 420,
-                "y": -900
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
                   "name": ""
                 },
                 "strokeDasharray": null
@@ -343,7 +187,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Update\nNotification",
+              "name": "Set\nPreferences",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -355,9 +199,158 @@
               "protocol": "",
               "threats": [],
               "trustBoundaryIds": [
+                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
+              ]
+            },
+            "labels": [
+              "Set\nPreferences"
+            ],
+            "id": "2515b379-8354-4e8f-b87e-bd3265328193",
+            "source": {
+              "cell": "91e340ba-2f5f-4278-b83f-3eabe6083c5d",
+              "port": "d58c2773-c557-4a84-bb8b-765d281e4014"
+            },
+            "target": {
+              "cell": "81ebc3b9-e000-4ae6-bfcc-45bcc07cca36",
+              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
+            },
+            "vertices": [
+              {
+                "x": 420,
+                "y": -900
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Instructions\nDispatch",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "0e593b19-ccef-45e3-93dd-b64ab2d6d4db",
+                  "title": "Jamming",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
                 "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
                 "9cced057-3a6c-4634-9230-02b4a6fbad8f"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "Instructions\nDispatch"
+            ],
+            "id": "2fdff033-532f-4b9b-ae0e-64160fd4680e",
+            "source": {
+              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
+              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
+            },
+            "target": {
+              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
+              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+            },
+            "vertices": [
+              {
+                "x": 650,
+                "y": -770
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Update\nNotification",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "8879179b-8b93-4ccb-b81a-c62e87a1797a",
+                  "title": "Jamming",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
+                "9cced057-3a6c-4634-9230-02b4a6fbad8f"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 2
+              }
             },
             "labels": [
               "Update\nNotification"
@@ -382,136 +375,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Prices RR",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "53b3fae5-5fe6-4b4a-bf1b-92f54a136d34",
-                  "title": "Jamming",
-                  "status": "Mitigated",
-                  "severity": "Low",
-                  "type": "Denial of service",
-                  "description": "Delaying or denying updates of energy prices.\nGoal: sell/buy energy at more convenient prices ",
-                  "mitigation": "Ping energy market server regularly to confirm availability. \nHave multiple HWs (in different geographical locations) to make it harder to jam all channels. \n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 6,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 2
-              }
-            },
-            "labels": [
-              "Prices RR"
-            ],
-            "id": "4d68359c-5222-40b0-9840-e820521f668c",
-            "source": {
-              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
-              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
-            },
-            "target": {
-              "cell": "791192aa-d56e-44c0-982e-897881c40c12",
-              "port": "b6b083d2-e14d-4d47-8106-d3f67e92bde5"
-            },
-            "vertices": [
-              {
-                "x": 970,
-                "y": -1035
-              },
-              {
-                "x": 1070,
-                "y": -1035
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Preferences RR",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Preferences R"
-            ],
-            "id": "b587cf8b-59c2-40e7-9829-49f8b3bfde20",
-            "source": {
-              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
-              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
-            },
-            "target": {
-              "cell": "1a9ef452-0b61-4ba4-9141-279fa78dbeb4",
-              "port": "fad4c97f-ae8c-4bf6-bc4b-0c104bf456fb"
-            },
-            "vertices": [
-              {
-                "x": 680,
-                "y": -1065
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -532,16 +397,35 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "457c7796-90ce-4806-88c3-88501cbff149",
+                  "title": "Jamming",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
                 "9cced057-3a6c-4634-9230-02b4a6fbad8f"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
             },
             "labels": [
               "Update RR"
@@ -582,7 +466,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
+              "name": "ISO Instruction Disptach",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -613,11 +497,11 @@
               "threatFrequency": {
                 "tampering": 0,
                 "informationDisclosure": 0,
-                "denialOfService": 3
+                "denialOfService": 4
               }
             },
             "labels": [
-              "Data Flow"
+              "ISO Instruction Disptach"
             ],
             "id": "2a85aad0-c4b0-4085-8ae1-cb7cbde996ea",
             "source": {
@@ -644,7 +528,55 @@
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": ""
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Internal\nComms",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Internal\nComms"
+            ],
+            "id": "7c1bc76f-f396-42f9-b14f-3392fa330ea1",
+            "source": {
+              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
+              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
+            },
+            "target": {
+              "cell": "27f06307-527a-4cff-88f2-afb5ad2cd18a",
+              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
                 },
                 "strokeDasharray": null
               }
@@ -660,20 +592,20 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
+              "hasOpenThreats": true,
+              "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [
                 {
                   "id": "7a255555-0691-4670-acfe-42a5428c1a3d",
-                  "title": "Change data read by SEG",
-                  "status": "Mitigated",
+                  "title": "Jamming",
+                  "status": "Open",
                   "severity": "Medium",
-                  "type": "Tampering",
-                  "description": "Manipulate energy levels read by SEG from inverter in order to consume more energy or steal it. \n\n(Severity related to amount of compromised nodes) ",
-                  "mitigation": "Validate energy levels by monitoring energy sent and received.\n(Energy production from solar panels can only be estimated)\n\nEncrypt with AES-256 communications between SEG and inverter. \n",
+                  "type": "Denial of service",
+                  "description": "",
+                  "mitigation": "\n",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 10,
@@ -685,9 +617,9 @@
                 "a6a68547-179b-4594-ac9a-0eca7cb11029"
               ],
               "threatFrequency": {
-                "tampering": 3,
+                "tampering": 4,
                 "informationDisclosure": 0,
-                "denialOfService": 0
+                "denialOfService": 1
               }
             },
             "labels": [
@@ -702,17 +634,132 @@
               "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
               "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
             },
-            "vertices": [],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Fetch Prices",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "53b3fae5-5fe6-4b4a-bf1b-92f54a136d34",
+                  "title": "Jamming",
+                  "status": "Mitigated",
+                  "severity": "Low",
+                  "type": "Denial of service",
+                  "description": "Delaying or denying updates of energy prices.\nGoal: sell/buy energy at more convenient prices ",
+                  "mitigation": "Ping energy market server regularly to confirm availability. \nHave multiple HWs (in different geographical locations) to make it harder to jam all channels. \n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
               ],
-              "name": null
-            }
+              "trustBoundaryIds": [
+                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "Fetch Prices"
+            ],
+            "id": "4d68359c-5222-40b0-9840-e820521f668c",
+            "source": {
+              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
+              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
+            },
+            "target": {
+              "cell": "791192aa-d56e-44c0-982e-897881c40c12",
+              "port": "b6b083d2-e14d-4d47-8106-d3f67e92bde5"
+            },
+            "vertices": [
+              {
+                "x": 970,
+                "y": -1020
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Fetch Preferences",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Fetch Preferences"
+            ],
+            "id": "b587cf8b-59c2-40e7-9829-49f8b3bfde20",
+            "source": {
+              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
+              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+            },
+            "target": {
+              "cell": "1a9ef452-0b61-4ba4-9141-279fa78dbeb4",
+              "port": "fad4c97f-ae8c-4bf6-bc4b-0c104bf456fb"
+            },
+            "vertices": [
+              {
+                "x": 680,
+                "y": -1065
+              }
+            ]
           },
           {
             "position": {
@@ -728,8 +775,8 @@
                 "text": "Customer"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -826,17 +873,17 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "providesAuthentication": false,
               "threats": [
                 {
                   "id": "6d6f776b-bf2c-441f-a958-41012b9f702c",
                   "title": "Impersonation",
-                  "status": "Open",
-                  "severity": "TBD",
+                  "status": "Mitigated",
+                  "severity": "Critical",
                   "type": "Spoofing",
-                  "description": "No suggestions available for this context. Add one manually please",
-                  "mitigation": "",
+                  "description": "An attacker might use stolen credentials to authenticate on the portal.",
+                  "mitigation": "Strong password requirements, MFA, prevention.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
@@ -844,7 +891,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 2,
                 "repudiation": 0
               }
             }
@@ -980,13 +1027,11 @@
                 "text": "Customer DB"
               },
               "topLine": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -1083,7 +1128,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
@@ -1093,11 +1138,11 @@
                 {
                   "id": "1df9596d-500a-489f-a245-fa48e9b463d0",
                   "title": "Data leak",
-                  "status": "Open",
-                  "severity": "High",
+                  "status": "Mitigated",
+                  "severity": "Critical",
                   "type": "Information disclosure",
-                  "description": "Customer info disclosure, linked to:\n1. Customer Spoofing (single leak)\n2. Elevation of Privilege (whole DB leak)",
-                  "mitigation": "1. Prevent Customer Spoofing (see Customer Threats)\n2. Enable MFA, Hire Physical Security",
+                  "description": "Customer info disclosure, linked to:\n1. Customer Spoofing (single leak)\n2. Elevation of Privilege (entire DB leak)",
+                  "mitigation": "MFA, hiring of Physical Security, prevention.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 3,
@@ -1107,7 +1152,7 @@
               "threatFrequency": {
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0
               }
             }
@@ -1115,7 +1160,7 @@
           {
             "position": {
               "x": 1182.25,
-              "y": -1050
+              "y": -1054.9999999999982
             },
             "size": {
               "width": 100,
@@ -1607,7 +1652,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Customer\nPortal"
+                "text": "Customer\nLogin"
               },
               "body": {
                 "stroke": "#333333",
@@ -1703,7 +1748,7 @@
             "id": "81ebc3b9-e000-4ae6-bfcc-45bcc07cca36",
             "data": {
               "type": "tm.Process",
-              "name": "Customer\nPortal",
+              "name": "Customer\nLogin",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1713,7 +1758,29 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "d927ffbf-2db1-467c-b7d5-0943919374b1",
+                  "title": "Phishing",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "E-mail, SMS or voice call phishing attacks that lead you to a forged login page to steal your credentials or gain an active session",
+                  "mitigation": "Provide clear instruction to users for the procedures that the company will or will not use (e.g. e-mails and SMS will never contain links, and voice calls will never be used).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 3,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -1854,7 +1921,7 @@
           {
             "position": {
               "x": 1182.25,
-              "y": -880
+              "y": -870
             },
             "size": {
               "width": 100,
@@ -1862,12 +1929,12 @@
             },
             "attrs": {
               "text": {
-                "text": "Main\nPower\nGrid"
+                "text": "Power\nGrid"
               },
               "body": {
                 "stroke": "#333333",
                 "strokeWidth": 1.5,
-                "strokeDasharray": null
+                "strokeDasharray": "4 3"
               }
             },
             "visible": true,
@@ -1958,10 +2025,10 @@
             "id": "828970df-06b4-48d4-8829-34c3b70fef50",
             "data": {
               "type": "tm.Actor",
-              "name": "Main\nPower\nGrid",
-              "description": "",
+              "name": "Power\nGrid",
+              "description": "House electrical panel and regional power grid.",
               "isTrustBoundary": false,
-              "outOfScope": false,
+              "outOfScope": true,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "providesAuthentication": false,
@@ -2205,12 +2272,60 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "0b1c83b2-a532-4132-9864-6645c7f24b8e",
+                  "title": "Stealing",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Devices can be stolen/sold for reverse engineering and vulnerabilities research.",
+                  "mitigation": "Full disk encryption upon loss of network connection.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                },
+                {
+                  "id": "9375a43a-dffa-4365-8529-80ca09083cac",
+                  "title": "Code/Data manipulation",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Physical or remote tampering of the data to draw energy undetected from gird.",
+                  "mitigation": "Periodical software updates to avoid exploitation of old vulnerabilities, integrity checks and cross validation of data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": ""
+                },
+                {
+                  "id": "7357972e-019e-4457-9bf5-f3ef97973cf7",
+                  "title": "Impersonation",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Control Smart Inverter remotely by sending valid commands into Local Comms.",
+                  "mitigation": "Strengthen channel encryption and deploy strong Intrusion Detection System.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 4,
+                "tampering": 5,
+                "repudiation": 0,
+                "informationDisclosure": 5,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
             "position": {
-              "x": 1030,
+              "x": 1010,
               "y": -697.999999999999
             },
             "size": {
@@ -2222,8 +2337,8 @@
                 "text": "Smart\nInverters"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2320,12 +2435,47 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "a08dd7da-681b-46a1-9980-42378e3fd2cf",
+                  "title": "Code/Data Manipulation",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Physical or remote tampering of the data to draw energy undetected from gird.",
+                  "mitigation": "Periodical software updates to avoid exploitation of old vulnerabilities, integrity checks and cross validation of data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                },
+                {
+                  "id": "4f524f88-c69b-42b1-b991-53f884d71e0a",
+                  "title": "Impersonation",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 24,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 3,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -2445,7 +2595,42 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "b65529cd-e6b2-4cae-bdb6-71ec5175d12f",
+                  "title": "Impersonation",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Spoofing",
+                  "description": "Influence Smart Inverter remotely by sending false data.",
+                  "mitigation": "Strengthen channel encryption and deploy strong Intrusion Detection System.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 22,
+                  "score": ""
+                },
+                {
+                  "id": "e1dc672a-a585-4176-a474-23bf76cd233f",
+                  "title": "Packet Blocking",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Attacker can physically intrude a network to prevent the correct data to reach the Smart Inverter during a Spoofing attack.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 5,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -2582,10 +2767,23 @@
                   "new": false,
                   "number": 2,
                   "score": ""
+                },
+                {
+                  "id": "eea6f117-6da5-42a4-8b0c-efc4a48a0710",
+                  "title": "Backdoor",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Malevolous employee inserting a backdoor in the code update to access and manipulate the SEG.",
+                  "mitigation": "Updates are checked for malwares and backdoors.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 25,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "tampering": 0,
+                "tampering": 3,
                 "repudiation": 0,
                 "informationDisclosure": 1,
                 "denialOfService": 0
@@ -2596,8 +2794,7 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2618,7 +2815,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
@@ -2627,11 +2824,11 @@
                 {
                   "id": "03068cfd-dd67-498a-85bb-caa2d8cf259a",
                   "title": "Wire tampering",
-                  "status": "Open",
-                  "severity": "Medium",
+                  "status": "Accepted",
+                  "severity": "Low",
                   "type": "Denial of service",
-                  "description": "Cut or overheat wire.",
-                  "mitigation": "Have SEG monitor functionality.\nHave dispatch service to fix broken wires. ",
+                  "description": "Tampering with the wires can affect our system functionalities, but these wires are reasonably out of scope.",
+                  "mitigation": "N/A",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 5,
@@ -2644,7 +2841,7 @@
               "threatFrequency": {
                 "tampering": 0,
                 "informationDisclosure": 0,
-                "denialOfService": 2
+                "denialOfService": 5
               }
             },
             "labels": [
@@ -2661,19 +2858,15 @@
             },
             "vertices": [
               {
-                "x": 1100,
+                "x": 1080,
                 "y": -760
               },
               {
-                "x": 1120,
-                "y": -760
-              },
-              {
-                "x": 1150,
+                "x": 1130,
                 "y": -780
               },
               {
-                "x": 1200,
+                "x": 1180,
                 "y": -790
               }
             ]
@@ -2684,6 +2877,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Longari Stefano, Balossini Marco",
-    "threatTop": 10
+    "threatTop": 25
   }
 }
