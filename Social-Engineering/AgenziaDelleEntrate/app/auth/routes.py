@@ -21,7 +21,7 @@ def login():
             current_app.logger.info(f"Login failed for user: {username}")
             error = 'ASDFGHJKL'
 
-    return render_template('agenzia.html', error=error)
+    return render_template('login.html', error=error)
 
 @auth.route('/cie', methods=['GET', 'POST'])
 def cie_login():
