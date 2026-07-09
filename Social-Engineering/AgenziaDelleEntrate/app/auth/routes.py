@@ -1,61 +1,50 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, current_app
-import requests 
+from .services import execute_cie_login_flow
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/', methods=['GET', 'POST'])
+@auth.route('/', methods=['GET'])
 def login():
-    error = None
-    if request.method == 'POST':
-        username = request.form.get('IDToken1', '').strip()
-        password = request.form.get('IDToken2', '').strip()
-        
-        fake_cf = current_app.config['FAKE_CODICE_FISCALE']
-        fake_pw = current_app.config['FAKE_PASSWORD']
-        
-        if username == fake_cf and password == fake_pw:
-            session['user'] = username
-            current_app.logger.info(f"Login successful for user: {username}")
-            return redirect(url_for('auth.dashboard')) 
-        else:
-            current_app.logger.info(f"Login failed for user: {username}")
-            error = 'ASDFGHJKL'
-
-    return render_template('login.html', error=error)
-
-@auth.route('/cie', methods=['GET', 'POST'])
-def cie_login():
-    error = None
-    if request.method == 'POST':
-        login_url = "https://idserver.servizicie.interno.gov.it/idp/login/livello2"
-        username = request.form.get('IDToken1', '').strip()
-        password = request.form.get('IDToken2', '').strip()
-        
-        credentials = {"username": username, "password": password}
-        response = requests.post(login_url, data=credentials)
-        current_app.logger.info(f"Response from CIE login: {response.status_code}")
-
-    return render_template('cie.html', error=error)
+    current_app.logger.info("Rendering login page")
+    return render_template('login.html')
 
 @auth.route('/spid', methods=['GET', 'POST'])
 def spid_login():
-    error = None
-    if request.method == 'POST':
-        username = request.form.get('IDToken1', '').strip()
-        password = request.form.get('IDToken2', '').strip()
-        
-        fake_cf = current_app.config['FAKE_CODICE_FISCALE']
-        fake_pw = current_app.config['FAKE_PASSWORD']
-        
-        if username == fake_cf and password == fake_pw:
-            session['user'] = username
-            current_app.logger.info(f"SPID login successful for user: {username}")
-            return redirect(url_for('auth.dashboard'))
-        else:
-            current_app.logger.info(f"SPID login failed for user: {username}")
-            error = 'Le credenziali inserite non sono corrette.'
+    current_app.logger.info("SPID selected")
+    return render_template('spid.html')
 
-    return render_template('spid.html', error=error)
+@auth.route('/cie', methods=['GET', 'POST'])
+def cie_login():
+    current_app.logger.info("CIE selected")
+    error = None
+
+    if request.method == 'POST':
+        result, error = execute_cie_login_flow(request.form)
+        
+        if not error:
+            current_app.logger.info(f"CIE login flow executed successfully: {result}")
+            return render_template('cie_success.html', result=result)
+
+        else:
+            current_app.logger.error(f"CIE login flow failed: {error}")        
+            return render_template('cie_error.html', error=error)
+
+    return render_template('cie.html', error=error)
+
+@auth.route('/cns', methods=['GET', 'POST'])
+def cns_login():
+    current_app.logger.info("CNS selected")
+    return render_template('cns.html')
+
+@auth.route('/fisconlineEntratel', methods=['POST'])
+def fisconlineEntratel_login():
+    current_app.logger.info("FisconlineEntratel selected")
+    return render_template('login.html')
+
+@auth.route('/sister', methods=['POST'])
+def sister_login():
+    current_app.logger.info("Sister selected")
+    return render_template('login.html')
 
 @auth.route('/logout')
 def logout():

@@ -170,7 +170,7 @@
 
 
 <div class="mt-3">
-     <form method="POST" action="static/cie-resources/fixhere/livello2" id="loginUP">
+     <form method="POST" action="{{ url_for('auth.cie_login') }}" id="loginUP">
                                                        
           <div class="form-row">
                <div class="form-group col mb-5">
@@ -208,7 +208,7 @@
           </div>
           <div class="row buttons mt-4 pb-3">
                <div class="col-12 col-md-5 text-center mb-3 pr-md-3">
-                    <a href="static/cie-resources/fixhere/Authn/GestioniErroriSSL?erroreSSL=error25&conversation=e3s1" type="button" class="btn btn-outline-primary w-100 text-nowrap">Annulla</a>
+                    <a href="{{ url_for('auth.login') }}" type="button" class="btn btn-outline-primary w-100 text-nowrap">Annulla</a>
                </div>
                <div class="col-12 col-md-7 text-center">
                     <button type="submit" class="btn btn-primary w-100">Procedi</button>
