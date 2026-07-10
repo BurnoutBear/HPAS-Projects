@@ -38,11 +38,11 @@
               "hasOpenThreats": false,
               "crossingFlows": [
                 "2515b379-8354-4e8f-b87e-bd3265328193",
-                "2fdff033-532f-4b9b-ae0e-64160fd4680e",
                 "5da0fffa-dff0-456b-ba65-b1850765de32",
                 "99f391e0-0854-40a3-8214-2ca3150aea37",
                 "2a85aad0-c4b0-4085-8ae1-cb7cbde996ea",
                 "4d68359c-5222-40b0-9840-e820521f668c",
+                "2fdff033-532f-4b9b-ae0e-64160fd4680e",
                 "95838b14-2c93-484b-a3c2-24de57433590"
               ],
               "containedElements": [
@@ -74,9 +74,9 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "2fdff033-532f-4b9b-ae0e-64160fd4680e",
                 "5da0fffa-dff0-456b-ba65-b1850765de32",
                 "99f391e0-0854-40a3-8214-2ca3150aea37",
+                "2fdff033-532f-4b9b-ae0e-64160fd4680e",
                 "3f17123b-0408-44a9-84ae-3287e3dfceea"
               ],
               "containedElements": [
@@ -87,12 +87,12 @@
           },
           {
             "position": {
-              "x": 921.999999999998,
-              "y": -752.999999999999
+              "x": 931.999999999998,
+              "y": -752.9999999999989
             },
             "size": {
-              "width": 440,
-              "height": 200
+              "width": 430,
+              "height": 180
             },
             "visible": true,
             "shape": "trust-boundary-box",
@@ -105,8 +105,8 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "3f17123b-0408-44a9-84ae-3287e3dfceea",
-                "9729b7d1-c789-4fbd-bbf5-55ec774c4cdc"
+                "9729b7d1-c789-4fbd-bbf5-55ec774c4cdc",
+                "3f17123b-0408-44a9-84ae-3287e3dfceea"
               ],
               "containedElements": [
                 "2142f299-9ab8-450a-a4ff-d170e33d6d0e",
@@ -218,81 +218,6 @@
               {
                 "x": 420,
                 "y": -900
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Instructions\nDispatch",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "0e593b19-ccef-45e3-93dd-b64ab2d6d4db",
-                  "title": "Jamming",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 13,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
-                "9cced057-3a6c-4634-9230-02b4a6fbad8f"
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 2
-              }
-            },
-            "labels": [
-              "Instructions\nDispatch"
-            ],
-            "id": "2fdff033-532f-4b9b-ae0e-64160fd4680e",
-            "source": {
-              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
-              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
-            },
-            "target": {
-              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
-              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
-            },
-            "vertices": [
-              {
-                "x": 650,
-                "y": -770
               }
             ]
           },
@@ -570,76 +495,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Local\nComms",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "7a255555-0691-4670-acfe-42a5428c1a3d",
-                  "title": "Jamming",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Denial of service",
-                  "description": "",
-                  "mitigation": "\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 10,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "9cced057-3a6c-4634-9230-02b4a6fbad8f",
-                "a6a68547-179b-4594-ac9a-0eca7cb11029"
-              ],
-              "threatFrequency": {
-                "tampering": 4,
-                "informationDisclosure": 0,
-                "denialOfService": 1
-              }
-            },
-            "labels": [
-              "Local\nComms"
-            ],
-            "id": "3f17123b-0408-44a9-84ae-3287e3dfceea",
-            "source": {
-              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
-              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
-            },
-            "target": {
-              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
-              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
@@ -760,6 +615,128 @@
                 "y": -1065
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Instructions\nDispatch",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "0e593b19-ccef-45e3-93dd-b64ab2d6d4db",
+                  "title": "Jamming",
+                  "status": "Accepted",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Prevent either a single SEG or all SEGs in an area from receiving new dispatch instructions. ",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
+                "9cced057-3a6c-4634-9230-02b4a6fbad8f"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 3
+              }
+            },
+            "labels": [
+              "Instructions\nDispatch"
+            ],
+            "id": "2fdff033-532f-4b9b-ae0e-64160fd4680e",
+            "source": {
+              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
+              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
+            },
+            "target": {
+              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
+              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+            },
+            "vertices": [
+              {
+                "x": 650,
+                "y": -770
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Data Flow"
+            ],
+            "id": "be0f4237-0286-402b-8ddd-0a925b105385",
+            "source": {
+              "cell": "27f06307-527a-4cff-88f2-afb5ad2cd18a",
+              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
+            },
+            "target": {
+              "cell": "27f06307-527a-4cff-88f2-afb5ad2cd18a",
+              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
+            },
+            "vertices": [],
+            "parent": "27f06307-527a-4cff-88f2-afb5ad2cd18a"
           },
           {
             "position": {
@@ -1652,7 +1629,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Customer\nLogin"
+                "text": "Customer\nL"
               },
               "body": {
                 "stroke": "#333333",
@@ -1748,7 +1725,7 @@
             "id": "81ebc3b9-e000-4ae6-bfcc-45bcc07cca36",
             "data": {
               "type": "tm.Process",
-              "name": "Customer\nLogin",
+              "name": "Customer\nPortal",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -2169,8 +2146,8 @@
                 "text": "Smart\nEnergy\nGateway"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2267,7 +2244,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -2306,17 +2283,30 @@
                   "severity": "Critical",
                   "type": "Spoofing",
                   "description": "Control Smart Inverter remotely by sending valid commands into Local Comms.",
-                  "mitigation": "Strengthen channel encryption and deploy strong Intrusion Detection System.",
+                  "mitigation": "Implement Modbus security: this guarantees authenticity, integrity, confidentiality.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 21,
                   "score": ""
+                },
+                {
+                  "id": "5e4b67dd-fc86-4ad1-abf7-2caa5a6a392d",
+                  "title": "Log tampering",
+                  "status": "Open",
+                  "severity": "Low",
+                  "type": "Repudiation",
+                  "description": "Change SEG logs to hide mismatching data when controlling Smart inverter remotely or independently form the received instructions.",
+                  "mitigation": "Upload logs to control server as soon as created to avoid tampering. ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 28,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 4,
+                "spoofing": 6,
                 "tampering": 5,
-                "repudiation": 0,
+                "repudiation": 1,
                 "informationDisclosure": 5,
                 "denialOfService": 1,
                 "elevationOfPrivilege": 0
@@ -2466,12 +2456,25 @@
                   "new": false,
                   "number": 24,
                   "score": ""
+                },
+                {
+                  "id": "a406cf5e-7e83-479c-aa42-08412c3bfde6",
+                  "title": "Disguise actual inverter behavior ",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Send false responses to SEG to avoid mismatches with intended commands through a man-in-the-middle attack between SEG and inverter.",
+                  "mitigation": "Check for mismatches between SEG logs and Power Grid levels.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 29,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
                 "spoofing": 1,
                 "tampering": 3,
-                "repudiation": 0,
+                "repudiation": 3,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
@@ -2631,7 +2634,10 @@
                 "denialOfService": 1,
                 "elevationOfPrivilege": 0
               }
-            }
+            },
+            "children": [
+              "be0f4237-0286-402b-8ddd-0a925b105385"
+            ]
           },
           {
             "position": {
@@ -2870,6 +2876,88 @@
                 "y": -790
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 49,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Local\nComms",
+              "description": "Local wired connection.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "Modbus TCP (unencrypted port 502)",
+              "threats": [
+                {
+                  "id": "7a255555-0691-4670-acfe-42a5428c1a3d",
+                  "title": "Jamming",
+                  "status": "Accepted",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "",
+                  "mitigation": "\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                },
+                {
+                  "id": "a864ff2c-60cc-4fa1-9953-181041561038",
+                  "title": "Man in the Middle",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Intercept packets for commands to the inverter by the SEG to alter / control the behavior of the inverter and the energy flow. ",
+                  "mitigation": "Implement Modbus security: this guarantees authenticity, integrity, confidentiality.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 27,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "9cced057-3a6c-4634-9230-02b4a6fbad8f",
+                "a6a68547-179b-4594-ac9a-0eca7cb11029"
+              ],
+              "threatFrequency": {
+                "tampering": 9,
+                "informationDisclosure": 0,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "Local\nComms"
+            ],
+            "id": "3f17123b-0408-44a9-84ae-3287e3dfceea",
+            "source": {
+              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
+              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
+            },
+            "target": {
+              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
+              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
+            },
+            "vertices": []
           }
         ],
         "description": "STRIDE diagram"
@@ -2877,6 +2965,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Longari Stefano, Balossini Marco",
-    "threatTop": 25
+    "threatTop": 29
   }
 }
