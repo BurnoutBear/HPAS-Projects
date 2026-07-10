@@ -88,7 +88,7 @@
           {
             "position": {
               "x": 931.999999999998,
-              "y": -752.9999999999989
+              "y": -752.999999999999
             },
             "size": {
               "width": 430,
@@ -111,7 +111,7 @@
               "containedElements": [
                 "2142f299-9ab8-450a-a4ff-d170e33d6d0e",
                 "dc4631fd-c772-4013-b809-d86abaf4e636",
-                "27f06307-527a-4cff-88f2-afb5ad2cd18a"
+                "17e0570f-cd60-4ba4-a8a8-0c2720f888b6"
               ]
             }
           },
@@ -464,53 +464,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Internal\nComms",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Internal\nComms"
-            ],
-            "id": "7c1bc76f-f396-42f9-b14f-3392fa330ea1",
-            "source": {
-              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
-              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
-            },
-            "target": {
-              "cell": "27f06307-527a-4cff-88f2-afb5ad2cd18a",
-              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "Fetch Prices",
               "description": "",
               "outOfScope": false,
@@ -689,54 +642,6 @@
                 "y": -770
               }
             ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Data Flow"
-            ],
-            "id": "be0f4237-0286-402b-8ddd-0a925b105385",
-            "source": {
-              "cell": "27f06307-527a-4cff-88f2-afb5ad2cd18a",
-              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
-            },
-            "target": {
-              "cell": "27f06307-527a-4cff-88f2-afb5ad2cd18a",
-              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
-            },
-            "vertices": [],
-            "parent": "27f06307-527a-4cff-88f2-afb5ad2cd18a"
           },
           {
             "position": {
@@ -1629,7 +1534,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Customer\nL"
+                "text": "Customer\nLogin"
               },
               "body": {
                 "stroke": "#333333",
@@ -2146,8 +2051,8 @@
                 "text": "Smart\nEnergy\nGateway"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -2244,7 +2149,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -2269,8 +2174,8 @@
                   "status": "Mitigated",
                   "severity": "Critical",
                   "type": "Tampering",
-                  "description": "Physical or remote tampering of the data to draw energy undetected from gird.",
-                  "mitigation": "Periodical software updates to avoid exploitation of old vulnerabilities, integrity checks and cross validation of data.",
+                  "description": "Tampering of SEG application code or injecting malware to draw additional energy from the grid or compromise the functionality of the VPP. ",
+                  "mitigation": "Periodical software updates to avoid exploitation of old vulnerabilities. Implement an IDS monitoring SEG behavior.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 18,
@@ -2292,8 +2197,8 @@
                 {
                   "id": "5e4b67dd-fc86-4ad1-abf7-2caa5a6a392d",
                   "title": "Log tampering",
-                  "status": "Open",
-                  "severity": "Low",
+                  "status": "Mitigated",
+                  "severity": "Medium",
                   "type": "Repudiation",
                   "description": "Change SEG logs to hide mismatching data when controlling Smart inverter remotely or independently form the received instructions.",
                   "mitigation": "Upload logs to control server as soon as created to avoid tampering. ",
@@ -2304,9 +2209,9 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 6,
-                "tampering": 5,
-                "repudiation": 1,
+                "spoofing": 7,
+                "tampering": 6,
+                "repudiation": 2,
                 "informationDisclosure": 5,
                 "denialOfService": 1,
                 "elevationOfPrivilege": 0
@@ -2315,7 +2220,7 @@
           },
           {
             "position": {
-              "x": 1010,
+              "x": 961.999999999998,
               "y": -697.999999999999
             },
             "size": {
@@ -2327,8 +2232,8 @@
                 "text": "Smart\nInverters"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -2425,7 +2330,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -2433,28 +2338,15 @@
               "threats": [
                 {
                   "id": "a08dd7da-681b-46a1-9980-42378e3fd2cf",
-                  "title": "Code/Data Manipulation",
+                  "title": "Inverter manipulation",
                   "status": "Mitigated",
                   "severity": "Critical",
                   "type": "Tampering",
-                  "description": "Physical or remote tampering of the data to draw energy undetected from gird.",
-                  "mitigation": "Periodical software updates to avoid exploitation of old vulnerabilities, integrity checks and cross validation of data.",
+                  "description": "Physical or remote tampering of the inverter to draw energy undetected from gird.",
+                  "mitigation": "Integrity checks and cross validation of data.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 17,
-                  "score": ""
-                },
-                {
-                  "id": "4f524f88-c69b-42b1-b991-53f884d71e0a",
-                  "title": "Impersonation",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Spoofing",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 24,
                   "score": ""
                 },
                 {
@@ -2472,172 +2364,14 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "tampering": 3,
+                "spoofing": 0,
+                "tampering": 4,
                 "repudiation": 3,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
             }
-          },
-          {
-            "position": {
-              "x": 1187.25,
-              "y": -702.999999999999
-            },
-            "size": {
-              "width": 90,
-              "height": 100
-            },
-            "attrs": {
-              "text": {
-                "text": "Battery\nManagement\nSystem"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 44,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
-                },
-                {
-                  "group": "right",
-                  "id": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
-                },
-                {
-                  "group": "bottom",
-                  "id": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
-                },
-                {
-                  "group": "left",
-                  "id": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
-                }
-              ]
-            },
-            "id": "27f06307-527a-4cff-88f2-afb5ad2cd18a",
-            "data": {
-              "type": "tm.Process",
-              "name": "Battery\nManagement\nSystem",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "id": "b65529cd-e6b2-4cae-bdb6-71ec5175d12f",
-                  "title": "Impersonation",
-                  "status": "Mitigated",
-                  "severity": "Critical",
-                  "type": "Spoofing",
-                  "description": "Influence Smart Inverter remotely by sending false data.",
-                  "mitigation": "Strengthen channel encryption and deploy strong Intrusion Detection System.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 22,
-                  "score": ""
-                },
-                {
-                  "id": "e1dc672a-a585-4176-a474-23bf76cd233f",
-                  "title": "Packet Blocking",
-                  "status": "Mitigated",
-                  "severity": "Medium",
-                  "type": "Denial of service",
-                  "description": "Attacker can physically intrude a network to prevent the correct data to reach the Smart Inverter during a Spoofing attack.",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 23,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "spoofing": 5,
-                "tampering": 0,
-                "repudiation": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 1,
-                "elevationOfPrivilege": 0
-              }
-            },
-            "children": [
-              "be0f4237-0286-402b-8ddd-0a925b105385"
-            ]
           },
           {
             "position": {
@@ -2878,6 +2612,148 @@
             ]
           },
           {
+            "position": {
+              "x": 1192.25,
+              "y": -697.999999999999
+            },
+            "size": {
+              "width": 90,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Battery\nManagement\nSystem"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 50,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "99eae6c4-9455-4f2b-9d28-abc4ca2d7471"
+                },
+                {
+                  "group": "right",
+                  "id": "99d564ec-0c93-4279-8160-1a371a20288a"
+                },
+                {
+                  "group": "bottom",
+                  "id": "732ea6b2-ad68-4bb8-9ff5-f4aed4b6870a"
+                },
+                {
+                  "group": "left",
+                  "id": "19fb3a6d-e345-494d-8467-0aee87552d00"
+                }
+              ]
+            },
+            "id": "17e0570f-cd60-4ba4-a8a8-0c2720f888b6",
+            "data": {
+              "type": "tm.Process",
+              "name": "Battery\nManagement\nSystem",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "ea96e7ed-8487-4a57-b8ce-7079325c4dbf",
+                  "title": "Modify BMS",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Modify or disrupt functionality of the BMS to change it's behavior to make the battery seem in a different condition. For example to prevent energy flow completely.",
+                  "mitigation": "Implement a detection system monitoring energy flow in each home to detect any malfunctions or tampering with the BMS functionality.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 31,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 3,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
             "shape": "flow",
             "attrs": {
               "line": {
@@ -2893,7 +2769,73 @@
             },
             "width": 200,
             "height": 100,
-            "zIndex": 49,
+            "zIndex": 51,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Wire",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "23918dda-d935-4108-a296-34d268c46718",
+                  "title": "Cutting the wire",
+                  "status": "Accepted",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Physically cut the wire",
+                  "mitigation": "Implement a detection system monitoring energy flow in each home to detect any malfunctions to connection between battery and inverter.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 32,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 3
+              }
+            },
+            "labels": [
+              "Wire"
+            ],
+            "id": "e4c8bb1f-bb5f-44b4-99af-6ccab3ac5602",
+            "source": {
+              "cell": "dc4631fd-c772-4013-b809-d86abaf4e636",
+              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
+            },
+            "target": {
+              "cell": "17e0570f-cd60-4ba4-a8a8-0c2720f888b6",
+              "port": "19fb3a6d-e345-494d-8467-0aee87552d00"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 52,
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
@@ -2927,7 +2869,7 @@
                   "status": "Mitigated",
                   "severity": "Critical",
                   "type": "Tampering",
-                  "description": "Intercept packets for commands to the inverter by the SEG to alter / control the behavior of the inverter and the energy flow. ",
+                  "description": "Intercept packets for commands to the inverter by the SEG to alter/control the behavior of the inverter and the energy flow. ",
                   "mitigation": "Implement Modbus security: this guarantees authenticity, integrity, confidentiality.",
                   "modelType": "STRIDE",
                   "new": false,
@@ -2940,7 +2882,7 @@
                 "a6a68547-179b-4594-ac9a-0eca7cb11029"
               ],
               "threatFrequency": {
-                "tampering": 9,
+                "tampering": 10,
                 "informationDisclosure": 0,
                 "denialOfService": 2
               }
@@ -2965,6 +2907,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Longari Stefano, Balossini Marco",
-    "threatTop": 29
+    "threatTop": 32
   }
 }
