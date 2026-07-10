@@ -8,11 +8,6 @@ def login():
     current_app.logger.info("Rendering login page")
     return render_template('login.html')
 
-@auth.route('/spid', methods=['GET', 'POST'])
-def spid_login():
-    current_app.logger.info("SPID selected")
-    return render_template('spid.html')
-
 @auth.route('/cie', methods=['GET', 'POST'])
 def cie_login():
     current_app.logger.info("CIE selected")
@@ -30,24 +25,3 @@ def cie_login():
             return render_template('cie_error.html', error=error)
 
     return render_template('cie.html', error=error)
-
-@auth.route('/cns', methods=['GET', 'POST'])
-def cns_login():
-    current_app.logger.info("CNS selected")
-    return render_template('cns.html')
-
-@auth.route('/fisconlineEntratel', methods=['POST'])
-def fisconlineEntratel_login():
-    current_app.logger.info("FisconlineEntratel selected")
-    return render_template('login.html')
-
-@auth.route('/sister', methods=['POST'])
-def sister_login():
-    current_app.logger.info("Sister selected")
-    return render_template('login.html')
-
-@auth.route('/logout')
-def logout():
-    current_app.logger.info("Logout successful")
-    session.clear()
-    return redirect(url_for('auth.login'))
