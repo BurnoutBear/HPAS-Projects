@@ -1,7 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session, current_app
-from .services import execute_cie_login_flow
-
-auth = Blueprint('auth', __name__)
+from flask import render_template, request, current_app
+from . import auth
+from .services.cie import execute_login, get_qr_code
 
 @auth.route('/', methods=['GET'])
 def login():
@@ -10,17 +9,40 @@ def login():
 
 @auth.route('/cie', methods=['GET', 'POST'])
 def cie_login():
-    current_app.logger.info("CIE selected")
-
     if request.method == 'POST':
-        result, error = execute_cie_login_flow(request.form)
+        current_app.logger.info("CIE selected - POST")
+        try:
+            result, error = execute_login(request.form)
+            if not error:
+                current_app.logger.info("CIE login flow executed successfully")
+                return render_template(
+                    'cie.html',
+                    result=result
+                )
+            else:
+                current_app.logger.warning(f"CIE login flow failed: {error}")        
+                return render_template(
+                    'cie.html',
+                    error=error
+                )
+        except Exception as e:
+            current_app.logger.exception("Unexpected error during CIE login")
+            return render_template(
+                'cie.html',
+                error="An unexpected error occurred."
+            )
 
-        if not error:
-            current_app.logger.info(f"CIE login flow executed successfully: {result}")
-            return render_template('cie.html', result=result)
-
-        else:
-            current_app.logger.error(f"CIE login flow failed: {error}")        
-            return render_template('cie.html', error=error)
-
-    return render_template('cie.html')
+    current_app.logger.info("CIE selected - GET")
+    try:
+        qr_code = get_qr_code()
+        current_app.logger.info("QR code retrieved successfully")
+        return render_template(
+            'cie.html',
+            qr_code=qr_code
+        )
+    except Exception as e:
+        current_app.logger.exception("Unexpected error during QR code retrieval")
+        return render_template(
+            'cie.html',
+            error="An unexpected error occurred."
+        )
