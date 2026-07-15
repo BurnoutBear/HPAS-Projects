@@ -9,8 +9,9 @@ def get_credentials(form_data):
     """Extracts and returns the username and password from the provided form data."""
     username = form_data.get('username', '').strip()
     password = form_data.get('password', '').strip()
-    username = 'RSSMRA80A01H501U'
-    password = 'Password1!'
+    if not username or not password:
+        username = 'RSSMRA80A01H501U'
+        password = 'Password1!'
     return {
         "username": username,
         "password": password
@@ -44,6 +45,19 @@ def extract_form_inputs(response_text):
         raise ValueError("Form input fields not found.")
     return inputs
 
+def extract_login_errors(response_text):
+    """Extracts login error messages from the response text."""
+    soup = BeautifulSoup(response_text, "html.parser")
+    status = soup.find(id="statusHandler")
+    if not status:
+        return None
+    title = status.find(id="statusHandlerTitle")
+    message = status.find(id="statusHandlerMsg")
+    return {
+        "title": title.get_text(" ", strip=True) if title else None,
+        "message": message.get_text(" ", strip=True) if message else None,
+    }
+
 def parse_url(base_url, url):
     """Parses the provided URL and returns the absolute URL based on the base URL."""
     parsed_url = urlparse(base_url)
@@ -65,10 +79,8 @@ def execute_cie_login_flow(form_data):
     2. Simulates CIE selection by performing a GET to /sel, retrieving the AuthnRequest SAML (generated and signed by the SP);
     3. Performs a POST to the IdP's /SSO delivering the AuthnRequest SAML (POST binding);
     4. Handles Shibboleth's internal multi-step flow via /SSO?execution (session/localStorage handshake);
-    5. Reaches the CIE login form, where the user's credentials (or physical card) are required to complete authentication.
+    5. Reaches the CIE login form, where the user's credentials are required to complete authentication.
     """
-    error = None
-
     # Gets username and password
     credentials = get_credentials(form_data)
 
@@ -77,47 +89,54 @@ def execute_cie_login_flow(form_data):
 
     # 1. GET to Agenzia delle Entrate login page
     r = s.get(URL_AGENZIAENTRATE_LOGIN_GET)
-    
+
     # 2. GET to cie /sel
     r = s.get(URL_CIE_SELECTION_GET)
 
+    # The response gives an HTML with a form that contains the next URL to call and its relative payload
     # Extracts the form action URL and input fields from the response
     try:
         url = extract_form_action(r.text)
         payload = extract_form_inputs(r.text)
     except ValueError as e:
         return None, str(e)
-    # 3. POST to /SSO
+    # 3. POST to /idp/profile/SAML2/POST/SSO
     r = s.post(url, data=payload)
-    debug_print(url, "POST", r)
 
+    # The response gives an HTML with a form that contains the next URL to call and its relative payload
+    # There's a JS that handles form inputs, but since <noscript> is implemented, use that which sets only default inputs
     # Gets the base URL from the response
     base_url = r.url
-    # Extracts the form action URL from the response
+    # Extracts the form action URL and input fields from the response
     try:
         url = extract_form_action(r.text)
+        payload = extract_form_inputs(r.text)
     except ValueError as e:
         return None, str(e)
     # Parses the url
     url = parse_url(base_url, url)
-    # 4. GET to /SSO?execution
-    r = s.get(url)
-    debug_print(url, "GET", r)
+    # 4. POST to /idp/profile/SAML2/POST/SSO?execution=e1s1
+    r = s.post(url, data=payload)
 
-    # 4. POST to /SSO?execution
-    payload = {
-        "shib_idp_ls_exception.shib_idp_session_ss": "",
-        "shib_idp_ls_success.shib_idp_session_ss": "true",
-        "shib_idp_ls_value.shib_idp_session_ss": "",
-
-        "shib_idp_ls_exception.shib_idp_persistent_ss": "",
-        "shib_idp_ls_success.shib_idp_persistent_ss": "true",
-        "shib_idp_ls_value.shib_idp_persistent_ss": "",
-
-        "shib_idp_ls_supported": "true",
-        "_eventId_proceed": ""
-    }
+    # The response gives an HTML with a form that contains the next URL to call and its relative payload
+    # Gets the base URL from the response
+    base_url = r.url
+    # Extracts the form action URL and input fields from the response
+    try:
+        url = extract_form_action(r.text)
+        payload = extract_form_inputs(r.text)
+    except ValueError as e:
+        return None, str(e)
+    # Parses the url
+    url = parse_url(base_url, url)
+    # Updates the payload with credentials
+    payload.update(credentials)
+    # 5. POST to /idp/login/livello2
     r = s.post(url, data=payload)
     debug_print(url, "POST", r)
-    
-    return None, error
+    # Check for login errors
+    error = extract_login_errors(r.text)
+    if error and (error["title"] or error["message"]):
+        return None, error
+
+    return "OK", None

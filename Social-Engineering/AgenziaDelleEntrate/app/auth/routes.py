@@ -11,17 +11,16 @@ def login():
 @auth.route('/cie', methods=['GET', 'POST'])
 def cie_login():
     current_app.logger.info("CIE selected")
-    error = None
 
     if request.method == 'POST':
         result, error = execute_cie_login_flow(request.form)
-        
+
         if not error:
             current_app.logger.info(f"CIE login flow executed successfully: {result}")
-            return render_template('cie_success.html', result=result)
+            return render_template('cie.html', result=result)
 
         else:
             current_app.logger.error(f"CIE login flow failed: {error}")        
-            return render_template('cie_error.html', error=error)
+            return render_template('cie.html', error=error)
 
-    return render_template('cie.html', error=error)
+    return render_template('cie.html')

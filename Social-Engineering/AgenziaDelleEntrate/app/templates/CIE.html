@@ -162,11 +162,31 @@
 
 
 
+{% if error %}
 <div id="statusHandler" class="row mb-4 mx-n2 error">
-	
-		<div class="col"><br/><br/></div>
-	
+
+    <div class="col-1 mr-2 my-auto">
+        <svg class="icon">
+            <use xlink:href="/idp/images/l12/sprite.svg#it-close-circle"></use>
+        </svg>
+    </div>
+
+    <div class="col pl-2 my-auto">
+
+        {% if error.title %}
+        <div id="statusHandlerTitle" class="text-uppercase">
+            <strong>{{ error.title }}</strong>
+        </div>
+        {% endif %}
+
+        {% if error.message %}
+        <p id="statusHandlerMsg">{{ error.message }}</p>
+        {% endif %}
+
+    </div>
+
 </div>
+{% endif %}
 
 
 <div class="mt-3">
