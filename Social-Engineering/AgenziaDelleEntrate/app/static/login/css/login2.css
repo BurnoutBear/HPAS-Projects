@@ -5,8 +5,8 @@
  */@font-face {
   font-display:block;
   font-family:bootstrap-icons;
-  src:url(/loginam/dist/fonts/bootstrap-icons.92ea18a81d737146ff04.woff2) format("woff2"),
-  url(/loginam/dist/fonts/bootstrap-icons.1295669cd4e305c97f2c.woff) format("woff")
+  src:url(../fonts/bootstrap-icons.92ea18a81d737146ff04.woff2) format("woff2"),
+  url(../fonts/bootstrap-icons.1295669cd4e305c97f2c.woff) format("woff")
 }
 .bi:before,
 [class*=" bi-"]:before,
@@ -6261,105 +6261,105 @@
   font-family:Titillium Web;
   font-style:normal;
   font-weight:200;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-200.86f32969ad566909b547.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-200.86f32969ad566909b547.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:italic;
   font-weight:200;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-200italic.246d183e9a7538233439.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-200italic.246d183e9a7538233439.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:normal;
   font-weight:300;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-300.b3b8d8db58322ee10c06.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-300.b3b8d8db58322ee10c06.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:italic;
   font-weight:300;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-300italic.bb2588e806428e4f1e77.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-300italic.bb2588e806428e4f1e77.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:normal;
   font-weight:400;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-regular.55b29b135a9838d9e0f7.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-regular.55b29b135a9838d9e0f7.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:italic;
   font-weight:400;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-italic.e1f4ad571f847d5f8d5f.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-italic.e1f4ad571f847d5f8d5f.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:normal;
   font-weight:600;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-600.37816aa7534e645dfad1.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-600.37816aa7534e645dfad1.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:italic;
   font-weight:600;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-600italic.7b859ce8bcaf822afb03.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-600italic.7b859ce8bcaf822afb03.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:normal;
   font-weight:700;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-700.e5c38d503943cd52fd6f.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-700.e5c38d503943cd52fd6f.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:italic;
   font-weight:700;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-700italic.78302c46fb5794604116.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-700italic.78302c46fb5794604116.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Titillium Web;
   font-style:normal;
   font-weight:900;
-  src:url(/loginam/dist/fonts/titillium-web-v17-latin-900.7c03cd1bc0832fd74fa4.woff2) format("woff2")
+  src:url(../fonts/titillium-web-v17-latin-900.7c03cd1bc0832fd74fa4.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Roboto Mono;
   font-style:normal;
   font-weight:100;
-  src:url(/loginam/dist/fonts/roboto-mono-v23-latin-100.24fd54f62786e2f8a625.woff2) format("woff2")
+  src:url(../fonts/roboto-mono-v23-latin-100.24fd54f62786e2f8a625.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Roboto Mono;
   font-style:italic;
   font-weight:100;
-  src:url(/loginam/dist/fonts/roboto-mono-v23-latin-100italic.e4b63f245e51d376f097.woff2) format("woff2")
+  src:url(../fonts/roboto-mono-v23-latin-100italic.e4b63f245e51d376f097.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Roboto Mono;
   font-style:normal;
   font-weight:200;
-  src:url(/loginam/dist/fonts/roboto-mono-v23-latin-200.4a4fe71f6925e4f57dc8.woff2) format("woff2")
+  src:url(../fonts/roboto-mono-v23-latin-200.4a4fe71f6925e4f57dc8.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
   font-family:Roboto Mono;
   font-style:italic;
   font-weight:200;
-  src:url(/loginam/dist/fonts/roboto-mono-v23-latin-200italic.240fd8e7ee5e1d7bc919.woff2) format("woff2")
+  src:url(../fonts/roboto-mono-v23-latin-200italic.240fd8e7ee5e1d7bc919.woff2) format("woff2")
 }
 @font-face {
   font-display:swap;
