@@ -4,14 +4,14 @@ from .services.cie import execute_login, get_qr_code
 
 @auth.route("/", methods=["GET"])
 def login():
-    current_app.logger.info("Rendering login page - GET")
+    current_app.logger.info("Rendering login page")
     return render_template(
         "login.html"
     )
 
 @auth.route("/cie", methods=["GET"])
 def cie_page():
-    current_app.logger.info("CIE selected - GET")
+    current_app.logger.info("CIE selected")
     try:
         qr_code = get_qr_code()
         current_app.logger.info("QR code retrieved successfully")
@@ -32,9 +32,9 @@ def cie_page():
             }
         )
 
-@auth.route("/cie/login", methods=["POST"])
-def cie_login():
-    current_app.logger.info("CIE selected - POST")
+@auth.route("/cie/login_credentials", methods=["POST"])
+def cie_login_credentials():
+    current_app.logger.info("CIE login credentials submitted")
     try:
         result, error = execute_login(request.form)
 
@@ -63,10 +63,18 @@ def cie_login():
             }
         )
 
-@auth.route("/cie/qr", methods=["POST"])
+@auth.route("/cie/login_qr", methods=["POST"])
 def cie_login_qr():
-    current_app.logger.info("CIE QR scanned")
+    current_app.logger.info("CIE login QR scanned")
     # TODO: Implement the logic to handle the QR code scanning and authentication process
+    return render_template(
+        "cie.html"
+    )
+
+@auth.route("/cie/login_card", methods=["GET"])
+def cie_login_card():
+    current_app.logger.info("CIE login card")
+    # TODO: Implement the logic to handle the card login process
     return render_template(
         "cie.html"
     )

@@ -158,7 +158,7 @@
 											{% endif %}
 
 											<div class="mt-3">
-												<form method="POST" action="{{ url_for('auth.cie_login') }}" id="loginUP">
+												<form method="POST" action="{{ url_for('auth.cie_login_credentials') }}" id="loginUP">
 													<div class="form-row">
 														<div class="form-group col mb-5">
 															<div class="input-group">
@@ -354,7 +354,7 @@
 												</p>
 											</div>
 											<div class="col-12 col-lg-4 pl-lg-4 mt-3 mt-md-0 text-center">
-												<a id="switch2L3" href="https://ios.idserver.servizicie.interno.gov.it/idp/login/app?opId=ID901247fd-6c03-4bf0-a4e9-5ff7c00c9599&amp;challenge=%2ByhXpyBLmsgwye7lluwBYxh7byfaRGlYpJOpib6q&amp;level=3&amp;SPName=https%3A%2F%2Fspid.agenziaentrate.gov.it&amp;SPLogo=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png&amp;value=e1s2&amp;nextUrl=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2FAuthn%2FX509&amp;name=conversation&amp;authnRequestString=ID901247fd-6c03-4bf0-a4e9-5ff7c00c9599&amp;OpText=Inserisci+le+ultime+4+cifre+del+PIN+ricevute+insieme+alla+tua+Carta+di+Identit%C3%A0+Elettronica+per+accedere+a+https%3A%2F%2Fspid.agenziaentrate.gov.it&amp;imgUrl=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png" class="btn btn-primary btn-image btn-card mb-2 text-nowrap w-100">Entra con lettura carta</a>
+												<a id="switch2L3" href="{{ url_for('auth.cie_login_card') }}" class="btn btn-primary btn-image btn-card mb-2 text-nowrap w-100">Entra con lettura carta</a>
 											</div>
 										</div>
 									</div>
