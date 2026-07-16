@@ -5,7 +5,9 @@ from .services.cie import execute_login, get_qr_code
 @auth.route('/', methods=['GET'])
 def login():
     current_app.logger.info("Rendering login page")
-    return render_template('login.html')
+    return render_template(
+        'login.html'
+    )
 
 @auth.route('/cie', methods=['GET', 'POST'])
 def cie_login():
@@ -46,3 +48,11 @@ def cie_login():
             'cie.html',
             error="An unexpected error occurred."
         )
+
+@auth.route('/cie/qr', methods=['POST'])
+def cie_login_qr():
+    current_app.logger.info("CIE QR scanned")
+    # TODO: Implement the logic to handle the QR code scanning and authentication process
+    return render_template(
+        'cie.html'
+    )
