@@ -37,13 +37,13 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "2515b379-8354-4e8f-b87e-bd3265328193",
                 "5da0fffa-dff0-456b-ba65-b1850765de32",
-                "99f391e0-0854-40a3-8214-2ca3150aea37",
-                "2a85aad0-c4b0-4085-8ae1-cb7cbde996ea",
                 "4d68359c-5222-40b0-9840-e820521f668c",
-                "2fdff033-532f-4b9b-ae0e-64160fd4680e",
-                "95838b14-2c93-484b-a3c2-24de57433590"
+                "2a85aad0-c4b0-4085-8ae1-cb7cbde996ea",
+                "2515b379-8354-4e8f-b87e-bd3265328193",
+                "95838b14-2c93-484b-a3c2-24de57433590",
+                "99f391e0-0854-40a3-8214-2ca3150aea37",
+                "2fdff033-532f-4b9b-ae0e-64160fd4680e"
               ],
               "containedElements": [
                 "712fb6f2-b169-4750-b5da-b87c3c3090a1",
@@ -75,9 +75,9 @@
               "hasOpenThreats": false,
               "crossingFlows": [
                 "5da0fffa-dff0-456b-ba65-b1850765de32",
+                "3f17123b-0408-44a9-84ae-3287e3dfceea",
                 "99f391e0-0854-40a3-8214-2ca3150aea37",
-                "2fdff033-532f-4b9b-ae0e-64160fd4680e",
-                "3f17123b-0408-44a9-84ae-3287e3dfceea"
+                "2fdff033-532f-4b9b-ae0e-64160fd4680e"
               ],
               "containedElements": [
                 "a4304cfc-5290-4672-b9c9-bfff3000e970",
@@ -135,132 +135,25 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Save\nPreferences",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Save\nPreferences"
-            ],
-            "id": "a9d035b4-6bdd-41a8-a979-3d663948641d",
-            "source": {
-              "cell": "81ebc3b9-e000-4ae6-bfcc-45bcc07cca36",
-              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
-            },
-            "target": {
-              "cell": "1a9ef452-0b61-4ba4-9141-279fa78dbeb4",
-              "port": "4b2fe192-ef06-491a-9ed6-7978c4cddf77"
-            },
-            "vertices": [
-              {
-                "x": 580,
-                "y": -1010
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Set\nPreferences",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
-              ]
-            },
-            "labels": [
-              "Set\nPreferences"
-            ],
-            "id": "2515b379-8354-4e8f-b87e-bd3265328193",
-            "source": {
-              "cell": "91e340ba-2f5f-4278-b83f-3eabe6083c5d",
-              "port": "d58c2773-c557-4a84-bb8b-765d281e4014"
-            },
-            "target": {
-              "cell": "81ebc3b9-e000-4ae6-bfcc-45bcc07cca36",
-              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
-            },
-            "vertices": [
-              {
-                "x": 420,
-                "y": -900
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "Update\nNotification",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "HTTPS",
               "threats": [
                 {
                   "id": "8879179b-8b93-4ccb-b81a-c62e87a1797a",
                   "title": "Jamming",
-                  "status": "Open",
+                  "status": "Accepted",
                   "severity": "Medium",
                   "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "Prevent a SEG from receiving a firmware update to exploit old vulnerabilities or prevent a malware from being overwritten. ",
+                  "mitigation": "Dispatch operators in case a SEG remains unresponsive for a prolonged period of time.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 12,
@@ -274,7 +167,7 @@
               "threatFrequency": {
                 "tampering": 0,
                 "informationDisclosure": 0,
-                "denialOfService": 2
+                "denialOfService": 6
               }
             },
             "labels": [
@@ -293,154 +186,6 @@
               {
                 "x": 740,
                 "y": -790
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Update RR",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "457c7796-90ce-4806-88c3-88501cbff149",
-                  "title": "Jamming",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 14,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
-                "9cced057-3a6c-4634-9230-02b4a6fbad8f"
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 1
-              }
-            },
-            "labels": [
-              "Update RR"
-            ],
-            "id": "99f391e0-0854-40a3-8214-2ca3150aea37",
-            "source": {
-              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
-              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
-            },
-            "target": {
-              "cell": "a32da484-cb7a-4af6-a7b6-88b9cba1bd26",
-              "port": "d56595d1-649b-4c01-87ed-335a25a65410"
-            },
-            "vertices": [
-              {
-                "x": 579.5,
-                "y": -790
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "ISO Instruction Disptach",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "a9fafb9e-693d-4a88-adac-b4fb26829aa3",
-                  "title": "Jamming",
-                  "status": "Mitigated",
-                  "severity": "Critical",
-                  "type": "Denial of service",
-                  "description": "Block ISO instructions from being executed.\nGoals: national security compromisation, compromise infrastructure functionality or reputation when more energy is requested. Boycott events that require extra energy.",
-                  "mitigation": "Regularly ping ISO channel to confirm availability.\nHave backup communication channels (IP, satellite connection, cable phone).",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 9,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 4
-              }
-            },
-            "labels": [
-              "ISO Instruction Disptach"
-            ],
-            "id": "2a85aad0-c4b0-4085-8ae1-cb7cbde996ea",
-            "source": {
-              "cell": "2cc993d4-2371-43aa-92af-0bca65180746",
-              "port": "88303af6-a46c-4f24-a2d4-64e7b98dfc2a"
-            },
-            "target": {
-              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
-              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
-            },
-            "vertices": [
-              {
-                "x": 980,
-                "y": -930
               }
             ]
           },
@@ -471,9 +216,9 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": true,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "HTTPS",
               "threats": [
                 {
                   "id": "53b3fae5-5fe6-4b4a-bf1b-92f54a136d34",
@@ -526,7 +271,7 @@
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": "block"
+                  "name": ""
                 },
                 "strokeDasharray": null
               }
@@ -537,35 +282,82 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Fetch Preferences",
+              "name": "ISO Instruction Disptach",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
-              "isBidirectional": true,
+              "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
+              "protocol": "DNP3 over TLS",
+              "threats": [
+                {
+                  "id": "a9fafb9e-693d-4a88-adac-b4fb26829aa3",
+                  "title": "Jamming",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Denial of service",
+                  "description": "Block ISO instructions from being executed.\nGoals: national security compromisation, compromise infrastructure functionality or reputation when more energy is requested. Boycott events that require extra energy.",
+                  "mitigation": "Regularly ping ISO channel to confirm availability.\nHave backup communication channels (IP, satellite connection, cable phone).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                },
+                {
+                  "id": "a261a2cb-2cf7-44d8-8ff7-52db49a0c4ce",
+                  "title": "Sniffing attack",
+                  "status": "Mitigated",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "While not being able to read the payload attackers might use packet frequency, size and source to infer the nature of the instructions received by the control server. ",
+                  "mitigation": "Have a constant packet size and source for all types on instructions. Packet frequency analysis can be mitigated by having \"empty\" instructions sent periodically to artificially alter packet frequency and invalid any analysis based upon it.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 33,
+                  "score": ""
+                },
+                {
+                  "id": "3f3f19b9-73df-42d8-925d-b772ae5ccecf",
+                  "title": "Replay attack",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Attackers might intercept packets and wait for the VVP's reaction to infer their meaning and then resend the same packets at a later time",
+                  "mitigation": "Implement DNP3 secure authentication and a nonce for each packet.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 34,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
+              ],
+              "threatFrequency": {
+                "tampering": 4,
+                "informationDisclosure": 1,
+                "denialOfService": 4
+              }
             },
             "labels": [
-              "Fetch Preferences"
+              "ISO Instruction Disptach"
             ],
-            "id": "b587cf8b-59c2-40e7-9829-49f8b3bfde20",
+            "id": "2a85aad0-c4b0-4085-8ae1-cb7cbde996ea",
             "source": {
-              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
-              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+              "cell": "2cc993d4-2371-43aa-92af-0bca65180746",
+              "port": "88303af6-a46c-4f24-a2d4-64e7b98dfc2a"
             },
             "target": {
-              "cell": "1a9ef452-0b61-4ba4-9141-279fa78dbeb4",
-              "port": "fad4c97f-ae8c-4bf6-bc4b-0c104bf456fb"
+              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
+              "port": "39e27a9e-6430-4fac-9ff7-049b0108bea4"
             },
             "vertices": [
               {
-                "x": 680,
-                "y": -1065
+                "x": 980,
+                "y": -930
               }
             ]
           },
@@ -589,57 +381,141 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Instructions\nDispatch",
+              "name": "Set\nPreferences",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "0e593b19-ccef-45e3-93dd-b64ab2d6d4db",
-                  "title": "Jamming",
-                  "status": "Accepted",
-                  "severity": "Medium",
-                  "type": "Denial of service",
-                  "description": "Prevent either a single SEG or all SEGs in an area from receiving new dispatch instructions. ",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 13,
-                  "score": ""
-                }
-              ],
+              "protocol": "HTTPS",
+              "threats": [],
               "trustBoundaryIds": [
-                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
-                "9cced057-3a6c-4634-9230-02b4a6fbad8f"
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 3
-              }
+                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
+              ]
             },
             "labels": [
-              "Instructions\nDispatch"
+              "Set\nPreferences"
             ],
-            "id": "2fdff033-532f-4b9b-ae0e-64160fd4680e",
+            "id": "2515b379-8354-4e8f-b87e-bd3265328193",
             "source": {
-              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
-              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
+              "cell": "91e340ba-2f5f-4278-b83f-3eabe6083c5d",
+              "port": "d58c2773-c557-4a84-bb8b-765d281e4014"
             },
             "target": {
-              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
-              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+              "cell": "81ebc3b9-e000-4ae6-bfcc-45bcc07cca36",
+              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
             },
             "vertices": [
               {
-                "x": 650,
-                "y": -770
+                "x": 420,
+                "y": -900
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Save\nPreferences",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Save\nPreferences"
+            ],
+            "id": "a9d035b4-6bdd-41a8-a979-3d663948641d",
+            "source": {
+              "cell": "81ebc3b9-e000-4ae6-bfcc-45bcc07cca36",
+              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+            },
+            "target": {
+              "cell": "1a9ef452-0b61-4ba4-9141-279fa78dbeb4",
+              "port": "4b2fe192-ef06-491a-9ed6-7978c4cddf77"
+            },
+            "vertices": [
+              {
+                "x": 580,
+                "y": -1010
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Fetch Preferences",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Fetch Preferences"
+            ],
+            "id": "b587cf8b-59c2-40e7-9829-49f8b3bfde20",
+            "source": {
+              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
+              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+            },
+            "target": {
+              "cell": "1a9ef452-0b61-4ba4-9141-279fa78dbeb4",
+              "port": "fad4c97f-ae8c-4bf6-bc4b-0c104bf456fb"
+            },
+            "vertices": [
+              {
+                "x": 680,
+                "y": -1065
               }
             ]
           },
@@ -1012,7 +888,7 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isALog": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
@@ -1034,7 +910,7 @@
               "threatFrequency": {
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 2,
+                "informationDisclosure": 3,
                 "denialOfService": 0
               }
             }
@@ -1210,9 +1086,9 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "HTTPS",
               "threats": [],
               "trustBoundaryIds": [
                 "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b"
@@ -1264,9 +1140,9 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": true,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "HTTPS",
               "threats": [],
               "trustBoundaryIds": []
             },
@@ -2856,8 +2732,8 @@
                   "status": "Accepted",
                   "severity": "Medium",
                   "type": "Denial of service",
-                  "description": "",
-                  "mitigation": "\n",
+                  "description": "Prevent a SEG from controlling the smart inverter, compromising the VPP's functionality if on a large enough scale.",
+                  "mitigation": "Dispatch operators in case a SEG remains unresponsive for a prolonged period of time.\n",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 10,
@@ -2884,7 +2760,7 @@
               "threatFrequency": {
                 "tampering": 10,
                 "informationDisclosure": 0,
-                "denialOfService": 2
+                "denialOfService": 4
               }
             },
             "labels": [
@@ -2900,6 +2776,154 @@
               "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
             },
             "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 53,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Update RR",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "457c7796-90ce-4806-88c3-88501cbff149",
+                  "title": "Jamming",
+                  "status": "Accepted",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Prevent a SEG from receiving a firmware update to exploit old vulnerabilities or prevent a malware from being overwritten. ",
+                  "mitigation": "Dispatch operators in case a SEG remains unresponsive for a prolonged period of time.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
+                "9cced057-3a6c-4634-9230-02b4a6fbad8f"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 5
+              }
+            },
+            "labels": [
+              "Update RR"
+            ],
+            "id": "99f391e0-0854-40a3-8214-2ca3150aea37",
+            "source": {
+              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
+              "port": "dd1d90cf-ade5-4205-99bd-1ef8bcdd115e"
+            },
+            "target": {
+              "cell": "a32da484-cb7a-4af6-a7b6-88b9cba1bd26",
+              "port": "d56595d1-649b-4c01-87ed-335a25a65410"
+            },
+            "vertices": [
+              {
+                "x": 579.5,
+                "y": -790
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 54,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Instructions\nDispatch",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "MQTT over WSS (persistent)",
+              "threats": [
+                {
+                  "id": "0e593b19-ccef-45e3-93dd-b64ab2d6d4db",
+                  "title": "Jamming",
+                  "status": "Accepted",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Compromise the VVP's functionality by preventing multiple SEG's to receive dispatch instructions. ",
+                  "mitigation": "Dispatch operators in case a SEG remains unresponsive for a prolonged period of time.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "1cb81f5f-f9e0-40ba-9494-9a9ccb11572b",
+                "9cced057-3a6c-4634-9230-02b4a6fbad8f"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 7
+              }
+            },
+            "labels": [
+              "Instructions\nDispatch"
+            ],
+            "id": "2fdff033-532f-4b9b-ae0e-64160fd4680e",
+            "source": {
+              "cell": "2dde29f2-70ea-4bdc-bb08-55456ac8c627",
+              "port": "fae6a5bc-bac1-42fd-82ce-a65eacb496e8"
+            },
+            "target": {
+              "cell": "6a5ebea2-b15e-4d1d-90a3-6f5b24b7fee4",
+              "port": "2e236c4b-068b-4e54-9d9f-d9a69f8b390a"
+            },
+            "vertices": [
+              {
+                "x": 650,
+                "y": -770
+              }
+            ]
           }
         ],
         "description": "STRIDE diagram"
@@ -2907,6 +2931,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Longari Stefano, Balossini Marco",
-    "threatTop": 32
+    "threatTop": 37
   }
 }
