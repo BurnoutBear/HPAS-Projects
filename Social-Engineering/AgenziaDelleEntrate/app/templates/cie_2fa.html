@@ -589,7 +589,7 @@
 									Inquadra il QR Code con l'App
 									CieID.&nbsp;<strong
 										><a
-											href="/idp/login/sessionClosure"
+											href="{{ url_for("auth.cie_login") }}"
 											title="Vai al QR code"
 											>Vai al QR code</a
 										></strong
@@ -602,7 +602,7 @@
 								<p class="c2">
 									<strong
 										><a
-											href="/idp/login/sessionClosure"
+											href="{{ url_for("auth.cie_login") }}"
 											id="cancelAndGoQr"
 											title="Annulla e vai al QR code"
 											>Annulla</a
@@ -612,7 +612,7 @@
 							</div>
 						</div>
 						<script>
-							checkPushConfirmed();
+							// checkPushConfirmed();
 						</script>
 					</div>
 					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>

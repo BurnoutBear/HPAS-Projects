@@ -1,6 +1,7 @@
 from requests import Session, Response
-from .constants import ( URL_AGENZIAENTRATE_LOGIN_GET, URL_CIE_SELECTION_GET )
-from .parser import ( extract_form_action, extract_form_inputs, parse_url )
+from time import sleep
+from .constants import URL_AGENZIAENTRATE_LOGIN_GET, URL_CIE_SELECTION_GET, URL_CHECK_PUSH
+from .parser import extract_form_action, extract_form_inputs, parse_url
 
 def execute_access_flow() -> tuple[Session, Response]:
     """
@@ -47,3 +48,21 @@ def execute_access_flow() -> tuple[Session, Response]:
     )
 
     return session, response
+
+def wait_for_push_confirmation(s, base_url, interval=5, timeout=120):
+    """Polling on push confirmation endpoint until status is not WAIT or timeout is reached"""
+    check_url = parse_url(base_url, URL_CHECK_PUSH)
+    elapsed = 0
+
+    while elapsed < timeout:
+        r = s.get(check_url)
+        data = r.json()
+
+        status = data.get("status")
+        if status != "WAIT":
+            return
+
+        sleep(interval)
+        elapsed += interval
+
+    raise TimeoutError("Timeout in attesa della conferma push (utente non ha approvato in tempo)")

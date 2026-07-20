@@ -1,5 +1,5 @@
-from .client import execute_access_flow
-from .parser import ( extract_form_action, extract_form_inputs, extract_login_errors, extract_qr_code )
+from .client import execute_access_flow, wait_for_push_confirmation
+from .parser import extract_form_action, extract_form_inputs, extract_login_errors, extract_qr_code
 from .client import parse_url
 
 def get_qr_code() -> str:
@@ -10,7 +10,7 @@ def get_qr_code() -> str:
     # Extracts and returns the QR code from the response
     return extract_qr_code(response.text)
 
-def execute_login(form_data: dict):
+def submit_credentials(form_data: dict) -> tuple:
     """Authenticates user into the Service Provider (Agenzia delle Entrate) by inserting credentials in the selected Identity Provider (CIE)"""
     # Executes the CIE access flow to reach the login page
     session, response = execute_access_flow()

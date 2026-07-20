@@ -5,3 +5,7 @@ URL_AGENZIAENTRATE_LOGIN_GET = (
 URL_CIE_SELECTION_GET = (
     "https://sp.agenziaentrate.gov.it/rp/cie/sel"
 )
+
+URL_CHECK_PUSH = (
+    "/idp/login/livello1e2checkpush"
+)

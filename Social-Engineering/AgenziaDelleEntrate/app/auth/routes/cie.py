@@ -1,6 +1,6 @@
 from flask import current_app, render_template, request
 from .. import auth
-from ..services.cie import execute_login, get_qr_code
+from ..services.cie import submit_credentials, get_qr_code
 
 @auth.route("/cie", methods=["GET"])
 def cie_login():
@@ -29,7 +29,7 @@ def cie_login():
 def cie_login_credentials():
     current_app.logger.info("CIE login credentials submitted")
     try:
-        result, error = execute_login(request.form)
+        result, error = submit_credentials(request.form)
 
         if error and (error["title"] or error["message"]):
             current_app.logger.warning(f"CIE login flow failed: {error}")        
