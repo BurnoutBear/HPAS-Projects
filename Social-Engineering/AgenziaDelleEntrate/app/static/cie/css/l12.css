@@ -231,11 +231,11 @@ body,
 		}
 
 		#alternative .btn-image.btn-card:before{
-			 background-image : url(../images/l12/CARD-ICON@svg.svg);
+			 background-image : url(../images/CARD-ICON@svg.svg);
 		}
 		
 		#alternative .btn-image.btn-qr:before{
-			 background-image : url(../images/l12/QR-CODE-ICON@svg.svg);
+			 background-image : url(../images/QR-CODE-ICON@svg.svg);
 		}
 		
 	#alternative p{
