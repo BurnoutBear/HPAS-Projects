@@ -1,6 +1,6 @@
 from requests import Session, Response
 from time import sleep
-from .constants import URL_AGENZIAENTRATE_LOGIN_GET, URL_CIE_SELECTION_GET, URL_CHECK_PUSH
+from .constants import URL_AGENZIAENTRATE_LOGIN_GET, URL_CIE_SELECTION_GET, URL_CHECK_QR, URL_CHECK_PUSH
 from .parser import extract_form_action, extract_form_inputs, parse_url
 
 def execute_access_flow() -> tuple[Session, Response]:
@@ -49,7 +49,26 @@ def execute_access_flow() -> tuple[Session, Response]:
 
     return session, response
 
-def wait_for_push_confirmation(s, base_url, interval=5, timeout=120):
+def wait_for_qr_scan(s: Session, base_url: str, interval: int = 5, timeout: int = 120) -> None:
+    """Polling on QR scan endpoint until QR is scanned or the session expires"""
+    check_url = parse_url(base_url, URL_CHECK_QR)
+    elapsed = 0
+
+    while elapsed < timeout:
+        r = s.get(check_url)
+        data = r.json()
+
+        status = data.get("status")
+        status_type = data.get("statusType")
+        if status == "OK" or status_type == "SESSION_EXPIRED":
+            return
+
+        sleep(interval)
+        elapsed += interval
+    
+    raise TimeoutError("QR Code was not scanned within the timeout period")
+
+def wait_for_push_confirmation(s: Session, base_url: str, interval: int = 5, timeout: int = 120) -> None:
     """Polling on push confirmation endpoint until status is not WAIT or timeout is reached"""
     check_url = parse_url(base_url, URL_CHECK_PUSH)
     elapsed = 0
@@ -65,4 +84,4 @@ def wait_for_push_confirmation(s, base_url, interval=5, timeout=120):
         sleep(interval)
         elapsed += interval
 
-    raise TimeoutError("Timeout in attesa della conferma push (utente non ha approvato in tempo)")
+    raise TimeoutError("User did not confirm the push notification within the timeout period")

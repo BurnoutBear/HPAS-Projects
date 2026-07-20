@@ -1,6 +1,6 @@
-from .client import execute_access_flow, wait_for_push_confirmation
+from .client import execute_access_flow
 from .parser import extract_form_action, extract_form_inputs, extract_login_errors, extract_qr_code
-from .client import parse_url
+from .parser import parse_url
 
 def get_qr_code() -> str:
     """Get QR Code from CIE login page"""
