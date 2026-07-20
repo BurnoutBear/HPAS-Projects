@@ -49,6 +49,22 @@ def execute_access_flow() -> tuple[Session, Response]:
 
     return session, response
 
+def post_credentials(session: Session, response: Response, credentials: dict) -> tuple[Session, Response]:
+    # Extracts the form action URL and input fields from the response
+    url = extract_form_action(response.text)
+    payload = extract_form_inputs(response.text)
+    # Parses the url
+    url = parse_url(response.url, url)
+    # Updates the payload with credentials
+    payload.update(credentials)
+    # POST to /idp/login/livello2
+    response = session.post(
+        url,
+        data=payload
+    )
+
+    return session, response
+
 def wait_for_qr_scan(s: Session, base_url: str, interval: int = 5, timeout: int = 120) -> None:
     """Polling on QR scan endpoint until QR is scanned or the session expires"""
     check_url = parse_url(base_url, URL_CHECK_QR)

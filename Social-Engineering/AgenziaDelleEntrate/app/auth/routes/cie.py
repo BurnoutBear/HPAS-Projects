@@ -29,7 +29,7 @@ def cie_login():
 def cie_login_credentials():
     current_app.logger.info("CIE login credentials submitted")
     try:
-        result, error = submit_credentials(request.form)
+        _, error = submit_credentials(request.form)
 
         if error and (error["title"] or error["message"]):
             current_app.logger.warning(f"CIE login flow failed: {error}")        
