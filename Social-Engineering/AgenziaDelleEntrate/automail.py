@@ -1,4 +1,3 @@
-
 from datetime import datetime
 import pytz
 import uuid
@@ -6,7 +5,6 @@ import secrets
 from email.message import EmailMessage
 from email.policy import SMTP
 from email.generator import BytesGenerator
-
 
 def test():
     bob = victim("Marco", "Rossi", "Roma")
@@ -25,7 +23,6 @@ class victim():
 def gen_mail_addr(name: str, surname: str):
     mail = name+"."+surname+"@gmail.it"
     return str(mail)
-
 
 def write_email(victim: victim):
 
@@ -103,4 +100,3 @@ def write_email(victim: victim):
         BytesGenerator(f, policy=SMTP).flatten(msg)
 
     print("EML file written")
-
