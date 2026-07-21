@@ -1,4 +1,4 @@
-from flask import current_app, render_template, request, redirect, url_for
+from flask import current_app, flash, render_template, request, redirect, session, url_for
 from .. import auth
 from ..services.cie import access_login_page, get_new_qr_code, submit_credentials
 from ..services.flow import save_flow, check_login_flow
@@ -12,6 +12,7 @@ def cie_login():
         current_app.logger.info("CIE selected")
 
         login_flow = check_login_flow()
+
         if not login_flow:
             login_flow = access_login_page()
             save_flow(login_flow)
@@ -19,8 +20,10 @@ def cie_login():
         if login_flow.is_qr_expired:
             get_new_qr_code(login_flow)
 
+        error = session.pop("cie_login_error", None)
+
         current_app.logger.info("CIE login page accessed successfully")
-        return render_template("cie.html", qr_code=login_flow.qr_code, qr_expiration=login_flow.qr_remaining_ms, error=None), 200
+        return render_template("cie.html", qr_code=login_flow.qr_code, qr_expiration=login_flow.qr_remaining_ms, username=login_flow.username, password=login_flow.password, error=error), 200
 
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login page access")
@@ -33,17 +36,20 @@ def cie_login_credentials():
         current_app.logger.info("CIE login credentials submitted")
 
         login_flow = check_login_flow()
+
         if not login_flow:
             return redirect(url_for("auth.cie_login"))
 
         error = submit_credentials(login_flow, request.form)
 
         if error:
+            session["cie_login_error"] = error
             current_app.logger.warning(f"CIE login flow failed: {error}")
-            return render_template("cie.html", qr_code=login_flow.qr_code, qr_expiration=login_flow.qr_remaining_ms, error=error, username=login_flow.username, password=login_flow.password), 400
+            return redirect(url_for("auth.cie_login"))
 
         current_app.logger.info("CIE login flow executed successfully")
         return render_template("cie_2fa.html"), 200
+
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login credentials submission")
         return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
