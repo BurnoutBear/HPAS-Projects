@@ -1,6 +1,6 @@
 from requests import Session, exceptions
 from time import sleep
-from .constants import URL_AGENZIAENTRATE_LOGIN_GET, URL_CIE_SELECTION_GET, URL_CHECK_QR, URL_CHECK_PUSH
+from .constants import URL_AGENZIAENTRATE_LOGIN_GET, URL_CIE_SELECTION_GET, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE, URL_CHECK_PUSH
 from .parser import extract_form_action, extract_form_inputs, parse_url
 from ..flow import LoginFlow
 
@@ -58,11 +58,17 @@ def post_credentials(login_flow: LoginFlow, credentials: dict) -> None:
 
 def get_qr_code_status(login_flow: LoginFlow) -> None:
     """Retrieves the status of the QR code scan from the CIE login page"""
-    check_url = parse_url(login_flow.base_url, URL_CHECK_QR)
+    check_url = parse_url(login_flow.base_url, URL_CHECK_QR_CODE)
     try:
         login_flow.response = login_flow.session.get(check_url, timeout=5)
     except exceptions.ConnectionError:
         return None
+
+def execute_authentication_flow_qr_code(login_flow: LoginFlow) -> None:
+    """Executes the authentication flow after the QR code has been scanned"""
+    scanned_url = parse_url(login_flow.base_url, URL_SCANNED_QR_CODE)
+    login_flow.response = login_flow.session.get(scanned_url)
+    # TODO
 
 def wait_for_push_confirmation(login_flow: LoginFlow, base_url: str, interval: int = 5, timeout: int = 120) -> None:
     """Polling on push confirmation endpoint until status is not WAIT or timeout is reached"""

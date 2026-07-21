@@ -1,4 +1,4 @@
-from .client import access_again_login_page, execute_access_flow, post_credentials, get_qr_code_status
+from .client import execute_access_flow, access_again_login_page, post_credentials, get_qr_code_status, execute_authentication_flow_qr_code
 from .parser import extract_qr_code, extract_login_errors
 from ..flow import LoginFlow
 
@@ -37,3 +37,7 @@ def check_qr_code(login_flow: LoginFlow) -> dict:
     """Checks if the QR code has been scanned and returns the result"""
     get_qr_code_status(login_flow)
     return login_flow.response.json()
+
+def retrieve_access_after_qr_code_scan(login_flow: LoginFlow) -> None:
+    """Retrieves the access to the Service Provider (Agenzia delle Entrate) after the QR code has been scanned"""
+    execute_authentication_flow_qr_code(login_flow)

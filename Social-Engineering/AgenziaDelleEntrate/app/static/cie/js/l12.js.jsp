@@ -30,7 +30,7 @@ function checkQRScanned(cp) {
 		cache: false,
 		success: function (data) {
 			if (data.status == "OK" || data.statusType == "SESSION_EXPIRED") {
-				window.location.href = "/idp/login/livello1e2postqrcode";
+				window.location.href = "/cie_login/scanned_qr_code";
 			}
 		},
 	});

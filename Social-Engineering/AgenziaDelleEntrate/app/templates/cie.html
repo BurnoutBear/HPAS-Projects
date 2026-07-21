@@ -320,7 +320,7 @@
 																>
 																<input
 																	type="text"
-																	class="form-control {% if error %}error{% endif %}"
+																	class="form-control {% if error and username %}error{% endif %}"
 																	id="username"
 																	name="username"
 																	placeholder="Numero CIE o Codice fiscale o Email"
@@ -332,7 +332,7 @@
 																	class="input-group-append"
 																>
 																	<div
-																		class="input-group-text {% if error %}error{% endif %}"
+																		class="input-group-text {% if error and username %}error{% endif %}"
 																		id="usernameIcon"
 																	>
 																		<a
@@ -373,7 +373,7 @@
 																>
 																<input
 																	type="password"
-																	class="form-control input-password {% if error %}error{% endif %}"
+																	class="form-control input-password {% if error and password %}error{% endif %}"
 																	id="password"
 																	name="password"
 																	placeholder="Password"

