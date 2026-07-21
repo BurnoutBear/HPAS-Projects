@@ -40,12 +40,11 @@ def execute_access_flow() -> LoginFlow:
 
     return LoginFlow(session=session, response=response, base_url=response.url, base_text=response.text)
 
-def access_again_login_page(login_flow: LoginFlow) -> LoginFlow:
+def access_again_login_page(login_flow: LoginFlow) -> None:
     """Visits the CIE login page again"""
     login_flow.response = login_flow.session.get(login_flow.base_url)
-    return login_flow
 
-def post_credentials(login_flow: LoginFlow, credentials: dict) -> LoginFlow:
+def post_credentials(login_flow: LoginFlow, credentials: dict) -> None:
     """Posts the credentials to the CIE login page and retrieves the response"""
     # Extracts the form action URL and input fields from the response
     url = extract_form_action(login_flow.base_text)
@@ -56,8 +55,6 @@ def post_credentials(login_flow: LoginFlow, credentials: dict) -> LoginFlow:
     payload.update(credentials)
     # POST to /idp/login/livello2
     login_flow.response = login_flow.session.post(url, data=payload)
-
-    return login_flow
 
 def wait_for_qr_scan(login_flow: LoginFlow, base_url: str, interval: int = 5, timeout: int = 120) -> None:
     """Polling on QR scan endpoint until QR is scanned or the session expires"""
