@@ -89,7 +89,7 @@ function checkUsernameAndPassword() {
 		$("#usernameError").html("Il campo &egrave; obbligatorio");
 		$("#usernameIcon a svg use").attr(
 			"xlink:href",
-			"/idp/images/l12/sprite.svg#it-warning",
+			"/static/cie/images/sprite.svg#it-warning",
 		);
 		return false;
 	} else if (
@@ -109,13 +109,13 @@ function checkUsernameAndPassword() {
 		$("#usernameError").html("Formato non valido");
 		$("#usernameIcon a svg use").attr(
 			"xlink:href",
-			"/idp/images/l12/sprite.svg#it-warning",
+			"/static/cie/images/sprite.svg#it-warning",
 		);
 		return false;
 	} else {
 		$("#usernameIcon a svg use").attr(
 			"xlink:href",
-			"/idp/images/l12/sprite.svg#it-info-circle",
+			"/static/cie/images/sprite.svg#it-info-circle",
 		);
 		$("#username, #usernameIcon").removeClass("error");
 		$("#usernameError").html("&nbsp;");

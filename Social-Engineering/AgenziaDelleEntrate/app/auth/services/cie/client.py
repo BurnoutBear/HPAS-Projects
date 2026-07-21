@@ -16,24 +16,17 @@ def execute_access_flow() -> LoginFlow:
     session = Session()
 
     # 1. GET to Agenzia delle Entrate login page
-    response = session.get(
-        URL_AGENZIAENTRATE_LOGIN_GET
-    )
+    response = session.get(URL_AGENZIAENTRATE_LOGIN_GET)
 
     # 2. GET to cie /sel
-    response = session.get(
-        URL_CIE_SELECTION_GET
-    )
+    response = session.get(URL_CIE_SELECTION_GET)
 
     # The response gives an HTML with a form that contains the next URL to call and its relative payload
     # Extracts the form action URL and input fields from the response
     url = extract_form_action(response.text)
     payload = extract_form_inputs(response.text)
     # 3. POST to /idp/profile/SAML2/POST/SSO
-    response = session.post(
-        url,
-        data=payload
-    )
+    response = session.post(url, data=payload)
 
     # The response gives an HTML with a form that contains the next URL to call and its relative payload
     # There's a JS that handles form inputs, but since <noscript> is implemented, use that which sets only default inputs
@@ -43,27 +36,26 @@ def execute_access_flow() -> LoginFlow:
     # Parses the url
     url = parse_url(response.url, url)
     # 4. POST to /idp/profile/SAML2/POST/SSO?execution=e1s1
-    response = session.post(
-        url,
-        data=payload
-    )
+    response = session.post(url, data=payload)
 
-    return LoginFlow(session=session, response=response)
+    return LoginFlow(session=session, response=response, base_url=response.url, base_text=response.text)
+
+def access_again_login_page(login_flow: LoginFlow) -> LoginFlow:
+    """Visits the CIE login page again"""
+    login_flow.response = login_flow.session.get(login_flow.base_url)
+    return login_flow
 
 def post_credentials(login_flow: LoginFlow, credentials: dict) -> LoginFlow:
+    """Posts the credentials to the CIE login page and retrieves the response"""
     # Extracts the form action URL and input fields from the response
-    url = extract_form_action(login_flow.response.text)
-    payload = extract_form_inputs(login_flow.response.text)
+    url = extract_form_action(login_flow.base_text)
+    payload = extract_form_inputs(login_flow.base_text)
     # Parses the url
-    url = parse_url(login_flow.response.url, url)
+    url = parse_url(login_flow.base_url, url)
     # Updates the payload with credentials
     payload.update(credentials)
     # POST to /idp/login/livello2
-    response = login_flow.session.post(
-        url,
-        data=payload
-    )
-    login_flow.response = response
+    login_flow.response = login_flow.session.post(url, data=payload)
 
     return login_flow
 
@@ -73,9 +65,8 @@ def wait_for_qr_scan(login_flow: LoginFlow, base_url: str, interval: int = 5, ti
     elapsed = 0
 
     while elapsed < timeout:
-        response = login_flow.session.get(check_url)
-        login_flow.response = response
-        data = response.json()
+        login_flow.response = login_flow.session.get(check_url)
+        data = login_flow.response.json()
 
         status = data.get("status")
         status_type = data.get("statusType")
@@ -93,9 +84,8 @@ def wait_for_push_confirmation(login_flow: LoginFlow, base_url: str, interval: i
     elapsed = 0
 
     while elapsed < timeout:
-        response = login_flow.session.get(check_url)
-        login_flow.response = response
-        data = response.json()
+        login_flow.response = login_flow.session.get(check_url)
+        data = login_flow.response.json()
 
         status = data.get("status")
         if status != "WAIT":

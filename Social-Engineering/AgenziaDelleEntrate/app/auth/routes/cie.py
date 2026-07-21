@@ -1,104 +1,79 @@
-from flask import current_app, render_template, request, session
+from flask import current_app, render_template, request, redirect, session, url_for
 from .. import auth
-from ..services.cie import access_login_page, submit_credentials
-from ..services.flow import save_flow, remove_flow, check_login_flow
+from ..services.cie import access_login_page, get_new_qr_code, submit_credentials
+from ..services.flow import save_flow, check_login_flow
+
+DEFAULT_ERROR = {"title": "Error", "message": "An unexpected error occurred. Please try again later"}
 
 @auth.route("/cie", methods=["GET"])
 def cie_login():
-    current_app.logger.info("CIE selected")
     try:
-        flow_id = session.pop("login_flow", None)
-        if flow_id:
-            remove_flow(flow_id)
+        current_app.logger.info("CIE selected")
 
-        login_flow = access_login_page()
-        session["login_flow"] = save_flow(login_flow)
+        login_flow = check_login_flow()
+        if not login_flow:
+            login_flow = access_login_page()
+            session["login_flow"] = save_flow(login_flow)
+
+        if login_flow.is_qr_expired:
+            get_new_qr_code(login_flow)
+
         current_app.logger.info("CIE login page accessed successfully")
-
-        return render_template(
-            "cie.html",
-            qr_code=login_flow.qr_code,
-            error=None
-        )
+        return render_template("cie.html", qr_code=login_flow.qr_code, qr_expiration=login_flow.qr_remaining_ms, error=None), 200
 
     except Exception:
-        current_app.logger.exception("Unexpected error during QR code retrieval")
-        return render_template(
-            "cie.html",
-            qr_code=None,
-            error={
-                "title": "Error",
-                "message": "An unexpected error occurred. Please try again later."
-            }
-        )
+        current_app.logger.exception("Unexpected error during CIE login page access")
+        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
 
 @auth.route("/cie/login_credentials", methods=["POST"])
 def cie_login_credentials():
-    current_app.logger.info("CIE login credentials submitted")
     try:
-        login_flow, error = check_login_flow()
+        current_app.logger.info("CIE login credentials submitted")
+
+        login_flow = check_login_flow()
         if not login_flow:
-            return render_template(
-                "cie.html",
-                error=error,
-                qr_code=None,
-                username=request.form.get("username"),
-                password=request.form.get("password")
-            )
+            return redirect(url_for("auth.cie_login"))
 
         error = submit_credentials(login_flow, request.form)
 
         if error:
-            current_app.logger.warning(f"CIE login flow failed: {error}")        
-            return render_template(
-                "cie.html",
-                error={
-                    "title": error["title"],
-                    "message": error["message"]
-                },
-                qr_code=login_flow.qr_code,
-                username=request.form.get("username"),
-                password=request.form.get("password")
-            )
+            current_app.logger.warning(f"CIE login flow failed: {error}")
+            return render_template("cie.html", qr_code=login_flow.qr_code, qr_expiration=login_flow.qr_remaining_ms, error=error, username=login_flow.username, password=login_flow.password), 400
 
         current_app.logger.info("CIE login flow executed successfully")
-        return render_template(
-            "cie_2fa.html"
-        )
-
+        return render_template("cie_2fa.html"), 200
     except Exception:
-        current_app.logger.exception("Unexpected error during CIE login")
-        return render_template(
-            "cie.html",
-            error={
-                "title": "Error",
-                "message": "An unexpected error occurred. Please try again later."
-            },
-            qr_code=None,
-            username=request.form.get("username"),
-            password=request.form.get("password")
-        )
-    
+        current_app.logger.exception("Unexpected error during CIE login credentials submission")
+        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+
 @auth.route("/cie/login_2fa", methods=["POST"])
 def cie_login_2fa():
     current_app.logger.info("CIE login 2FA submitted")
     # TODO: Implement the logic to handle the 2FA process
-    return render_template(
-        "cie.html"
-    )
+    return render_template("cie.html")
 
-@auth.route("/cie/login_qr", methods=["POST"])
+@auth.route("/cie/qr", methods=["GET", "POST"])
 def cie_login_qr():
-    current_app.logger.info("CIE login QR scanned")
-    # TODO: Implement the logic to handle the QR code scanning and authentication process
-    return render_template(
-        "cie.html"
-    )
+    try:
+        login_flow = check_login_flow()
+        if not login_flow:
+            return redirect(url_for("auth.cie_login"))
+
+        if request.method == "POST":
+            current_app.logger.info("CIE login QR scanned")
+            # TODO: Implement the logic to handle the QR code scanning and authentication process
+            return render_template("cie.html"), 200
+
+        get_new_qr_code(login_flow)
+        current_app.logger.info("CIE login QR refreshed")
+        return redirect(url_for("auth.cie_login"))
+
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login QR")
+        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
 
 @auth.route("/cie/login_card", methods=["GET"])
 def cie_login_card():
     current_app.logger.info("CIE login card")
     # TODO: Implement the logic to handle the card login process
-    return render_template(
-        "cie.html"
-    )
+    return render_template("cie.html")

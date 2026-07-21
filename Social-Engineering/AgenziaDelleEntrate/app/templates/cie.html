@@ -774,7 +774,7 @@
 																Il QR Code non è
 																più valido.<br />
 																<a
-																	href="{{ url_for('auth.cie_login') }}"
+																	href="{{ url_for('auth.cie_login_qr') }}"
 																	>Richiedilo
 																	di nuovo</a
 																>
@@ -787,7 +787,7 @@
 															class="text-center c2"
 														>
 															<a
-																href="{{ url_for('auth.cie_login_qr') }}"
+																href="/idp/login/livello1e2postqrcode"
 																title="dopo aver scansionato il QR, clicca qui per proseguire"
 																>Clicca qui dopo
 																aver autenticato
@@ -804,9 +804,9 @@
 														$(
 															"#qrWrapper",
 														).removeClass("d-none"); // tablet/desktop
-														// checkQRScanned();
+														checkQRScanned();
 														var tempoQR =
-															parseInt("120000");
+															parseInt("{{ qr_expiration }}");
 														countdownQR(
 															Date.now() +
 																tempoQR,
