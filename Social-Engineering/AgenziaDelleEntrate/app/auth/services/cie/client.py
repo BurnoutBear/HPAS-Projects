@@ -1,4 +1,4 @@
-from requests import Session, Response
+from requests import Session, exceptions
 from time import sleep
 from .constants import URL_AGENZIAENTRATE_LOGIN_GET, URL_CIE_SELECTION_GET, URL_CHECK_QR, URL_CHECK_PUSH
 from .parser import extract_form_action, extract_form_inputs, parse_url
@@ -56,24 +56,13 @@ def post_credentials(login_flow: LoginFlow, credentials: dict) -> None:
     # POST to /idp/login/livello2
     login_flow.response = login_flow.session.post(url, data=payload)
 
-def wait_for_qr_scan(login_flow: LoginFlow, base_url: str, interval: int = 5, timeout: int = 120) -> None:
-    """Polling on QR scan endpoint until QR is scanned or the session expires"""
-    check_url = parse_url(base_url, URL_CHECK_QR)
-    elapsed = 0
-
-    while elapsed < timeout:
-        login_flow.response = login_flow.session.get(check_url)
-        data = login_flow.response.json()
-
-        status = data.get("status")
-        status_type = data.get("statusType")
-        if status == "OK" or status_type == "SESSION_EXPIRED":
-            return
-
-        sleep(interval)
-        elapsed += interval
-    
-    raise TimeoutError("QR Code was not scanned within the timeout period")
+def get_qr_code_status(login_flow: LoginFlow) -> None:
+    """Retrieves the status of the QR code scan from the CIE login page"""
+    check_url = parse_url(login_flow.base_url, URL_CHECK_QR)
+    try:
+        login_flow.response = login_flow.session.get(check_url, timeout=5)
+    except exceptions.ConnectionError:
+        return None
 
 def wait_for_push_confirmation(login_flow: LoginFlow, base_url: str, interval: int = 5, timeout: int = 120) -> None:
     """Polling on push confirmation endpoint until status is not WAIT or timeout is reached"""

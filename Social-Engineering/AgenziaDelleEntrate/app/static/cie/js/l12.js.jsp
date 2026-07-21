@@ -25,7 +25,7 @@ function checkPushConfirmed() {
 //esegue controllo periodico su scansione QR
 function checkQRScanned(cp) {
 	var jqxhr = $.ajax({
-		url: "/idp/login/livello1e2checkqrcode",
+		url: "/cie_login/check_qr_code",
 		dataType: "json",
 		cache: false,
 		success: function (data) {
