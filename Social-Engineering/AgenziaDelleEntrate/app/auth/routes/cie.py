@@ -7,6 +7,7 @@ DEFAULT_ERROR = {"title": "Error", "message": "An unexpected error occurred. Ple
 
 @auth.route("/cie", methods=["GET"])
 def cie_login():
+    """Renders the CIE login page with QR code and handles the login flow"""
     try:
         current_app.logger.info("CIE selected")
 
@@ -27,6 +28,7 @@ def cie_login():
 
 @auth.route("/cie/login_credentials", methods=["POST"])
 def cie_login_credentials():
+    """Handles the submission of CIE login credentials and manages the login flow"""
     try:
         current_app.logger.info("CIE login credentials submitted")
 
