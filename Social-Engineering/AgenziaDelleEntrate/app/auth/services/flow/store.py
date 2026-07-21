@@ -4,22 +4,23 @@ from .flow import LoginFlow
 
 _flows: dict[str, LoginFlow] = {}
 
-def save_flow(flow: LoginFlow) -> str:
-    """Saves the login flow in the session and returns a unique flow ID"""
+def save_flow(flow: LoginFlow) -> None:
+    """Saves the login flow in the internal storage and the session"""
     flow_id = str(uuid4())
     _flows[flow_id] = flow
-    return flow_id
+    session["login_flow"] = flow_id
 
 def get_flow(flow_id: str) -> LoginFlow | None:
-    """Retrieves the login flow from the session using the flow ID"""
+    """Retrieves the login flow from the internal storage using the flow ID"""
     return _flows.get(flow_id)
 
-def remove_flow(flow_id: str):
-    """Removes the login flow from the session using the flow ID"""
+def remove_flow(flow_id: str) -> None:
+    """Removes the login flow from the internal storage and the session using the flow ID"""
     _flows.pop(flow_id, None)
+    session.pop("login_flow", None)
 
 def check_login_flow() -> LoginFlow | None:
-    """Checks if a login flow exists in the session and returns it along with any error messages"""
+    """Checks if a login flow exists in the session and returns it. If it does not exist or is expired, removes it and returns None."""
     flow_id = session.get("login_flow")
 
     if flow_id is None:
@@ -30,10 +31,9 @@ def check_login_flow() -> LoginFlow | None:
     if flow is None:
         session.pop("login_flow", None)
         return None
-    
+
     if flow.is_flow_expired:
         remove_flow(flow_id)
-        session.pop("login_flow", None)
         return None
 
     return flow

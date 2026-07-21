@@ -1,4 +1,4 @@
-from flask import current_app, render_template, request, redirect, session, url_for
+from flask import current_app, render_template, request, redirect, url_for
 from .. import auth
 from ..services.cie import access_login_page, get_new_qr_code, submit_credentials
 from ..services.flow import save_flow, check_login_flow
@@ -14,7 +14,7 @@ def cie_login():
         login_flow = check_login_flow()
         if not login_flow:
             login_flow = access_login_page()
-            session["login_flow"] = save_flow(login_flow)
+            save_flow(login_flow)
 
         if login_flow.is_qr_expired:
             get_new_qr_code(login_flow)
