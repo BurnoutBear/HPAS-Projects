@@ -1,25 +1,26 @@
 from .client import execute_access_flow, post_credentials
 from .parser import extract_qr_code, extract_login_errors
+from ..flow import LoginFlow
 
-def get_qr_code() -> str:
+def access_login_page() -> LoginFlow:
     """Get QR Code from CIE login page"""
     # Executes the CIE access flow to reach the login page
-    _, response = execute_access_flow()
+    login_flow = execute_access_flow()
 
-    # Extracts and returns the QR code from the response
-    return extract_qr_code(response.text)
+    # Extracts the QR code from the response
+    login_flow.qr_code = extract_qr_code(login_flow.response.text)
 
-def submit_credentials(credentials: dict) -> tuple:
+    return login_flow
+
+def submit_credentials(login_flow: LoginFlow, credentials: dict) -> dict | None:
     """Authenticates user into the Service Provider (Agenzia delle Entrate) by inserting credentials in the selected Identity Provider (CIE)"""
-    # Executes the CIE access flow to reach the login page
-    session, response = execute_access_flow()
+    login_flow.username = credentials.get("username")
+    login_flow.password = credentials.get("password")
 
     # Posts the credentials to the CIE login page and retrieves the response
-    session, response = post_credentials(session, response, credentials)
+    login_flow = post_credentials(login_flow, credentials)
 
     # Check for login errors
-    error = extract_login_errors(response.text)
+    error = extract_login_errors(login_flow.response.text)
 
-    if error and (error["title"] or error["message"]):
-        return None, error
-    return "OK", None
+    return error

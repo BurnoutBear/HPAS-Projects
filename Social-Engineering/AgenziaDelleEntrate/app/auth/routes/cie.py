@@ -1,16 +1,23 @@
-from flask import current_app, render_template, request
+from flask import current_app, render_template, request, session
 from .. import auth
-from ..services.cie import submit_credentials, get_qr_code
+from ..services.cie import access_login_page, submit_credentials
+from ..services.flow import save_flow, remove_flow, check_login_flow
 
 @auth.route("/cie", methods=["GET"])
 def cie_login():
     current_app.logger.info("CIE selected")
     try:
-        qr_code = get_qr_code()
-        current_app.logger.info("QR code retrieved successfully")
+        flow_id = session.pop("login_flow", None)
+        if flow_id:
+            remove_flow(flow_id)
+
+        login_flow = access_login_page()
+        session["login_flow"] = save_flow(login_flow)
+        current_app.logger.info("CIE login page accessed successfully")
+
         return render_template(
             "cie.html",
-            qr_code=qr_code,
+            qr_code=login_flow.qr_code,
             error=None
         )
 
@@ -29,16 +36,29 @@ def cie_login():
 def cie_login_credentials():
     current_app.logger.info("CIE login credentials submitted")
     try:
-        _, error = submit_credentials(request.form)
+        login_flow, error = check_login_flow()
+        if not login_flow:
+            return render_template(
+                "cie.html",
+                error=error,
+                qr_code=None,
+                username=request.form.get("username"),
+                password=request.form.get("password")
+            )
 
-        if error and (error["title"] or error["message"]):
+        error = submit_credentials(login_flow, request.form)
+
+        if error:
             current_app.logger.warning(f"CIE login flow failed: {error}")        
             return render_template(
                 "cie.html",
                 error={
                     "title": error["title"],
                     "message": error["message"]
-                }
+                },
+                qr_code=login_flow.qr_code,
+                username=request.form.get("username"),
+                password=request.form.get("password")
             )
 
         current_app.logger.info("CIE login flow executed successfully")
@@ -53,8 +73,19 @@ def cie_login_credentials():
             error={
                 "title": "Error",
                 "message": "An unexpected error occurred. Please try again later."
-            }
+            },
+            qr_code=None,
+            username=request.form.get("username"),
+            password=request.form.get("password")
         )
+    
+@auth.route("/cie/login_2fa", methods=["POST"])
+def cie_login_2fa():
+    current_app.logger.info("CIE login 2FA submitted")
+    # TODO: Implement the logic to handle the 2FA process
+    return render_template(
+        "cie.html"
+    )
 
 @auth.route("/cie/login_qr", methods=["POST"])
 def cie_login_qr():

@@ -1,6 +1,6 @@
-from .login import submit_credentials, get_qr_code
+from .service import access_login_page, submit_credentials
 
 __all__ = [
-    "submit_credentials",
-    "get_qr_code"
+    "access_login_page",
+    "submit_credentials"
 ]
