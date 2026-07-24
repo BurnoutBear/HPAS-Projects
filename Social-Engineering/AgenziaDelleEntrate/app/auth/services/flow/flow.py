@@ -10,11 +10,13 @@ class LoginFlow:
     """Represents the state of a login flow, including the session, response, and any relevant data"""
     session: Session
     response: Response
-    base_url: str
-    base_text: str
+    login_page_url: str
+    login_page_text: str
 
     username: str | None = None
     password: str | None = None
+
+    completed: bool = False
 
     qr_code: str | None = None
     qr_expires_at: float = field(default_factory=lambda: monotonic() + TTL_QR_CODE)

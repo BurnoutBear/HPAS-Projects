@@ -1,7 +1,6 @@
 from requests import Session, exceptions
-from time import sleep
-from .constants import URL_AGENZIAENTRATE_LOGIN_GET, URL_CIE_SELECTION_GET, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE, URL_CHECK_PUSH
-from .parser import extract_form_action, extract_form_inputs, parse_url
+from .constants import URL_AGENZIAENTRATE_LOGIN, URL_CIE_SELECTION, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE, URL_CHECK_PUSH
+from .parser import parse_url, extract_url_and_payload_from_form_and_parse, set_form_value
 from ..flow import LoginFlow
 
 def execute_access_flow() -> LoginFlow:
@@ -16,74 +15,63 @@ def execute_access_flow() -> LoginFlow:
     session = Session()
 
     # 1. GET to Agenzia delle Entrate login page
-    response = session.get(URL_AGENZIAENTRATE_LOGIN_GET)
+    response = session.get(URL_AGENZIAENTRATE_LOGIN)
 
     # 2. GET to cie /sel
-    response = session.get(URL_CIE_SELECTION_GET)
+    response = session.get(URL_CIE_SELECTION)
 
     # The response gives an HTML with a form that contains the next URL to call and its relative payload
-    # Extracts the form action URL and input fields from the response
-    url = extract_form_action(response.text)
-    payload = extract_form_inputs(response.text)
+    url, payload = extract_url_and_payload_from_form_and_parse(response.text, response.url)
     # 3. POST to /idp/profile/SAML2/POST/SSO
     response = session.post(url, data=payload)
 
     # The response gives an HTML with a form that contains the next URL to call and its relative payload
     # There's a JS that handles form inputs, but since <noscript> is implemented, use that which sets only default inputs
-    # Extracts the form action URL and input fields from the response
-    url = extract_form_action(response.text)
-    payload = extract_form_inputs(response.text)
-    # Parses the url
-    url = parse_url(response.url, url)
+    url, payload = extract_url_and_payload_from_form_and_parse(response.text, response.url)
     # 4. POST to /idp/profile/SAML2/POST/SSO?execution=e1s1
     response = session.post(url, data=payload)
 
-    return LoginFlow(session=session, response=response, base_url=response.url, base_text=response.text)
+    return LoginFlow(session=session, response=response, login_page_url=response.url, login_page_text=response.text)
 
 def access_again_login_page(login_flow: LoginFlow) -> None:
     """Visits the CIE login page again"""
-    login_flow.response = login_flow.session.get(login_flow.base_url)
+    login_flow.response = login_flow.session.get(login_flow.login_page_url)
 
 def post_credentials(login_flow: LoginFlow, credentials: dict) -> None:
     """Posts the credentials to the CIE login page and retrieves the response"""
-    # Extracts the form action URL and input fields from the response
-    url = extract_form_action(login_flow.base_text)
-    payload = extract_form_inputs(login_flow.base_text)
-    # Parses the url
-    url = parse_url(login_flow.base_url, url)
+    url, payload = extract_url_and_payload_from_form_and_parse(login_flow.login_page_text, login_flow.login_page_url)
     # Updates the payload with credentials
-    payload.update(credentials)
+    for key, value in credentials.items():
+        set_form_value(payload, key, value)
     # POST to /idp/login/livello2
     login_flow.response = login_flow.session.post(url, data=payload)
 
 def get_qr_code_status(login_flow: LoginFlow) -> None:
     """Retrieves the status of the QR code scan from the CIE login page"""
-    check_url = parse_url(login_flow.base_url, URL_CHECK_QR_CODE)
+    check_url = parse_url(login_flow.login_page_url, URL_CHECK_QR_CODE)
     try:
         login_flow.response = login_flow.session.get(check_url, timeout=5)
     except exceptions.ConnectionError:
         return None
 
-def execute_authentication_flow_qr_code(login_flow: LoginFlow) -> None:
-    """Executes the authentication flow after the QR code has been scanned"""
-    scanned_url = parse_url(login_flow.base_url, URL_SCANNED_QR_CODE)
+def submit_scanned_qr_code(login_flow: LoginFlow) -> None:
+    """Submits the scanned QR code to the CIE login page"""
+    scanned_url = parse_url(login_flow.login_page_url, URL_SCANNED_QR_CODE)
     login_flow.response = login_flow.session.get(scanned_url)
-    # TODO
 
-def wait_for_push_confirmation(login_flow: LoginFlow, base_url: str, interval: int = 5, timeout: int = 120) -> None:
-    """Polling on push confirmation endpoint until status is not WAIT or timeout is reached"""
-    check_url = parse_url(base_url, URL_CHECK_PUSH)
-    elapsed = 0
-
-    while elapsed < timeout:
-        login_flow.response = login_flow.session.get(check_url)
-        data = login_flow.response.json()
-
-        status = data.get("status")
-        if status != "WAIT":
-            return
-
-        sleep(interval)
-        elapsed += interval
-
-    raise TimeoutError("User did not confirm the push notification within the timeout period")
+def confirm_access(login_flow: LoginFlow) -> None:
+    """Confirms the access to the Service Provider (Agenzia delle Entrate)"""
+    url, payload = extract_url_and_payload_from_form_and_parse(login_flow.response.text, login_flow.response.url)
+    #Updates the payload with the confirmation input
+    set_form_value(payload, "_eventId_proceed", "Prosegui")
+    # POST to /idp/profile/SAML2/POST/SSO?execution=e1s4
+    login_flow.response = login_flow.session.post(url, data=payload)
+    print(login_flow.response.text) # TODO: extract info
+    url, payload = extract_url_and_payload_from_form_and_parse(login_flow.response.text, login_flow.response.url)
+    # POST to https://sp.agenziaentrate.gov.it/sp/AssertionConsumerService7
+    login_flow.response = login_flow.session.post(url, data=payload)
+    print(login_flow.response.text) # TODO: extract info
+    url, payload = extract_url_and_payload_from_form_and_parse(login_flow.response.text, login_flow.response.url)
+    # POST to https://sp.agenziaentrate.gov.it/sam/Consumer/metaAlias/agenziaentrate/age-sp
+    login_flow.response = login_flow.session.post(url, data=payload)
+    login_flow.completed = True
