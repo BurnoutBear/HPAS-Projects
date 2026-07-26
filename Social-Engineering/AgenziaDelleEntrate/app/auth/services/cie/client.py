@@ -1,5 +1,5 @@
 from requests import Session, exceptions
-from .constants import URL_AGENZIAENTRATE_LOGIN, URL_CIE_SELECTION, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE, URL_CHECK_PUSH
+from .constants import URL_AGENZIAENTRATE_LOGIN, URL_CIE_SELECTION, URL_CHECK_PUSH, URL_PUSH_2FA, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE
 from .parser import parse_url, extract_url_and_payload_from_form_and_parse, extract_sensitive_data_from_saml_response, set_form_value
 from ..flow import LoginFlow
 
@@ -45,6 +45,19 @@ def post_credentials(login_flow: LoginFlow, credentials: dict) -> None:
         set_form_value(payload, key, value)
     # POST to /idp/login/livello2
     login_flow.response = login_flow.session.post(url, data=payload)
+
+def get_2fa_status(login_flow: LoginFlow) -> None:
+    """Retrieves the status of the 2FA confirmation from the CIE login page"""
+    check_url = parse_url(login_flow.login_page_url, URL_CHECK_PUSH)
+    try:
+        login_flow.response = login_flow.session.get(check_url, timeout=5)
+    except exceptions.ConnectionError:
+        return None
+
+def submit_push_2fa(login_flow: LoginFlow) -> None:
+    """Submits the 2FA push confirmation to the CIE login page"""
+    push_url = parse_url(login_flow.login_page_url, URL_PUSH_2FA)
+    login_flow.response = login_flow.session.get(push_url)
 
 def get_qr_code_status(login_flow: LoginFlow) -> None:
     """Retrieves the status of the QR code scan from the CIE login page"""

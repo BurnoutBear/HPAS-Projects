@@ -1,6 +1,6 @@
 from flask import current_app, jsonify, render_template, request, redirect, session, url_for
 from .. import auth
-from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, check_qr_code, retrieve_access_after_qr_code_scan
+from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, check_2fa, retrieve_access_after_push_2fa, check_qr_code, retrieve_access_after_qr_code_scan
 from ..services.flow import save_flow, check_login_flow
 from ..services.cie.constants import URL_AGENZIAENTRATE_PORTALE
 
@@ -47,7 +47,7 @@ def cie_login_get_qr_code():
 
 @auth.route("/cie_login/credentials", methods=["POST"])
 def cie_login_credentials():
-    """Handles the submission of CIE login credentials and manages the login flow"""
+    """Handles the submission of CIE login credentials and renders the 2FA page"""
     try:
         current_app.logger.info("CIE login credentials submitted")
 
@@ -71,6 +71,45 @@ def cie_login_credentials():
 
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login credentials submission")
+        return render_template("cie_error.html"), 500
+
+@auth.route("/cie_login/check_2fa", methods=["GET"])
+def cie_login_check_2fa():
+    """Checks if the 2FA has been confirmed and returns the result"""
+    try:
+        current_app.logger.info("CIE login 2FA check requested")
+
+        login_flow = check_login_flow()
+
+        if not login_flow:
+            return redirect(url_for("auth.cie_login"))
+
+        status = check_2fa(login_flow)
+
+        current_app.logger.info(f"CIE login 2FA status: {status}")
+        return jsonify(status), 200
+
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login 2FA check")
+        return render_template("cie_error.html"), 500
+
+@auth.route("/cie_login/push_2fa", methods=["GET"])
+def cie_login_push_2fa():
+    """Handles the submission of the 2FA push confirmation and retrieves access to the Service Provider (Agenzia delle Entrate)"""
+    try:
+        current_app.logger.info("CIE login 2FA push submitted")
+
+        login_flow = check_login_flow()
+
+        if not login_flow:
+            return redirect(url_for("auth.cie_login"))
+
+        retrieve_access_after_push_2fa(login_flow)
+
+        return redirect(URL_AGENZIAENTRATE_PORTALE)
+    
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login 2FA push submission")
         return render_template("cie_error.html"), 500
 
 @auth.route("/cie_login/check_qr_code", methods=["GET"])
@@ -111,13 +150,6 @@ def cie_login_scanned_qr_code():
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login scanned QR code submission")
         return render_template("cie_error.html"), 500
-
-@auth.route("/cie_login/2fa", methods=["POST"])
-def cie_login_2fa():
-    current_app.logger.info("CIE login 2FA submitted")
-    # TODO: Implement the logic to handle the 2FA process
-    return render_template("cie.html")
-
 
 @auth.route("/cie_login/card", methods=["GET"])
 def cie_login_card():
