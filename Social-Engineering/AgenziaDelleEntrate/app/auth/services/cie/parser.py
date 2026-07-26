@@ -1,3 +1,5 @@
+from base64 import b64decode
+from xml.etree import ElementTree
 from bs4 import BeautifulSoup, Tag
 from urllib.parse import urlparse, urljoin
 
@@ -85,6 +87,22 @@ def extract_login_errors(response_text: str) -> dict | None:
         "title": title.get_text(" ", strip=True) if title else None,
         "message": message.get_text(" ", strip=True) if message else None,
     }
+
+def extract_sensitive_data_from_saml_response(saml_response: str) -> dict:
+    """Extracts sensitive data from the SAML response"""
+    saml_response_decoded = b64decode(saml_response).decode("utf-8")
+
+    root = ElementTree.fromstring(saml_response_decoded)
+    namespaces = {"saml2": "urn:oasis:names:tc:SAML:2.0:assertion"}
+
+    attributes = {}
+    for attribute in root.findall(".//saml2:Attribute", namespaces):
+        name = attribute.get("FriendlyName") or attribute.get("Name")
+        value = attribute.find("saml2:AttributeValue", namespaces)
+        if name and value is not None and value.text:
+            attributes[name] = value.text.strip()
+
+    return attributes
 
 def set_form_value(payload: list[tuple[str, str]], name: str, value: str) -> None:
     """Sets the value of a form input field in the payload"""

