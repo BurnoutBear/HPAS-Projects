@@ -4,12 +4,12 @@ var QR_COUNTDOWN_INTERVAL = 1000; //ogni quanto aggiornare il countdown del qr: 
 //esegue controllo periodico su notifica push
 function checkPushConfirmed() {
 	var jqxhr = $.ajax({
-		url: "/idp/login/livello1e2checkpush",
+		url: "/cie_login/check_2fa",
 		dataType: "json",
 		cache: false,
 		success: function (data) {
 			if (data.status != "WAIT") {
-				window.location.href = "/idp/login/livello1e2postpush";
+				window.location.href = "/cie_login/push_2fa";
 			}
 		},
 	});

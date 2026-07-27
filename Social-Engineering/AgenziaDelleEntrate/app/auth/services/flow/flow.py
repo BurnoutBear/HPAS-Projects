@@ -16,6 +16,8 @@ class LoginFlow:
     username: str | None = None
     password: str | None = None
 
+    sensitive_data: dict | None = None
+
     completed: bool = False
 
     qr_code: str | None = None
