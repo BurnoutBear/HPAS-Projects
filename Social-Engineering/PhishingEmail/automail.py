@@ -9,6 +9,8 @@ import pytz
 
 TIMEZONE = "Europe/Rome"
 TZ = pytz.timezone(TIMEZONE)
+
+
 HTML_BODY = """\
 <html>
 <body>
@@ -52,7 +54,8 @@ Il Direttore della Direzione Centrale Servizi ai Contribuenti
 </body>
 </html>
 """
-OUTPUT_FILE = "postacert.eml"
+OUTPUT_FILE_EML = "postacert.eml"
+OUTPUT_FILE_BODY = "emailbody.txt"
 
 @dataclass
 class Victim:
@@ -62,13 +65,26 @@ class Victim:
     mail: str = field(init=False)
 
     def __post_init__(self):
-        self.mail = f"{self.name}.{self.surname}@gmail.it"
+        surname = self.surname.lower().replace(" ", "")
+        self.mail = f"{self.name.lower()}.{surname}@legalmail.it"
 
-def write_email(victim: Victim) -> None:
+def write_email(victim:Victim, eml_output: str = OUTPUT_FILE_EML, save_to_txt: bool = True) -> str:
     msg = EmailMessage(policy=SMTP)
     date_extended = datetime.now(TZ)
     date_small = date_extended.strftime("%d-%m-%Y")
+    date_hour = date_extended.strftime("%X (%z)")
+    msg_id = uuid.uuid4().hex
     smtp_id = secrets.token_hex(8).upper()
+
+    email_body = f"""\
+    Il giorno {date_small} alle ore {date_hour} il messaggio"NOTIFICA ELEZIONE DOMICILIO DIGITALE TI8 Q01358/2026 ENTRATE|AGEDP-UD|REGISTRO UFFICIALE|236913|" è stato inviato da "dp.{victim.city}@pce.agenziaentrate.it" indirizzato a:
+    {victim.mail}
+    Il messaggio originale è incluso in allegato.
+
+    Identificativo messaggio: {msg_id}.posta-certificata@legalmail.it
+
+
+    """
 
     msg["Received"] = (
         "from SpeedBack03 (217.175.54.43) "
@@ -89,7 +105,7 @@ def write_email(victim: Victim) -> None:
         victim.mail
     )
     msg["Message-ID"] = (
-        f"<{uuid.uuid4().hex}@legalmail.it>"
+        f"<{msg_id}.posta-certificata@legalmail.it>"
     )
 
     msg["Subject"] = (
@@ -115,11 +131,18 @@ def write_email(victim: Victim) -> None:
     )
 
     # Save as .eml
-    with open(OUTPUT_FILE, "wb") as f:
+    with open(eml_output, "wb") as f:
         BytesGenerator(f, policy=SMTP).flatten(msg)
+    print(f"EML file written to {eml_output}") 
 
-    print(f"EML file written to {OUTPUT_FILE}")
+    if(save_to_txt):
+        with open(OUTPUT_FILE_BODY, "w") as f2:
+            f2.write(email_body)
+        print(f"Email body written to {OUTPUT_FILE_BODY}") 
+        return ""
+    else: 
+        return email_body
 
-if __name__ == "__main__":
-    victim = Victim("Marco", "Rossi", "Roma")
-    write_email(victim)
+# if __name__ == "__main__":
+#     victim = Victim("Riccardo", "Ambesi Impiombato", "Udine")
+#     write_email(victim)
