@@ -65,8 +65,10 @@ class Victim:
     mail: str = field(init=False)
 
     def __post_init__(self):
-        surname = self.surname.lower().replace(" ", "")
-        self.mail = f"{self.name.lower()}.{surname}@legalmail.it"
+        # surname = self.surname.lower().replace(" ", "") # option 1
+        surname = self.surname.lower().split()[0] # option 2
+        name = self.name.lower().split()[0]
+        self.mail = f"{name}.{surname}@legalmail.it"
 
 def write_email(victim:Victim, eml_output: str = OUTPUT_FILE_EML, save_to_txt: bool = True) -> str:
     msg = EmailMessage(policy=SMTP)
