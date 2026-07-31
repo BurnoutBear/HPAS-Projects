@@ -539,7 +539,7 @@
 																		name="otp1"
 																		maxlength="1"
 																		value=""
-																		autofocus=""
+																		{% if not error %}autofocus{% endif %}
 																	/>
 																	<input
 																		class="m-2 text-center form-control rounded"
@@ -717,7 +717,7 @@
 															</noscript>
 														</div>
 													</form>
-                                                    {% if not error %}
+													{% if not error %}
 													<div
 														id="statusHandler"
 														class="row mb-4 mx-n2"
@@ -726,7 +726,7 @@
 															<br /><br />
 														</div>
 													</div>
-                                                    {% endif %} {% if error %}
+													{% endif %} {% if error %}
 													<div
 														id="statusHandler"
 														class="row mb-4 mx-n2 error"
@@ -746,11 +746,12 @@
 															<p
 																id="statusHandlerMsg"
 															>
-																{{ error.message }}
+																{{ error.message
+																}}
 															</p>
 														</div>
 													</div>
-                                                    {% endif %}
+													{% endif %}
 													<h2 class="text-center">
 														Inserisci un codice di
 														verifica.
@@ -763,8 +764,8 @@
 															Inserisci il codice
 															di verifica a 4
 															cifre ricevuto via
-															SMS al numero
-															{{ phone_number }}.
+															SMS al numero {{
+															phone_number }}.
 														</p>
 													</div>
 
