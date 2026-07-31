@@ -72,8 +72,8 @@ def extract_qr_code(response_text: str) -> str:
 
     return src.split(",", 1)[1].strip()
 
-def extract_login_errors(response_text: str) -> dict | None:
-    """Extracts login error messages from the response text"""
+def extract_errors(response_text: str) -> dict | None:
+    """Extracts error messages from the response text"""
     soup = BeautifulSoup(response_text, "html.parser")
 
     status = soup.find(id="statusHandler")
@@ -88,9 +88,9 @@ def extract_login_errors(response_text: str) -> dict | None:
         "message": message.get_text(" ", strip=True) if message else None,
     }
 
-def extract_phone_number(login_flow) -> str:
+def extract_phone_number(response_text: str) -> str:
     """Extracts the phone number from the response text"""
-    soup = BeautifulSoup(login_flow.response.text, "html.parser")
+    soup = BeautifulSoup(response_text, "html.parser")
 
     otp_msg = soup.find(id="otpMsg")
     if otp_msg is None:

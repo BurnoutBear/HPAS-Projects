@@ -530,7 +530,7 @@
 															>
 																<div
 																	id="otp"
-																	class="inputs d-flex flex-row justify-content-center mt-4"
+																	class="inputs d-flex flex-row justify-content-center mt-4 {% if error %}error{% endif %}"
 																>
 																	<input
 																		class="m-2 text-center form-control rounded"
@@ -717,7 +717,7 @@
 															</noscript>
 														</div>
 													</form>
-
+                                                    {% if not error %}
 													<div
 														id="statusHandler"
 														class="row mb-4 mx-n2"
@@ -726,7 +726,31 @@
 															<br /><br />
 														</div>
 													</div>
-
+                                                    {% endif %} {% if error %}
+													<div
+														id="statusHandler"
+														class="row mb-4 mx-n2 error"
+													>
+														<div
+															class="col-1 mr-2 my-auto"
+														>
+															<svg class="icon">
+																<use
+																	xlink:href="{{ url_for('static', filename='cie/images/sprite.svg') }}#it-close-circle"
+																></use>
+															</svg>
+														</div>
+														<div
+															class="col pl-2 my-auto"
+														>
+															<p
+																id="statusHandlerMsg"
+															>
+																{{ error.message }}
+															</p>
+														</div>
+													</div>
+                                                    {% endif %}
 													<h2 class="text-center">
 														Inserisci un codice di
 														verifica.
