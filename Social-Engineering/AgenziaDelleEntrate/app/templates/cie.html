@@ -231,7 +231,7 @@
 														</div>
 													</div>
 													<a
-														href="https://ios.idserver.servizicie.interno.gov.it/idp/login/app?opId=IDe28bb6e6-4271-4f7f-95e7-b867af4d1d40&challenge=DeG4rFLqKp6TK9C0saNN1jGnsZyA7Z5HjBDIo9Lf&level=2&SPName=https%3A%2F%2Fspid.agenziaentrate.gov.it&SPLogo=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png&value=e1s2"
+														href="https://ios.idserver.servizicie.interno.gov.it/idp/login/app?{{ login_page_url_query_string }}"
 														class="stretched-link"
 														><span class="sr-only"
 															>Autorizza con l'App
@@ -787,7 +787,7 @@
 															class="text-center c2"
 														>
 															<a
-																href="/idp/login/livello1e2postqrcode"
+																href="{{ url_for('auth.cie_login_scanned_qr_code') }}"
 																title="dopo aver scansionato il QR, clicca qui per proseguire"
 																>Clicca qui dopo
 																aver autenticato

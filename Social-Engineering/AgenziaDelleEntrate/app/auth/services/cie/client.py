@@ -1,6 +1,6 @@
 from requests import Session, exceptions
 from .constants import URL_AGENZIAENTRATE_LOGIN, URL_CIE_SELECTION, URL_CONTACT_PHONE_2FA, URL_PUSH_2FA_SMS, URL_CHECK_PUSH_2FA, URL_PUSH_2FA, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE
-from .parser import parse_url, extract_url_and_payload_from_form_and_parse, extract_sensitive_data_from_saml_response, set_form_value
+from .parser import parse_url, get_query_string, extract_url_and_payload_from_form_and_parse, extract_sensitive_data_from_saml_response, set_form_value
 from ..flow import LoginFlow
 
 def execute_access_flow() -> LoginFlow:
@@ -31,7 +31,9 @@ def execute_access_flow() -> LoginFlow:
     # 4. POST to /idp/profile/SAML2/POST/SSO?execution=e1s1
     response = session.post(url, data=payload)
 
-    return LoginFlow(session=session, response=response, login_page_url=response.url, login_page_text=response.text)
+    login_page_url_query_string = get_query_string(response.url)
+
+    return LoginFlow(session=session, response=response, login_page_url=response.url, login_page_url_query_string=login_page_url_query_string, login_page_text=response.text)
 
 def access_again_login_page(login_flow: LoginFlow) -> None:
     """Visits the CIE login page again"""

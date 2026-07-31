@@ -11,6 +11,7 @@ class LoginFlow:
     session: Session
     response: Response
     login_page_url: str
+    login_page_url_query_string: str
     login_page_text: str
 
     flow_id: str | None = None

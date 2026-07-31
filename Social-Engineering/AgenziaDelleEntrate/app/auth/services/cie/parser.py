@@ -10,6 +10,11 @@ def parse_url(full_url: str, suffix_url: str) -> str:
 
     return urljoin(base_url, suffix_url)
 
+def get_query_string(full_url: str) -> str:
+    """Extracts the query string from the full URL"""
+    parsed = urlparse(full_url)
+    return parsed.query
+
 def extract_form(response_text: str) -> Tag:
     """Extracts the form element"""
     soup = BeautifulSoup(response_text, "html.parser")

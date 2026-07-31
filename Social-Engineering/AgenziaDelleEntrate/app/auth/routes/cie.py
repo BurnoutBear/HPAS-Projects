@@ -22,7 +22,7 @@ def cie_login():
         error = session.pop("cie_login_error", None)
 
         current_app.logger.info("CIE login page accessed successfully")
-        return render_template("cie.html", qr_code=login_flow.qr_code, qr_expiration=login_flow.qr_remaining_ms, username=login_flow.username, password=login_flow.password, error=error), 200
+        return render_template("cie.html", qr_code=login_flow.qr_code, qr_expiration=login_flow.qr_remaining_ms, username=login_flow.username, password=login_flow.password, error=error, login_page_url_query_string=login_flow.login_page_url_query_string), 200
 
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login page access")
@@ -238,4 +238,4 @@ def cie_login_scanned_qr_code():
 def cie_login_card():
     current_app.logger.info("CIE login card")
     # TODO: Implement the logic to handle the card login process
-    return render_template("cie.html"), 200
+    return render_template("cie_error.html"), 200
