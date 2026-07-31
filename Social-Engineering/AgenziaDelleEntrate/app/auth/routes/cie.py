@@ -1,6 +1,6 @@
 from flask import current_app, jsonify, render_template, request, redirect, session, url_for
 from .. import auth
-from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, check_2fa, retrieve_access_after_push_2fa, check_qr_code, retrieve_access_after_qr_code_scan
+from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, send_2fa_notification, send_2fa_sms, check_2fa, retrieve_access_after_push_2fa, check_qr_code, retrieve_access_after_qr_code_scan
 from ..services.flow import save_flow, check_login_flow
 from ..services.cie.constants import URL_AGENZIAENTRATE_PORTALE
 
@@ -71,6 +71,44 @@ def cie_login_credentials():
 
     except Exception:
         current_app.logger.exception("Unexpected error during CIE login credentials submission")
+        return render_template("cie_error.html"), 500
+
+@auth.route("/cie_login/notify_2fa", methods=["POST"])
+def notify_2fa():
+    """Sends the 2FA notification to the CIE login page"""
+    try:
+        current_app.logger.info("CIE login 2FA request new notification")
+
+        login_flow = check_login_flow()
+
+        if not login_flow:
+            return redirect(url_for("auth.cie_login"))
+
+        send_2fa_notification(login_flow)
+
+        return render_template("cie_2fa.html"), 200
+
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login 2FA notification")
+        return render_template("cie_error.html"), 500
+
+@auth.route("/cie_login/sms_2fa", methods=["POST"])
+def sms_2fa():
+    """Sends the 2FA SMS to the CIE login page"""
+    try:
+        current_app.logger.info("CIE login 2FA request new SMS")
+
+        login_flow = check_login_flow()
+
+        if not login_flow:
+            return redirect(url_for("auth.cie_login"))
+
+        send_2fa_sms(login_flow)
+
+        return render_template("cie_2fa.html"), 200
+
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login 2FA SMS")
         return render_template("cie_error.html"), 500
 
 @auth.route("/cie_login/check_2fa", methods=["GET"])

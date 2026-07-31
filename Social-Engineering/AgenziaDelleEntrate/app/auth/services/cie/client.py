@@ -1,5 +1,5 @@
 from requests import Session, exceptions
-from .constants import URL_AGENZIAENTRATE_LOGIN, URL_CIE_SELECTION, URL_CHECK_PUSH, URL_PUSH_2FA, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE
+from .constants import URL_AGENZIAENTRATE_LOGIN, URL_CIE_SELECTION, URL_CONTACT_PHONE_2FA, URL_CHECK_PUSH, URL_PUSH_2FA, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE
 from .parser import parse_url, extract_url_and_payload_from_form_and_parse, extract_sensitive_data_from_saml_response, set_form_value
 from ..flow import LoginFlow
 
@@ -46,31 +46,37 @@ def post_credentials(login_flow: LoginFlow, credentials: dict) -> None:
     # POST to /idp/login/livello2
     login_flow.response = login_flow.session.post(url, data=payload)
 
+def contact_user_phone(login_flow: LoginFlow, method: str) -> None:
+    """Contacts the user phone for 2FA notification to the CIE login page"""
+    url = parse_url(login_flow.login_page_url, URL_CONTACT_PHONE_2FA)
+    payload = {"cnl": method}
+    login_flow.response = login_flow.session.post(url, data=payload)
+
 def get_2fa_status(login_flow: LoginFlow) -> None:
     """Retrieves the status of the 2FA confirmation from the CIE login page"""
-    check_url = parse_url(login_flow.login_page_url, URL_CHECK_PUSH)
+    url = parse_url(login_flow.login_page_url, URL_CHECK_PUSH)
     try:
-        login_flow.response = login_flow.session.get(check_url, timeout=5)
+        login_flow.response = login_flow.session.get(url, timeout=5)
     except exceptions.ConnectionError:
         return None
 
 def submit_push_2fa(login_flow: LoginFlow) -> None:
     """Submits the 2FA push confirmation to the CIE login page"""
-    push_url = parse_url(login_flow.login_page_url, URL_PUSH_2FA)
-    login_flow.response = login_flow.session.get(push_url)
+    url = parse_url(login_flow.login_page_url, URL_PUSH_2FA)
+    login_flow.response = login_flow.session.get(url)
 
 def get_qr_code_status(login_flow: LoginFlow) -> None:
     """Retrieves the status of the QR code scan from the CIE login page"""
-    check_url = parse_url(login_flow.login_page_url, URL_CHECK_QR_CODE)
+    url = parse_url(login_flow.login_page_url, URL_CHECK_QR_CODE)
     try:
-        login_flow.response = login_flow.session.get(check_url, timeout=5)
+        login_flow.response = login_flow.session.get(url, timeout=5)
     except exceptions.ConnectionError:
         return None
 
 def submit_scanned_qr_code(login_flow: LoginFlow) -> None:
     """Submits the scanned QR code to the CIE login page"""
-    scanned_url = parse_url(login_flow.login_page_url, URL_SCANNED_QR_CODE)
-    login_flow.response = login_flow.session.get(scanned_url)
+    url = parse_url(login_flow.login_page_url, URL_SCANNED_QR_CODE)
+    login_flow.response = login_flow.session.get(url)
 
 def confirm_access(login_flow: LoginFlow) -> None:
     """Confirms the access to the Service Provider (Agenzia delle Entrate)"""

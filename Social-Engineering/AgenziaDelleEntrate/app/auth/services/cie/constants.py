@@ -6,6 +6,8 @@ URL_CIE_SELECTION = "https://sp.agenziaentrate.gov.it/rp/cie/sel"
 
 URL_CIE_LOGIN_PAGE = "https://idserver.servizicie.interno.gov.it/idp/login/livello2"
 
+URL_CONTACT_PHONE_2FA = "/idp/login/livello2s1b"
+
 URL_CHECK_PUSH = "/idp/login/livello1e2checkpush"
 
 URL_PUSH_2FA = "/idp/login/livello1e2postpush"

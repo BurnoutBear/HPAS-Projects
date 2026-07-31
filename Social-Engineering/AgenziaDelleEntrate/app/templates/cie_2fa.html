@@ -542,7 +542,7 @@
 						</p>
 						<form
 							method="POST"
-							action="/idp/login/livello2s1b"
+							action="{{ url_for('auth.notify_2fa') }}"
 							id="push_form"
 							class="d-inline"
 						>
@@ -635,7 +635,7 @@
 						</p>
 						<form
 							method="POST"
-							action="/idp/login/livello2s1b"
+							action="{{ url_for('auth.sms_2fa') }}"
 							id="sms_form"
 							class="d-inline"
 						>
