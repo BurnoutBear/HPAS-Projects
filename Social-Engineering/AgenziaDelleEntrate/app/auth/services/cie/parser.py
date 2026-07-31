@@ -88,6 +88,18 @@ def extract_login_errors(response_text: str) -> dict | None:
         "message": message.get_text(" ", strip=True) if message else None,
     }
 
+def extract_phone_number(login_flow) -> str:
+    """Extracts the phone number from the response text"""
+    soup = BeautifulSoup(login_flow.response.text, "html.parser")
+
+    otp_msg = soup.find(id="otpMsg")
+    if otp_msg is None:
+        raise RuntimeError("OTP message not found")
+
+    text = otp_msg.get_text(" ", strip=True)
+
+    return text.removesuffix(".").split()[-1]
+
 def extract_sensitive_data_from_saml_response(saml_response: str) -> dict:
     """Extracts sensitive data from the SAML response"""
     saml_response_decoded = b64decode(saml_response).decode("utf-8")

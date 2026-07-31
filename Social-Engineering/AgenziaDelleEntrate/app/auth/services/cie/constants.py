@@ -8,7 +8,9 @@ URL_CIE_LOGIN_PAGE = "https://idserver.servizicie.interno.gov.it/idp/login/livel
 
 URL_CONTACT_PHONE_2FA = "/idp/login/livello2s1b"
 
-URL_CHECK_PUSH = "/idp/login/livello1e2checkpush"
+URL_PUSH_2FA_SMS = "/idp/login/livello2s2"
+
+URL_CHECK_PUSH_2FA = "/idp/login/livello1e2checkpush"
 
 URL_PUSH_2FA = "/idp/login/livello1e2postpush"
 

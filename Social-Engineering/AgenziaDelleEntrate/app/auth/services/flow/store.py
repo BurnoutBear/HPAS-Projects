@@ -9,6 +9,7 @@ def save_flow(flow: LoginFlow) -> None:
     flow_id = str(uuid4())
     _flows[flow_id] = flow
     session["login_flow"] = flow_id
+    flow.flow_id = flow_id
 
 def get_flow(flow_id: str) -> LoginFlow | None:
     """Retrieves the login flow from the internal storage using the flow ID"""

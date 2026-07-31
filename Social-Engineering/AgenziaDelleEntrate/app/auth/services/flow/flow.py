@@ -13,8 +13,12 @@ class LoginFlow:
     login_page_url: str
     login_page_text: str
 
+    flow_id: str | None = None
+
     username: str | None = None
     password: str | None = None
+
+    phone_number: str | None = None
 
     sensitive_data: dict | None = None
 
