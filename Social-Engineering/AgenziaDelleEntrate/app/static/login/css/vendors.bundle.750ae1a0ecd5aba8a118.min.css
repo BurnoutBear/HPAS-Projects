@@ -11841,7 +11841,7 @@ fieldset:disabled .btn {
 }
 :root,
 [data-bs-theme="light"] {
-	--bs-btn-close-filter:   
+	--bs-btn-close-filter:    
 ;
 }
 .toast {
@@ -12670,7 +12670,7 @@ fieldset:disabled .btn {
 [data-bs-theme="light"] {
 	--bs-carousel-indicator-active-bg: #fff;
 	--bs-carousel-caption-color: #fff;
-	--bs-carousel-control-icon-filter:   
+	--bs-carousel-control-icon-filter:    
 ;
 }
 .spinner-border,
