@@ -1,6 +1,6 @@
 from requests import Session, exceptions
 from .constants import URL_AGENZIAENTRATE_LOGIN, URL_CIE_SELECTION, URL_CONTACT_PHONE_2FA, URL_PUSH_2FA_SMS, URL_CHECK_PUSH_2FA, URL_PUSH_2FA, URL_CHECK_QR_CODE, URL_SCANNED_QR_CODE
-from .parser import parse_url, get_query_string, extract_url_and_payload_from_form_and_parse, extract_sensitive_data_from_saml_response, set_form_value
+from .parser import parse_url, get_query_string, extract_url_and_payload_from_form_and_parse, extract_sensitive_data_from_saml_response, extract_url_card_page, set_form_value
 from ..flow import LoginFlow
 
 def execute_access_flow() -> LoginFlow:
@@ -106,3 +106,8 @@ def confirm_access(login_flow: LoginFlow) -> None:
     # POST to https://sp.agenziaentrate.gov.it/sam/Consumer/metaAlias/agenziaentrate/age-sp
     login_flow.response = login_flow.session.post(url, data=payload)
     login_flow.completed = True
+
+def get_card_page(login_flow: LoginFlow) -> None:
+    """Accesses the card page for the CIE login"""
+    url = extract_url_card_page(login_flow.login_page_text)
+    login_flow.response = login_flow.session.get(url)

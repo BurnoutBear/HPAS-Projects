@@ -1,6 +1,6 @@
 from flask import current_app, jsonify, render_template, request, redirect, session, url_for
 from .. import auth
-from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, send_2fa_notification, send_2fa_sms, send_2fa_sms_notification, retrieve_access_after_push_2fa_sms, check_2fa, retrieve_access_after_push_2fa, check_qr_code, retrieve_access_after_qr_code_scan
+from ..services.cie import access_login_page, get_new_qr_code, submit_credentials, send_2fa_notification, send_2fa_sms, send_2fa_sms_notification, retrieve_access_after_push_2fa_sms, check_2fa, retrieve_access_after_push_2fa, check_qr_code, retrieve_access_after_qr_code_scan, access_card_page
 from ..services.flow import save_flow, check_login_flow
 from ..services.cie.constants import URL_AGENZIAENTRATE_PORTALE
 
@@ -236,6 +236,19 @@ def cie_login_scanned_qr_code():
 
 @auth.route("/cie_login/card", methods=["GET"])
 def cie_login_card():
-    current_app.logger.info("CIE login card")
-    # TODO: Implement the logic to handle the card login process
-    return render_template("cie_error.html"), 200
+    """Handles the access to the CIE login card page"""
+    try:
+        current_app.logger.info("CIE login card access requested")
+
+        login_flow = check_login_flow()
+
+        if not login_flow:
+            return redirect(url_for("auth.cie_login")), 302
+
+        access_card_page(login_flow)
+
+        current_app.logger.info("CIE login card accessed successfully")
+        return render_template("cie_card.html"), 200
+    except Exception:
+        current_app.logger.exception("Unexpected error during CIE login card access")
+        return render_template("cie_error.html"), 500
