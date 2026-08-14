@@ -38,13 +38,19 @@ I file di output generati sono i seguenti.
 
 ### emailbody.txt
 
-É semplicemente il corpo della mail, utilizzato per crearle il file phishingMail.eml. 
+In caso serva comporre manualmente l'email.
 
-### phishingMail.eml
+Se SAVE_TO_TXT é imposto a True nel file di config il soggetto e il corpo della mail verrano salvati in questo file invece di generare un file eml.
+
+Il file postacert.eml verrá comunque generato e va inserito come allegato.
+
+### postacert.eml
 
 Il file .eml che verrá allegato alla mail di phishing vera e propria.
 Contiene il link indicato dalla variabile SCAM_LINK nel file di config.
 
-### postacert.eml
+### phishingMail.eml
 
-Un mock-up della mail da inviare alla vittima, salvato come file .eml invece di essere inviata. 
+Un mock-up della mail da inviare alla vittima, salvato come file .eml invece di essere inviata.
+
+Verrá generato solo in caso SAVE_TO_TXT sia False 

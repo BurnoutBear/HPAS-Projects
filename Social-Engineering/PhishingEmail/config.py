@@ -59,7 +59,7 @@ Per professionisti iscritti in albi o elenchi (come definiti ai sensi degli art.
 
 <p>
 Le ricordiamo che la comunicazione per il domicilio digitale speciale può avvenire esclusivamente online, 
-utilizzando lo specifico <a href="{SCAM_LINK}">servizio web disponibile in area riservata.
+utilizzando lo specifico <a href="{SCAM_LINK}">servizio web</a> disponibile in area riservata.
 </p>
 
 <p>
@@ -68,8 +68,7 @@ La presente comunicazione ha finalità esclusivamente informative e non costitui
 
 <p>
 Ulteriori indicazioni sono disponibili sul sito dell’Agenzia delle Entrate al seguente avviso:
-<a href="{COMUNICAZIONE}">Comunicazione del domicilio digitale speciale
-</a>
+<a href="{COMUNICAZIONE}">Comunicazione del domicilio digitale speciale</a>
 </p>
 
 <p>

@@ -45,7 +45,7 @@ def write_email(victim:Victim, eml_output: str = OUTPUT_FILE_EML) -> str:
     """
 
     email_subject = (
-            "NOTIFICA NOTIFICA ELEZIONE DOMICILIO DIGITALE "
+            "NOTIFICA ELEZIONE DOMICILIO DIGITALE "
             "TI8 Q01358/2026 "
             f"[ENTRATE|AGEDP|REGISTRO UFFICIALE|236913|{date_small}]"
             "[358965823|349749437]"
@@ -96,21 +96,14 @@ def write_email(victim:Victim, eml_output: str = OUTPUT_FILE_EML) -> str:
         BytesGenerator(f, policy=SMTP).flatten(msg)
     print(f"EML file written to {eml_output}") 
 
-    return email_body
+    return email_subject, email_body
 
 def send_email(victim: Victim, output: str = OUTPUT_PHISHING_EMAIL, fake_xml: str = INPUT_FAKE_XML, save_to_txt: bool = False) -> None:
 
     date = datetime.now(TIMEZONE).strftime("%d-%m-%Y")
 
     # Create the email
-    body = write_email(victim, OUTPUT_FILE_EML)
-    subject = (
-            "POSTA CERTIFICATA: "
-            "NOTIFICA NOTIFICA ELEZIONE DOMICILIO DIGITALE "
-            "TI8 Q01358/2026 "
-            f"[ENTRATE|AGEDP|REGISTRO UFFICIALE|236913|{date}]"
-            "[358965823|349749437]"
-        )
+    subject, body = write_email(victim, OUTPUT_FILE_EML)
    
     if(save_to_txt):
         with open(OUTPUT_FILE_BODY, "w") as f2:
@@ -134,7 +127,7 @@ def send_email(victim: Victim, output: str = OUTPUT_PHISHING_EMAIL, fake_xml: st
 
         eml_part.add_header(
             "Content-Disposition",
-            f'attachment; filename="{OUTPUT_FILE_EML}"'
+            f'attachment; filename="{OUTPUT_FILE_EML[len(OUPUT_PATH):]}"'
         )
         msg.attach(eml_part)
 
@@ -148,7 +141,7 @@ def send_email(victim: Victim, output: str = OUTPUT_PHISHING_EMAIL, fake_xml: st
 
             xml_part.add_header(
                 "Content-Disposition",
-                f'attachment; filename="{fake_xml}"'
+                f'attachment; filename="{fake_xml[len(OUPUT_PATH):]}"'
             )
             msg.attach(xml_part)
         except OSError as e:
