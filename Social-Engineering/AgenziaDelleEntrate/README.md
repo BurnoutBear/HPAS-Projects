@@ -14,6 +14,8 @@ Il flusso completo di autenticazione viene gestito tramite l'oggetto `LoginFlow`
 - tempo di validità (TTL);
 - altre informazioni necessarie alla gestione del flusso di autenticazione.
 
+I dati sensibili e i token di sessione verranno salvati in un file che verrà creato nella directory `captures` (nella directory principale del progetto).
+
 ## Installazione
 
 Prima di avviare l'applicazione è necessario creare l'ambiente virtuale Python (`.venv`) nella directory principale del progetto.
