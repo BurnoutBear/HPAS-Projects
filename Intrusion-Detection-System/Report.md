@@ -145,8 +145,6 @@ around this middle block — nothing about the grading pipeline was touched.
 | eval6 | masquerade on known ID `0ED` | **0.000** | **0.592** |
 | **Average** | | **0.575** | **0.794** |
 
-eval1–4 are essentially unchanged (the tiny F1 differences are rounding from
-Rule 4 picking up a handful of additional known-ID attack frames in eval4).
 The entire improvement comes from giving the system a way to see attacks
 that don't violate ID, timing, or length — which is exactly the blind spot
 the original three rules had.
@@ -179,9 +177,29 @@ the original three rules had.
   detector's sensitivity/specificity trade-off. It's flagged here for
   transparency rather than hidden.
 
-## Claude Improvements
+## Improvement Loop: Failure Analysis
 
-(List your changes and reasons here)
+Step 1 — Instrument the detector to expose which rule fired
+
+The original code returned a single predicted_attack column with no explanation. The first thing we did was add a rule column that recorded which rule triggered each flag ("2,", "4,", "2,4," etc.). Without this, false positives are just wrong numbers. With it, they become something you can reason about.
+
+Step 2 — Separate false positives by rule and by arbitration ID
+
+For each eval file we split the errors into false positives (benign frames flagged as attacks) and false negatives (attacks missed), then grouped them. The result was concrete: "eval2 has 581 rule-2 false positives, of which 433 are on ID 159, 37 on ID 08E, 36 on ID 01B…". This immediately suggested that the problem wasn't uniformly distributed — it had a structure to exploit.
+
+Step 3 — Trace each error cluster back to a physical cause
+
+For the rule-2 false positives on IDs 08E, 01B, 0E9 in eval2 and eval4: we looked at what those IDs have in common. They're not attacked. We checked whether they have elevated frame counts in those evals — they don't. So extra frames aren't arriving; instead, their spacing is being compressed. That's consistent with bus arbitration: when ID 159 floods the bus with extra frames, other IDs get delayed and then released in a burst, shrinking their measured IAT without actually injecting extra frames. The original rule can't see the difference between "too many frames" and "normal frames that arrived close together." That diagnosis directly suggested the fix: measure total count in a window rather than gap between consecutive frames.
+
+For the rule-4 false positives on IDs 715 and 713: we looked at the training byte statistics and found that bytes 1, 2, 3, 4 had zero variance — the same value in every single training frame. Then we looked at the eval frames for those IDs and found two alternating payload patterns, consistent with a multiplexed CAN frame (byte 0 selects a "sub-type", each sub-type has different values for the other bytes). Training only captured one sub-type. The rule had no way to distinguish "this byte moved because it's a different mux sub-type" from "this byte moved because it was forged." That diagnosis pointed directly at the fix: don't apply a step bound to bytes that showed zero variation in training, since we have no meaningful learned bound for them anyway.
+
+For the rule-4 false positives in eval5 on ID 162: we traced the cascade temporally — sorted frames by time, replayed the anchor-update logic manually, and found that all 360 false positives occurred after the attack ended. The anchor was frozen at the pre-attack signal level; when the signal returned to a different post-attack level, every legitimate frame was compared against a stale reference. We tried several fixes (gradual anchor decay, time-scaled bounds) but found each one allowed the gradual masquerade attack to escape detection, because that attack works by slowly drifting through the anchor's tolerance range. That failure-mode analysis told us something important that a pure number-sweep never would have: the cascade is not a bug in isolation, it's a structural tension — the same property that catches a gradual masquerade (a frozen reference) is what causes the post-attack tail of false positives. No simple parameter change resolves it; it would require a second corroborating signal.
+
+Step 4 — Verify the fix addresses the root cause, not just the symptom
+
+After implementing the rolling window, we checked that the false positive count dropped specifically on the non-attacked IDs (08E, 01B, 0E9) while the attacked ID (159) was still correctly flagged. If we had just loosened the IAT threshold globally, we'd have reduced false positives but also reduced recall. The root-cause fix was precise: it changed the measurement (rate vs. gap) rather than the sensitivity.
+
+The alternative to failure-mode analysis is to treat the whole thing as an optimisation problem — sweep parameters, pick what maximises the metric, ship it. That works if you have a large, representative test set, but with only 6 eval files it's easy to overfit to their specific quirks. Failure-mode analysis gives you confidence that the improvement generalises, because you understand why it works, not just that it worked on these particular examples.
 
 ## Libraries
 
