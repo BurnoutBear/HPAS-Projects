@@ -895,22 +895,35 @@
               "threats": [
                 {
                   "id": "1df9596d-500a-489f-a245-fa48e9b463d0",
-                  "title": "Data leak",
+                  "title": "Data leak from internal attacker",
                   "status": "Mitigated",
                   "severity": "Critical",
                   "type": "Information disclosure",
-                  "description": "Customer info disclosure, linked to:\n1. Customer Spoofing (single leak)\n2. Elevation of Privilege (entire DB leak)",
-                  "mitigation": "MFA, hiring of Physical Security, prevention.",
+                  "description": "Customer information disclosure from internal attackers, such as employees. ",
+                  "mitigation": "Hiring of Physical Security, encrypting stored sensitive information.\nImplement tiered authorization levels for employees and keeping logs of employee access to DBs. ",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "ad31aadf-c75e-40f1-883f-2d829dbf0ba9",
+                  "title": "SQL injections, elevation of privilege ",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "Attacker might try to access the DB or achieve elevation of privilege through SQL injections or vulnerabilities in the customer portal.  ",
+                  "mitigation": "Implementing a secure DBMS to avoid data leaks or tampering with the DB through the customer portal.\nTest the customer portal for vulnerabilities regularly and after each update. \n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 38,
                   "score": ""
                 }
               ],
               "threatFrequency": {
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 3,
+                "informationDisclosure": 15,
                 "denialOfService": 0
               }
             }
@@ -1521,9 +1534,9 @@
                   "id": "d927ffbf-2db1-467c-b7d5-0943919374b1",
                   "title": "Phishing",
                   "status": "Mitigated",
-                  "severity": "Critical",
+                  "severity": "Medium",
                   "type": "Spoofing",
-                  "description": "E-mail, SMS or voice call phishing attacks that lead you to a forged login page to steal your credentials or gain an active session",
+                  "description": "E-mail, SMS or voice call phishing attacks that lead you to a forged login page to steal your credentials or gain an active session.",
                   "mitigation": "Provide clear instruction to users for the procedures that the company will or will not use (e.g. e-mails and SMS will never contain links, and voice calls will never be used).",
                   "modelType": "STRIDE",
                   "new": false,
@@ -1532,7 +1545,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 3,
+                "spoofing": 4,
                 "tampering": 0,
                 "repudiation": 0,
                 "informationDisclosure": 0,
@@ -1660,7 +1673,7 @@
                   "id": "8a13d623-e566-4d62-bcea-4f0198029be5",
                   "title": "Spoofed ISO instructions",
                   "status": "Mitigated",
-                  "severity": "Low",
+                  "severity": "Medium",
                   "type": "Spoofing",
                   "description": "Impersonating ISO to send false dispatch instructions.\n(Threat could come from an ISO employee) \nGoals: Energy redirection, DoS, stealing energy, market manipulation ",
                   "mitigation": "Double check for suspicious instructions with automated threat detections. (Generate a warning for IT department). \nHave limits on instructions that can be executed without human supervision, both for energy levels and frequency. \nRequest that ISO implements MFA.",
@@ -1671,9 +1684,16 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 4,
+                "spoofing": 5,
                 "repudiation": 0
               }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -2391,7 +2411,7 @@
                   "severity": "Critical",
                   "type": "Tampering",
                   "description": "Malevolous employee inserting a backdoor in the code update to access and manipulate the SEG.",
-                  "mitigation": "Updates are checked for malwares and backdoors.",
+                  "mitigation": "Updates are checked for malwares and backdoors.\nImplement blame tracking for code written by employees to dissuade attempts.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 25,
@@ -2399,7 +2419,7 @@
                 }
               ],
               "threatFrequency": {
-                "tampering": 3,
+                "tampering": 4,
                 "repudiation": 0,
                 "informationDisclosure": 1,
                 "denialOfService": 0
@@ -2931,6 +2951,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Longari Stefano, Balossini Marco",
-    "threatTop": 37
+    "threatTop": 38
   }
 }
